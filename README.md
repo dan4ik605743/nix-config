@@ -15,8 +15,8 @@ nixos-generate-config
 
 nix-shell -p git nixFlakes
 git clone https://github.com/dan4ik605743/nix-config ~/
-cp -r ~/nix-config/hosts/dan4ik/etc/nixos-unstable_current/nixos/* /etc/nixos/
-sudo nixos-install --flake '/etc/nixos#nixos'
+cp -r ~/nix-config/hosts/dan4ik/etc/nixos-unstable_current/nixos/* /mnt/etc/nixos/
+sudo nixos-install --flake '/mnt/etc/nixos#nixos'
 ```
 
 ### Caveats
