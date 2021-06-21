@@ -2,7 +2,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "rtsx_pci_sdmmc" ];
@@ -11,17 +12,20 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/sda5";
+    {
+      device = "/dev/sda5";
       fsType = "xfs";
     };
 
   fileSystems."/home" =
-    { device = "/dev/sda6";
+    {
+      device = "/dev/sda6";
       fsType = "xfs";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/sda2";
+    {
+      device = "/dev/sda2";
       fsType = "vfat";
     };
 
