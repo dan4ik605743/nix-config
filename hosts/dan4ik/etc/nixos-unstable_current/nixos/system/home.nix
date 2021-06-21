@@ -4,7 +4,6 @@ let
   ## Zsh
   myzsh = pkgs.nur.repos.dan4ik605743.myzsh;
   ## Gtk
-  ## test
   generated = pkgs.callPackage ./pkgs/gtk-generated/default.nix { inherit pywal; };
   ## Pywal
   color = pkgs.callPackage ./pkgs/pywal/default.nix { };
