@@ -186,6 +186,7 @@
       google-chrome
       qbittorrent
       discord
+      nheko
 
       # mynur
       nur.repos.dan4ik605743.lyra-cursors
@@ -273,6 +274,6 @@
       roboto
       siji
     ];
-    fontconfig.localConf = builtins.readFile ./pkgs/config/fonts-localConf.nix;
+    fontconfig.localConf = import ./pkgs/config/fonts-localConf.nix;
   };
 }

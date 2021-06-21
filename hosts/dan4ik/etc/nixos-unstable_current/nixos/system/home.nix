@@ -545,10 +545,10 @@ in
       ];
     file = {
       ".config/neofetch/config.conf" = {
-        text = builtins.readFile ./pkgs/config/neofetch.nix;
+        text = import ./pkgs/config/neofetch.nix;
       };
       ".config/bpytop/bpytop.conf" = {
-        text = builtins.readFile ./pkgs/config/bpytop.nix;
+        text = import ./pkgs/config/bpytop.nix;
       };
       ".config/nixpkgs/config.nix" = {
         text = ''{ allowUnfree = true; allowBroken = true; }'';
