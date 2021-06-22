@@ -11,6 +11,9 @@ let
   backrgb = builtins.match ".*Colour2\"=\"([0-9]+),([0-9]+),([0-9]+)\".*$" (builtins.readFile "${color}/colors-putty.reg");
   rofi-theme = builtins.readFile "${color}/colors-rofi-dark.rasi";
   polybar-colors = builtins.fromJSON (builtins.readFile "${color}/polybar.json");
+  ## Qutebrowser 
+  qutebrowser-theme = import ./pkgs/config/qutebrowser-theme.nix;
+  qutebrw-theme = pkgs.writeText "qutebrw-theme" "${qutebrowser-theme}";
 in
 {
   xsession = {
@@ -374,7 +377,7 @@ in
         c.fonts.default_size = "14px"
         c.colors.webpage.darkmode.enabled = True
         c.colors.webpage.darkmode.policy.images = "never"
-        config.source('/etc/nixos/system/pkgs/config/qutebrowser-theme.nix')
+        config.source('${qutebrw-theme}')
       '';
     };
     vscode = {
