@@ -109,7 +109,7 @@ in
             notification = false;
           }
           {
-            command = "${pkgs.feh}/bin/feh --bg-scale /etc/nixos/packages/pywal/wallpaper1";
+            command = "${pkgs.feh}/bin/feh --bg-scale /etc/nixos/pkgs/pywal/wallpaper1";
             always = false;
             notification = false;
           }
