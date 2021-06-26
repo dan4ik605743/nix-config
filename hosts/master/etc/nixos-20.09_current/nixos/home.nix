@@ -291,6 +291,7 @@ in
       enable = true;
       package = pkgs.nur.repos.dan4ik605743.compton;
       backend = "glx";
+      vSync = true;
       refreshRate = 60;
       activeOpacity = "1.0";
       inactiveOpacity = "1.0";
@@ -454,7 +455,6 @@ in
       in
       [
         myscreenlock
-        (pkgs.i3lock-color.overrideAttrs (attr: { patches = [ ./pkgs/patches/i3lock-color/numlock-fix.patch ./pkgs/patches/i3lock-color/white-screen-fix.patch ]; }))
       ];
     file = {
       ".config/neofetch/config.conf" = {
