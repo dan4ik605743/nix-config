@@ -188,7 +188,7 @@
       discord
       nheko
 
-      # mynur
+      # nur
       nur.repos.dan4ik605743.lyra-cursors
       nur.repos.dan4ik605743.vk-cli
 
