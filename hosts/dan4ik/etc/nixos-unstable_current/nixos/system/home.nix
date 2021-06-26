@@ -496,6 +496,7 @@ in
       ];
     };
     command-not-found.enable = true;
+    chromium.enable = true;
   };
   home = {
     sessionVariables = {
@@ -537,7 +538,6 @@ in
       in
       [
         myscreenlock
-        (pkgs.stable.i3lock-color.overrideAttrs (attr: { patches = [ ./pkgs/patches/i3lock-color/numlock-fix.patch ./pkgs/patches/i3lock-color/white-screen-fix.patch ]; }))
       ];
     file = {
       ".config/neofetch/config.conf" = {

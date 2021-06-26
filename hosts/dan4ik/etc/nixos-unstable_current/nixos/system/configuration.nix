@@ -183,14 +183,12 @@
       pinta
       vlc
       wpsoffice
-      google-chrome
       qbittorrent
-      discord
-      nheko
 
       # nur
       nur.repos.dan4ik605743.lyra-cursors
       nur.repos.dan4ik605743.vk-cli
+      nur.repos.dan4ik605743.i3lock-color
 
       # scripts
       (pkgs.writeShellScriptBin "dotup" "doas cp -r /etc/nixos/* ~/nix-config/hosts/dan4ik/etc/nixos-unstable_current/nixos/ && echo Finish!")
@@ -200,10 +198,10 @@
 
   services = {
     #openvpn.servers.freeVPN = { config = "config /home/dan4ik/Documents/freevpn/Server1-UDP53.ovpn"; };
+    udisks2.enable = false;
     blueman.enable = false;
     openssh.enable = true;
     fstrim.enable = true;
-    udisks2.enable = false;
     udev.packages = [ pkgs.android-udev-rules ];
 
     pipewire = {
