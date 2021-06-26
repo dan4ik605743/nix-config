@@ -27,14 +27,7 @@ in
     '';
     windowManager.i3 = with pywal.colors; {
       enable = true;
-      package = pkgs.stable.i3-gaps.overrideAttrs (attr: {
-        src = pkgs.fetchurl {
-          url = "https://github.com/Airblader/i3/releases/download/4.18.3/i3-4.18.3.tar.bz2";
-          sha256 = "1hcakwyz78lgp8mhqv7pw86jlb3m415pfql1q19rkijnhm3fn3ci";
-        };
-        enableParallelBuilding = false;
-        nativeBuildInputs = with pkgs; [ autoreconfHook ] ++ pkgs.stable.i3.nativeBuildInputs;
-      });
+      package = pkgs.stable.i3-gaps;
       config = rec {
         modifier = "Mod4";
         bars = [ ];
