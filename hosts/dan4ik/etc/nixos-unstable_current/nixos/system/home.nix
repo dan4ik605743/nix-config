@@ -71,8 +71,6 @@ in
 
         assigns = {
           "1" = [{ class = "^qutebrowser$"; }];
-          "3" = [{ class = "^discord$"; }];
-          "5" = [{ class = "^osu!$"; }];
           "7" = [{ class = "^Wps$"; }];
           "8" = [{ class = "^Wpp$"; }];
         };
