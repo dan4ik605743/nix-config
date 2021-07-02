@@ -18,7 +18,6 @@ nixpkgs.lib.nixosSystem rec {
 
     ./configuration.nix
     ./hardware-configuration.nix
-    ./kernel.nix
   ];
 
   specialArgs = { inherit inputs; };

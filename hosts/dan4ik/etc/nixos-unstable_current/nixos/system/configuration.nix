@@ -1,9 +1,11 @@
 { config, pkgs, lib, inputs, ... }:
 
 {
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowBroken = true;
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowBroken = true;
+    };
   };
 
   qt5 = {
@@ -137,6 +139,7 @@
   };
 
   boot = {
+    kernelPackages = pkgs.linuxPackages_xanmod;
     kernelParams = [ "intel_idle.max_cstate=1" "mitigations=off" ];
     supportedFilesystems = [ "xfs" "ntfs" ];
     loader = {
@@ -178,6 +181,7 @@
       ccls
       patchelf
       neofetch
+      ncdu
 
       # apps
       pinta
