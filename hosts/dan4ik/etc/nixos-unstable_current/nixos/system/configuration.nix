@@ -182,6 +182,9 @@
       patchelf
       neofetch
       ncdu
+      ffmpeg
+      ytmdl
+      python38Packages.downloader-cli
 
       # apps
       pinta
