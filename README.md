@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/dan4ik605743/nix-config/actions/workflows/flake-check.yml"><img src="https://github.com/dan4ik605743/nix-config/actions/workflows/flake-check.yml/badge.svg"/></a> <a href="https://github.com/dan4ik605743/nix-config/actions/workflows/format-check.yml"><img src="https://github.com/dan4ik605743/nix-config/actions/workflows/format-check.yml/badge.svg"/></a>
+<a href="https://github.com/dan4ik605743/nix-config/actions/workflows/flake-check.yml"><img src="https://github.com/dan4ik605743/nix-config/actions/workflows/flake-check.yml/badge.svg"/></a> <a href="https://github.com/dan4ik605743/nix-config/actions/workflows/format-check.yml"><img src="https://github.com/dan4ik605743/nix-config/actions/workflows/format-check.yml/badge.svg"/></a> <a href="https://github.com/dan4ik605743/nix-config/actions/workflows/build-check.yml"><img src="https://github.com/dan4ik605743/nix-config/actions/workflows/build-check.yml/badge.svg"></a>
   </p><p align="center"><a href="https://github.com/nixos/nixpkgs"><img src="https://img.shields.io/badge/NixOS-21.11-informational?style=flat.svg"/></a>
 </p>
 
