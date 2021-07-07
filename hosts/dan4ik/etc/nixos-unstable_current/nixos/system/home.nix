@@ -545,7 +545,7 @@ in
         text = import ./pkgs/config/bpytop.nix;
       };
       ".config/nixpkgs/config.nix" = {
-        text = ''{ allowUnfree = true; allowBroken = true; }'';
+        text = import ./pkgs/config/nixpkgs.nix;
       };
     };
     username = "dan4ik";
