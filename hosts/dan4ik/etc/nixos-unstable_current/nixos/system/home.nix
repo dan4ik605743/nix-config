@@ -93,7 +93,7 @@ in
           "${modifier}+Print" = "exec maim -u | xclip -selection clipboard -t image/png";
           "${modifier}+F11" = "exec screenlock";
           "${modifier}+F10" = "exec ${terminal} -e htop";
-          "${modifier}+F12" = "exec ${terminal} -e alsamixer";
+          "${modifier}+F12" = "exec pavucontrol";
           "${modifier}+F1" = "exec qutebrowser";
 
           "Mod1+F2" = "exec playerctl play-pause";
@@ -104,9 +104,9 @@ in
           "XF86AudioNext" = "exec playerctl next";
           "XF86MonBrightnessUp" = "exec brightnessctl s +10%";
           "XF86MonBrightnessDown" = "exec brightnessctl s 10%-";
-          "XF86AudioRaiseVolume" = "exec --no-startup-id amixer sset 'Master' 5%+";
-          "XF86AudioLowerVolume" = "exec --no-startup-id amixer sset 'Master' 5%-";
-          "XF86AudioMute" = "exec --no-startup-id amixer sset 'Master' toggle";
+          "XF86AudioRaiseVolume" = "exec --no-startup-id pactl set-sink-volume 0 +5%";
+          "XF86AudioLowerVolume" = "exec --no-startup-id pactl set-sink-volume 0 -5%";
+          "XF86AudioMute" = "exec --no-startup-id pactl set-sink-mute 0 toggle";
           "XF86TouchpadToggle" = "exec synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')";
           "Print" = "exec maim -su | xclip -selection clipboard -t image/png";
         };
@@ -185,10 +185,10 @@ in
       {
         enable = true;
         script = "polybar main &";
-        package = pkgs.polybar.override {
+        package = pkgs.stable.polybar.override {
           i3GapsSupport = true;
           alsaSupport = true;
-          pulseSupport = false;
+          pulseSupport = true;
           githubSupport = false;
           iwSupport = false;
           mpdSupport = false;
@@ -237,7 +237,7 @@ in
 
             modules-left = "i3 sep";
             modules-center = "date";
-            modules-right = "sep alsa sep";
+            modules-right = "sep volume sep";
           };
           "settings" = {
             throttle-output = 5;
@@ -251,13 +251,14 @@ in
             compositing-border = "over";
             pseudo-transparency = false;
           };
-          "module/alsa" = {
-            type = "internal/alsa";
+          "module/volume" = {
+            type = "internal/pulseaudio";
             format-volume = "<ramp-volume> <label-volume>";
             label-volume = "%percentage%%";
             format-muted-prefix = "";
             label-muted = " Muted";
             label-muted-foreground = ac;
+            use-ui-max = false;
             ramp-volume-0 = "";
             ramp-volume-1 = "";
             ramp-volume-2 = "";
@@ -352,7 +353,7 @@ in
     };
     rofi = {
       enable = true;
-      font = "Hack 10";
+      font = "Hack 9";
       terminal = "${pkgs.termite}/bin/termite";
       theme = builtins.toString (pkgs.writeText "rofi-theme" "${rofi-theme}");
     };
@@ -364,8 +365,8 @@ in
       };
       extraConfig = ''
         c.auto_save.session = True
-        c.fonts.default_family = "JetBrainsMono Nerd Font Mono Bold"
-        c.fonts.default_size = "14px"
+        c.fonts.default_family = "JetBrainsMono Nerd Font Mono"
+        c.fonts.default_size = "13px"
         c.colors.webpage.darkmode.enabled = True
         c.colors.webpage.darkmode.policy.images = "never"
         config.source('${qutebrw-theme}')

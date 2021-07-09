@@ -139,7 +139,7 @@
   };
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod;
+    kernelPackages = pkgs.linuxPackages_5_4;
     kernelParams = [ "intel_idle.max_cstate=1" "mitigations=off" ];
     supportedFilesystems = [ "xfs" "ntfs" ];
     loader = {
@@ -170,6 +170,8 @@
       libva-utils
       mesa-demos
       alsa-utils
+      pavucontrol
+      pulseaudio
       playerctl
       jdk
       nix-prefetch-scripts
@@ -213,6 +215,7 @@
 
     pipewire = {
       enable = true;
+      pulse.enable = true;
       alsa = {
         enable = true;
         support32Bit = true;
@@ -278,6 +281,7 @@
       unifont
       roboto
       siji
+      hack-font
     ];
     fontconfig.localConf = import ./pkgs/config/fonts-localConf.nix;
   };
