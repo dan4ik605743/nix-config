@@ -88,6 +88,12 @@
     };
   };
 
+  systemd.services = {
+    ModemManager = {
+      wantedBy = [ "network.target" ];
+    };
+  };
+
   powerManagement.enable = false;
   time.timeZone = "Asia/Krasnoyarsk";
   system.stateVersion = "20.03";
@@ -95,7 +101,8 @@
   networking = {
     hostName = "nixos";
     firewall.enable = false;
-    dhcpcd.wait = "background";
+    dhcpcd.enable = false;
+    useDHCP = false;
     wireless = {
       enable = false;
       interfaces = [ "wlp3s0" ];
@@ -103,7 +110,7 @@
     };
     interfaces = {
       enp2s0f2.useDHCP = true;
-      #wlp3s0.useDHCP = true;
+      wlp3s0.useDHCP = true;
     };
     nameservers = [
       "1.1.1.1"
@@ -111,11 +118,16 @@
       "8.8.8.8"
       "8.8.4.4"
     ];
+    networkmanager = {
+      enable = true;
+      dns = "none";
+    };
   };
 
   hardware = {
     bluetooth.enable = false;
     cpu.intel.updateMicrocode = true;
+    usbWwan.enable = true;
     opengl = {
       enable = true;
       driSupport32Bit = true;
@@ -162,30 +174,20 @@
       brightnessctl
       pciutils
       usbutils
-      wpa_supplicant
+      networkmanagerapplet
       p7zip
-      xorg.xev
       maim
       xclip
       libva-utils
       mesa-demos
-      alsa-utils
-      pavucontrol
-      pulseaudio
-      playerctl
       jdk
-      nix-prefetch-scripts
-      nixpkgs-fmt
       gparted
       pywal
       lm_sensors
       lxappearance
-      ccls
-      patchelf
-      neofetch
       ncdu
-      ffmpeg
-      ytmdl
+      pfetch
+      xorg.xev
       python38Packages.downloader-cli
 
       # apps
@@ -199,6 +201,42 @@
       nur.repos.dan4ik605743.vk-cli
       nur.repos.dan4ik605743.i3lock-color
 
+      # emacs
+      fd
+      zstd
+      imagemagick
+      nixfmt
+      glslang
+      shellcheck
+      ccls
+      python3
+      sbcl
+      hlint
+      discount
+      ghc
+      cabal-install
+      pipenv
+      nodejs
+      jq
+      nodePackages.typescript-language-server
+      nodePackages.vscode-json-languageserver
+      python3Packages.isort
+      python3Packages.nose
+      python3Packages.pytest
+      python3Packages.python-language-server
+      (ripgrep.override { withPCRE2 = true; })
+
+      # nix-tools
+      nix-prefetch-scripts
+      nixpkgs-fmt
+      patchelf
+
+      # audio-tools
+      alsa-utils
+      pavucontrol
+      pulseaudio
+      playerctl
+
       # scripts
       (pkgs.writeShellScriptBin "dotup" "doas cp -r /etc/nixos/* ~/nix-config/hosts/dan4ik/etc/nixos-unstable_current/nixos/ && echo Finish!")
       (pkgs.writeShellScriptBin "prime-run" ''__NV_PRIME_RENDER_OFFLOAD=1 __VK_LAYER_NV_optimus=NVIDIA_only __GLX_VENDOR_LIBRARY_NAME=nvidia "$@"'')
@@ -206,11 +244,11 @@
   };
 
   services = {
-    #openvpn.servers.freeVPN = { config = "config /home/dan4ik/Documents/freevpn/Server1-UDP53.ovpn"; };
     udisks2.enable = false;
     blueman.enable = false;
     openssh.enable = true;
     fstrim.enable = true;
+    urxvtd.enable = true;
     udev.packages = [ pkgs.android-udev-rules ];
 
     pipewire = {
@@ -220,6 +258,12 @@
         enable = true;
         support32Bit = true;
       };
+    };
+
+    emacs = {
+      enable = true;
+      install = true;
+      package = pkgs.emacsUnstable;
     };
 
     xserver = {
@@ -265,24 +309,29 @@
     mutableUsers = false;
     users.dan4ik = {
       isNormalUser = true;
-      shell = pkgs.zsh;
+      shell = pkgs.bash;
       hashedPassword = "$6$JXAfjAuNeCsxAF5e$pUbTjZ9mVOw8rdk/61ZvzT1RaRLrY2qamAiopPneYvrJa6SnAIHHNM3UJ6Ie1mU6v/a8t6z2CBjyVS4F1yqlh.";
-      extraGroups = [ "wheel" "audio" "video" ];
+      extraGroups = [ "wheel" "audio" "video" "networkmanager" ];
     };
   };
 
   fonts = {
     fonts = with pkgs; [
-      (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" ]; })
+      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
       nur.repos.dan4ik605743.waffle-font
+      nur.repos.fortuneteller2k.iosevka-ft-bin
       font-awesome
       font-awesome-ttf
       noto-fonts-emoji
+      emacs-all-the-icons-fonts
       unifont
       roboto
-      siji
       hack-font
+      siji
     ];
-    fontconfig.localConf = import ./pkgs/config/fonts-localConf.nix;
+    fontconfig = {
+      enable = true;
+      defaultFonts.emoji = [ "Noto Color Emoji" ];
+    };
   };
 }

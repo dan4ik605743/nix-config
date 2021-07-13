@@ -1,19 +1,12 @@
 { config, pkgs, lib, inputs, ... }:
 
 let
-  ## Zsh
-  myzsh = pkgs.nur.repos.dan4ik605743.myzsh;
   ## Gtk
   generated = pkgs.callPackage ./pkgs/gtk-generated/default.nix { inherit pywal; };
   ## Pywal
   color = pkgs.callPackage ./pkgs/pywal/default.nix { };
   pywal = builtins.fromJSON (builtins.readFile "${color}/colors.json");
-  backrgb = builtins.match ".*Colour2\"=\"([0-9]+),([0-9]+),([0-9]+)\".*$" (builtins.readFile "${color}/colors-putty.reg");
   rofi-theme = builtins.readFile "${color}/colors-rofi-dark.rasi";
-  polybar-colors = builtins.fromJSON (builtins.readFile "${color}/polybar.json");
-  ## Qutebrowser 
-  qutebrowser-theme = import ./pkgs/config/qutebrowser-theme.nix;
-  qutebrw-theme = pkgs.writeText "qutebrw-theme" "${qutebrowser-theme}";
 in
 {
   xsession = {
@@ -84,16 +77,16 @@ in
         };
 
         defaultWorkspace = "workspace number 1";
-        terminal = "${pkgs.termite}/bin/termite";
-        menu = "${pkgs.rofi}/bin/rofi -show drun -show-icons";
+        terminal = "urxvtc";
+        menu = "rofi -show drun -show-icons";
 
         keybindings = lib.mkOptionDefault {
           "${modifier}+XF86MonBrightnessUp" = "exec brightnessctl s +10%";
           "${modifier}+XF86MonBrightnessDown" = "exec brightnessctl s 10%-";
           "${modifier}+Print" = "exec maim -u | xclip -selection clipboard -t image/png";
-          "${modifier}+F11" = "exec screenlock";
-          "${modifier}+F10" = "exec ${terminal} -e htop";
           "${modifier}+F12" = "exec pavucontrol";
+          "${modifier}+F11" = "exec screenlock";
+          "${modifier}+F10" = "exec urxvtc -e htop";
           "${modifier}+F1" = "exec qutebrowser";
 
           "Mod1+F2" = "exec playerctl play-pause";
@@ -104,15 +97,15 @@ in
           "XF86AudioNext" = "exec playerctl next";
           "XF86MonBrightnessUp" = "exec brightnessctl s +10%";
           "XF86MonBrightnessDown" = "exec brightnessctl s 10%-";
-          "XF86AudioRaiseVolume" = "exec --no-startup-id pactl set-sink-volume 0 +5%";
-          "XF86AudioLowerVolume" = "exec --no-startup-id pactl set-sink-volume 0 -5%";
-          "XF86AudioMute" = "exec --no-startup-id pactl set-sink-mute 0 toggle";
+          "XF86AudioRaiseVolume" = "exec pactl set-sink-volume 0 +5%";
+          "XF86AudioLowerVolume" = "exec pactl set-sink-volume 0 -5%";
+          "XF86AudioMute" = "exec pactl set-sink-mute 0 toggle";
           "XF86TouchpadToggle" = "exec synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')";
           "Print" = "exec maim -su | xclip -selection clipboard -t image/png";
         };
         startup = [
           {
-            command = "${pkgs.feh}/bin/feh --bg-scale /etc/nixos/system/pkgs/pywal/current";
+            command = "feh --bg-scale /etc/nixos/system/pkgs/pywal/current";
             always = false;
             notification = false;
           }
@@ -140,27 +133,20 @@ in
       package = generated;
       name = "generated";
     };
-    gtk3 = {
-      extraCss = ''
-        VteTerminal, vte-terminal {
-        padding: 15px;
-        }
-      '';
-      extraConfig = {
-        gtk-cursor-theme-name = "LyraF-cursors";
-        gtk-cursor-theme-size = 0;
-      };
+    gtk3.extraConfig = {
+      gtk-cursor-theme-name = "LyraF-cursors";
+      gtk-cursor-theme-size = 0;
     };
     gtk2.extraConfig = ''
       gtk-cursor-theme-name="LyraF-cursors"
       gtk-cursor-theme-size=0
     '';
   };
-  services = with pywal.special; with pywal.colors; with polybar-colors.special; {
+  services = with pywal.special; with pywal.colors; {
     polybar =
       let
         ac = "#4DD0E1";
-        bg = "${background1}";
+        bg = "${background}";
         fg = "${foreground}";
         custom = "${color4}";
         trans = "#00000000";
@@ -310,129 +296,37 @@ in
       refreshRate = 60;
       activeOpacity = "1.0";
       inactiveOpacity = "1.0";
-      fade = true;
-      fadeDelta = 4;
-      fadeSteps = [
-        "0.03"
-        "0.03"
-      ];
-      blur = true;
-      blurExclude = [
-        "class_g = 'slop'"
-      ];
-      extraOptions = ''
-        blur-kern = "3x3box";
-        blur-method = "kawase";
-        blur-strength = 12;
-        blur-background-frame = true;
-        blur-background-fixed = true;
-      '';
     };
   };
   programs = {
-    zsh = {
-      enable = true;
-      initExtra = ''
-        export ZSH=${myzsh}/share/oh-my-zsh
-        ZSH_THEME="my"
-        plugins=(git sudo fast-syntax-highlighting zsh-autosuggestions)
-        source $ZSH/oh-my-zsh.sh
-      '';
-      shellGlobalAliases = {
-        tb = "nc termbin.com 9999";
-      };
-    };
     bash = {
       enable = true;
       bashrcExtra = ''
-        PS1="\[\033[38;5;11m\]\u\[$(tput sgr0)\]@\h:\[$(tput sgr0)\]\[\033[38;5;6m\][\w]\[$(tput sgr0)\]: \[$(tput sgr0)\]"
+        PS1="\[\033[38;5;239m\]λ\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;244m\]\W\[$(tput sgr0)\] \[$(tput sgr0)\]"
+        export PATH="$HOME/.emacs.d/bin:$PATH"
       '';
       shellAliases = {
         tb = "nc termbin.com 9999";
+        ew = "emacs -nw";
+        xp = "xclip -sel clip";
+        ls = "ls -l -F --color=auto";
+        lsa = "ls -al";
+        dew = "doas emacs -nw";
+        nup = "doas bash -c 'nix flake update /etc/nixos && nixos-rebuild switch --flake /etc/nixos'";
+        nsw = "doas nixos-rebuild switch --flake /etc/nixos";
       };
     };
     rofi = {
       enable = true;
       font = "Hack 9";
-      terminal = "${pkgs.termite}/bin/termite";
+      terminal = "urxvtc";
       theme = builtins.toString (pkgs.writeText "rofi-theme" "${rofi-theme}");
     };
     qutebrowser = {
       enable = true;
       searchEngines = { DEFAULT = "https://google.com/search?q={}"; };
-      settings = {
-        url.start_pages = [ "https://vk.com" ];
-      };
-      extraConfig = ''
-        c.auto_save.session = True
-        c.fonts.default_family = "JetBrainsMono Nerd Font Mono"
-        c.fonts.default_size = "13px"
-        c.colors.webpage.darkmode.enabled = True
-        c.colors.webpage.darkmode.policy.images = "never"
-        config.source('${qutebrw-theme}')
-      '';
-    };
-    vscode = {
-      enable = false;
-      extensions = with pkgs.vscode-extensions;
-        [
-          ms-vscode.cpptools
-          bbenoist.Nix
-          pkief.material-icon-theme
-        ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace
-          [
-            {
-              name = "nix-env-selector";
-              publisher = "arrterian";
-              version = "0.1.2";
-              sha256 = "1n5ilw1k29km9b0yzfd32m8gvwa2xhh6156d4dys6l8sbfpp2cv9";
-            }
-            {
-              name = "theme-monokai-pro-vscode";
-              publisher = "monokai";
-              version = "1.1.19";
-              sha256 = "0skzydg68bkwwwfnn2cwybpmv82wmfkbv66f54vl51a0hifv3845";
-            }
-          ];
-      userSettings = {
-        "update.channel" = "none";
-        "telemetry.enableTelemetry" = "false";
-        "telemetry.enableCrashReporter" = "false";
-        "terminal.integrated.shell.linux" = "${pkgs.zsh}/bin/zsh";
-        "workbench.iconTheme" = "material-icon-theme";
-        "workbench.colorTheme" = "Monokai Pro (Filter Machine)";
-        "editor.fontFamily" = "Iosevka";
-        "editor.fontLigatures" = "true";
-        "editor.fontSize" = 16;
-      };
-    };
-    termite = with pywal.special; {
-      enable = true;
-      allowBold = true;
-      font = "JetBrainsMono Nerd Font Mono Bold 9";
-      cursorColor = "${cursor}";
-      cursorForegroundColor = "${background}";
-      backgroundColor = "rgba(${builtins.elemAt backrgb 0}, ${builtins.elemAt backrgb 1}, ${builtins.elemAt backrgb 2}, 0.8)";
-      foregroundColor = "${foreground}";
-      colorsExtra = with pywal.colors;
-        ''
-          color0 = ${color0}
-          color1 = ${color1}
-          color2 = ${color2}
-          color3 = ${color3}
-          color4 = ${color4}
-          color5 = ${color5}
-          color6 = ${color6}
-          color7 = ${color7}
-          color8 = ${color8}
-          color9 = ${color9}
-          color10 = ${color10}
-          color11 = ${color11}
-          color12 = ${color12}
-          color13 = ${color13}
-          color14 = ${color14}
-          color15 = ${color15}
-        '';
+      settings.url.start_pages = [ "https://vk.com" ];
+      extraConfig = import ./pkgs/config/qutebrowser.nix;
     };
     git = {
       enable = true;
@@ -451,57 +345,14 @@ in
       enableZshIntegration = false;
       enableBashIntegration = false;
     };
-    rtorrent = {
-      enable = false;
-      settings = ''
-        directory = ~/.torrents
-        session = ~/.rtsession
-        min_peers = 1
-        max_peers = 1000
-        port_random = yes
-        check_hash = no
-        trackers.use_udp.set = yes
-        #scheduler.max_active.set = 1
-      '';
-    };
-    neovim = {
-      enable = true;
-      package = pkgs.neovim-nightly;
-      withNodeJs = true;
-      withRuby = false;
-      vimAlias = false;
-      viAlias = false;
-      extraConfig = ''
-        let g:NERDTreeDirArrowExpandable = '▸'
-        let g:NERDTreeDirArrowCollapsible = '▾'
-        let g:lightline = {
-        \ 'colorscheme': 'solarized',
-        \ }
-        syntax on
-        set number
-        set mouse=a
-        nnoremap <C-n> :NERDTree<CR>
-        autocmd BufReadPost *
-        \ if line("'\"") > 0 && line("'\"") <= line("$") |
-        \ exe "normal! g`\"" |
-        \ endif
-      '';
-      plugins = with pkgs.vimPlugins; [
-        vim-nix
-        vim-closetag
-        lightline-vim
-        coc-nvim
-        nerdtree
-      ];
-    };
     command-not-found.enable = true;
     chromium.enable = true;
   };
   home = {
     sessionVariables = {
-      EDITOR = "${config.programs.neovim.package}/bin/nvim";
-      BROWSER = "${config.programs.qutebrowser.package}/bin/qutebrowser";
-      TERMINAL = "${pkgs.termite}/bin/termite";
+      EDITOR = "emacseditor";
+      BROWSER = "qutebrowser";
+      TERMINAL = "urxvtc";
       XDG_DESKTOP_DIR = "${config.home.homeDirectory}/Downloads";
       XDG_DOWNLOAD_DIR = "${config.home.homeDirectory}/Downloads";
       XDG_PICTURES_DIR = "${config.home.homeDirectory}/Downloads";
@@ -539,17 +390,57 @@ in
         myscreenlock
       ];
     file = {
-      ".config/neofetch/config.conf" = {
-        text = import ./pkgs/config/neofetch.nix;
-      };
       ".config/bpytop/bpytop.conf" = {
         text = import ./pkgs/config/bpytop.nix;
       };
       ".config/nixpkgs/config.nix" = {
         text = import ./pkgs/config/nixpkgs.nix;
       };
+      ".doom.d/config.el" = {
+        text = import ./pkgs/config/doom/config.nix;
+      };
+      ".doom.d/init.el" = {
+        text = import ./pkgs/config/doom/init.nix;
+      };
+      ".doom.d/packages.el" = {
+        text = import ./pkgs/config/doom/packages.nix;
+      };
     };
     username = "dan4ik";
     homeDirectory = "/home/${config.home.username}";
   };
+  xresources.extraConfig = with pywal.special; with pywal.colors; ''
+    ! Settings
+    URxvt.font: xft:Iosevka FT Extended:size=9
+    URxvt.saveline: 22222
+    URxvt.internalBorder: 15
+    URxvt.scrollBar: false
+    URxvt.iso14755: false
+
+    ! Bindings
+    URxvt.keysym.Control-Shift-C: eval:selection_to_clipboard
+    URxvt.keysym.Control-Shift-V: eval:paste_clipboard
+
+    ! Colors
+    *.foreground: ${foreground}
+    *.background: ${background}
+    *.cursorColor: ${cursor}
+
+    *.color0: ${color1}
+    *.color1: ${color2}
+    *.color2: ${color3}
+    *.color3: ${color3}
+    *.color4: ${color4}
+    *.color5: ${color5}
+    *.color6: ${color6}
+    *.color7: ${color7}
+    *.color8: ${color8}
+    *.color9: ${color9}
+    *.color10: ${color10}
+    *.color11: ${color11}
+    *.color12: ${color12}
+    *.color13: ${color13}
+    *.color14: ${color14}
+    *.color15: ${color15}
+  '';
 }

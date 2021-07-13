@@ -1,8 +1,12 @@
 ''
-  # base16-qutebrowser (https://github.com/theova/base16-qutebrowser)
-  # Base16 qutebrowser template by theova and Daniel Mulford
-  # Classic Dark scheme by Jason Heeris (http://heeris.id.au)
+  # Settings
+  c.auto_save.session = True
+  c.fonts.default_family = "Iosevka FT Extended"
+  c.fonts.default_size = "13px"
+  c.colors.webpage.darkmode.enabled = True
+  c.colors.webpage.darkmode.policy.images = "never"
 
+  # Theme
   base00 = "#151515"
   base01 = "#202020"
   base02 = "#303030"
