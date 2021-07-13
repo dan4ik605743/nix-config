@@ -39,11 +39,11 @@ Resources and configurations I used to base on:
 
 ##  System Configure (default host dan4ik) <space><space>
 * OS -> NixOS 21.11 (Porcupine) <space><space><space>
-* Shell -> zsh <space><space><space>
+* Shell -> bash <space><space><space>
 * DE -> xterm <space><space><space>
 * WM -> i3 <space><space><space>
-* Terminal -> .termite-wrappe <space><space><space>
-* Terminal font -> JetBrainsMono Nerd Font Mono Bold  <space><space><space>
+* Terminal -> urxvtc <space><space><space>
+* Terminal font -> Iosevka FT Extended  <space><space><space>
 * Theme -> generated <space><space><space>
 * Icons -> Papirus-dark <space><space><space>
  
@@ -51,7 +51,7 @@ Resources and configurations I used to base on:
 * Htop and Bpytop (Task Manager) <space><space><space><space><space>
 * Feh (Wallpaper and Image preview) <space><space><space><space><space>
 * Compton (Composer) <space><space><space><space><space>
-* Termite (Terminal) <space><space><space><space><space>
+* Rxvt-unicode (Terminal) <space><space><space><space><space>
 * Qutebrowser (Browser) <space><space><space><space><space>
 * Polybar (Bar whith i3) <space><space><space><space><space>
 * Playerctl and pavucontrol (Playback control and Pulseaudio control) <space><space><space><space><space>
