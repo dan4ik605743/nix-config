@@ -310,6 +310,7 @@ in
         ew = "emacs -nw";
         xp = "xclip -sel clip";
         ls = "ls -l -F --color=auto";
+        nb = "nix-build -E 'with import <nixpkgs> {}; callPackage ./default.nix {}'";
         lsa = "ls -al";
         dew = "doas emacs -nw";
         nup = "doas bash -c 'nix flake update /etc/nixos && nixos-rebuild switch --flake /etc/nixos'";
