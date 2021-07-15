@@ -7,6 +7,19 @@ let
   color = pkgs.callPackage ./pkgs/pywal/default.nix { };
   pywal = builtins.fromJSON (builtins.readFile "${color}/colors.json");
   rofi-theme = builtins.readFile "${color}/colors-rofi-dark.rasi";
+  ## Rxvt-unicode
+  url-select = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/muennich/urxvt-perls/master/deprecated/url-select";
+    sha256 = "1pmvjrzjjcihwvzhznm5fjp80bayf342xp0r01zfhhq76jsdbdfz";
+  };
+  resize-font = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/simmel/urxvt-resize-font/master/resize-font";
+    sha256 = "0lhm6dflcrzl8vj4al2yaxry02jpx452kickbm38ba83kylv0jnq";
+  };
+  tabbedex = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/shaggytwodope/tabbedex-urxvt/master/tabbedex";
+    sha256 = "0q642f54wjaksdgiv7p01268nbn14wz9xm8gz6xhflkjlbc5wgaa";
+  };
 in
 {
   xsession = {
@@ -313,6 +326,7 @@ in
         nb = "nix-build -E 'with import <nixpkgs> {}; callPackage ./default.nix {}'";
         lsa = "ls -al";
         dew = "doas emacs -nw";
+        emr = "systemctl --user restart emacs.service";
         nup = "doas bash -c 'nix flake update /etc/nixos && nixos-rebuild switch --flake /etc/nixos'";
         nsw = "doas nixos-rebuild switch --flake /etc/nixos";
       };
@@ -406,6 +420,15 @@ in
       ".doom.d/packages.el" = {
         text = import ./pkgs/config/doom/packages.nix;
       };
+      ".urxvt/ext/url-select" = {
+        text = builtins.readFile "${url-select}";
+      };
+      ".urxvt/ext/resize-font" = {
+        text = builtins.readFile "${resize-font}";
+      };
+      ".urxvt/ext/tabbedex" = {
+        text = builtins.readFile "${tabbedex}";
+      };
     };
     username = "dan4ik";
     homeDirectory = "/home/${config.home.username}";
@@ -421,6 +444,37 @@ in
     ! Bindings
     URxvt.keysym.Control-Shift-C: eval:selection_to_clipboard
     URxvt.keysym.Control-Shift-V: eval:paste_clipboard
+    URxvt.keysym.Control-Shift-U: url-select:select_next
+    URxvt.keysym.Control-minus: resize-font:smaller
+    URxvt.keysym.Control-plus: resize-font:bigger
+    URxvt.keysym.Control-equal: resize-font:reset
+    URxvt.keysym.Control-question: resize-font:show
+    URxvt.keysym.Control-Shift-T:     tabbedex:new_tab
+    URxvt.keysym.Control-Shift-R:     tabbedex:rename_tab
+    URxvt.keysym.Control-Shift-W:     tabbedex:kill_tab
+    URxvt.keysym.Control-Next:        tabbedex:next_tab
+    URxvt.keysym.Control-Prior:       tabbedex:prev_tab
+
+    ! Perl
+    URxvt.perl-ext-common: default,url-select,resize-font,tabbedex
+    URxvt.resize-font.step: 1
+    URvxt.url-select.button: 2
+    URxvt.url-select.launcher: qutebrowser
+    URxvt.url-select.underline: true
+    URxvt.tabbedex.no-tabbedex-keys:  yes
+    URxvt.tabbedex.new-button:        false
+    URXvt.tabbedex.reopen-on-close:   yes
+    URxvt.tabbedex.autohide:          yes
+    URxvt.tabbedex.tabbar-fg:         5
+    URxvt.tabbedex.tabbar-bg:         0
+    URxvt.tabbedex.tab-fg:            15
+    URxvt.tabbedex.tab-bg:            0
+    URxvt.tabbedex.bell-fg:           0
+    URxvt.tabbedex.bell-bg:           0
+    URxvt.tabbedex.bell-tab-fg:       0
+    URxvt.tabbedex.bell-tab-bg:       0
+    URxvt.tabbedex.title-fg:          15
+    URxvt.tabbedex.title-bg:          0
 
     ! Colors
     *.foreground: ${foreground}

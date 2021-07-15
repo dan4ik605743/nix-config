@@ -213,13 +213,16 @@
       sbcl
       hlint
       discount
-      ghc
-      cabal-install
       pipenv
       nodejs
       jq
+      html-tidy
       nodePackages.typescript-language-server
       nodePackages.vscode-json-languageserver
+      nodePackages.vscode-html-languageserver-bin
+      nodePackages.vscode-css-languageserver-bin
+      nodePackages.stylelint
+      nodePackages.js-beautify
       python3Packages.isort
       python3Packages.nose
       python3Packages.pytest

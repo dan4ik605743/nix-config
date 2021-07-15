@@ -4,18 +4,18 @@
          ivy
 
          :ui
+         (emoji +ascii +github +unicode)
+         (popup +defaults +all)
+         (window-select +numbers)
          doom
          doom-dashboard
          doom-quit
-         (emoji +ascii +github +unicode)
          hl-todo
          modeline
          ophints
-         (popup +defaults +all)
          treemacs
          vc-gutter
          vi-tilde-fringe
-         (window-select +numbers)
          workspaces
          zen
 
@@ -51,16 +51,16 @@
 
          :lang
          (cc +lsp)
-         common-lisp
-         emacs-lisp
-         (haskell +lsp +dante)
          (json +lsp)
          (javascript +lsp)
          (lua +lsp)
+         (python +lsp)
+         (web +lsp)
+         common-lisp
+         emacs-lisp
          markdown
          nix
          org     
-         (python +lsp)
          qt
          sh
 
