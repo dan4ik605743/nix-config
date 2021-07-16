@@ -26,7 +26,7 @@
     doas = {
       enable = true;
       extraRules = [{
-        users = [ "dan4ik" ];
+        groups = [ "wheel" ];
         keepEnv = true;
         noPass = true;
       }];
@@ -188,6 +188,7 @@
       ncdu
       pfetch
       xorg.xev
+      vk-cli
       python38Packages.downloader-cli
 
       # apps
@@ -198,7 +199,6 @@
 
       # nur
       nur.repos.dan4ik605743.lyra-cursors
-      nur.repos.dan4ik605743.vk-cli
       nur.repos.dan4ik605743.i3lock-color
 
       # emacs
