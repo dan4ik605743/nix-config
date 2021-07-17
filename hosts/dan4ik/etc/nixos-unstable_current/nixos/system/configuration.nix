@@ -189,13 +189,15 @@
       pfetch
       xorg.xev
       vk-cli
-      python38Packages.downloader-cli
+      ranger
 
       # apps
       pinta
       vlc
       wpsoffice
       qbittorrent
+      osu-lazer
+      spotify-wrapped
 
       # nur
       nur.repos.dan4ik605743.lyra-cursors

@@ -18,18 +18,22 @@
         allowBroken = true;
         allowUnfree = true;
       };
+      filterNixFiles = k: v: v == "regular" && hasSuffix ".nix" k;
+      importNixFiles = path: (lists.forEach (mapAttrsToList (name: _: path + ("/" + name))
+        (filterAttrs filterNixFiles (builtins.readDir path)))) import;
       overlays = with inputs; [
         (final: _:
           let
             system = final.stdenv.hostPlatform.system;
           in
           {
+            unstable = import unstable { inherit config system; };
             stable = import stable { inherit config system; };
           })
 
         nur.overlay
         emacs.overlay
-      ];
+      ] ++ (importNixFiles ./system/pkgs/overlays);
     in
     {
       nixosConfigurations.nixos = import ./system {
