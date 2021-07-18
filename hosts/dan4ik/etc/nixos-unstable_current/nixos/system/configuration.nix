@@ -196,7 +196,6 @@
       vlc
       wpsoffice
       qbittorrent
-      osu-lazer
       spotify-wrapped
 
       # nur
