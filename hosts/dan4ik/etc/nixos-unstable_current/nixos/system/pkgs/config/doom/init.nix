@@ -1,7 +1,7 @@
 ''
   (doom! :completion
-         company
-         ivy
+         (company +childframe)
+         (ivy +fuzzy +prescient +childframe +icons)
 
          :ui
          (emoji +ascii +github +unicode)

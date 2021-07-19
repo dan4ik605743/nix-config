@@ -62,4 +62,4 @@ Resources and configurations I used to base on:
 
 ## Appearance
 
-![dan4ik](hosts/dan4ik/home/dan4ik/Documents/screenshots/9.png)
+![dan4ik](hosts/dan4ik/home/dan4ik/Documents/screenshots/10.png)

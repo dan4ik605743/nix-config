@@ -3,7 +3,7 @@
 
   #* Color theme, looks for a .theme file in "/nix/store/6zl008pchg5h05jpdmkd5x8gzji9w7qx-bpytop-1.0.65/share/bpytop/themes" and "~/.config/bpytop/themes", "Default" for builtin default theme.
   #* Prefix name by a plus sign (+) for a theme located in user themes folder, i.e. color_theme="+monokai"
-  color_theme="greyscale"
+  color_theme="gruvbox_dark"
 
   #* If the theme set background should be shown, set to False if you want terminal background transparency
   theme_background=False

@@ -5,8 +5,8 @@ let
   generated = pkgs.callPackage ./pkgs/gtk-generated/default.nix { inherit pywal; };
   ## Pywal
   color = pkgs.callPackage ./pkgs/pywal/default.nix { };
-  pywal = builtins.fromJSON (builtins.readFile "${color}/colors.json");
-  rofi-theme = builtins.readFile "${color}/colors-rofi-dark.rasi";
+  pywal = builtins.fromJSON (builtins.readFile "${color}/colors-gb.json");
+  rofi-theme = builtins.readFile "${color}/colors-rofi-dark-gb.rasi";
   ## Rxvt-unicode
   url-select = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/muennich/urxvt-perls/master/deprecated/url-select";
@@ -118,7 +118,7 @@ in
         };
         startup = [
           {
-            command = "feh --bg-scale /etc/nixos/system/pkgs/pywal/current";
+            command = "feh --bg-fill /etc/nixos/system/pkgs/pywal/current";
             always = false;
             notification = false;
           }
@@ -147,11 +147,11 @@ in
       name = "generated";
     };
     gtk3.extraConfig = {
-      gtk-cursor-theme-name = "LyraF-cursors";
+      gtk-cursor-theme-name = "elementary";
       gtk-cursor-theme-size = 0;
     };
     gtk2.extraConfig = ''
-      gtk-cursor-theme-name="LyraF-cursors"
+      gtk-cursor-theme-name="elementary"
       gtk-cursor-theme-size=0
     '';
   };
@@ -315,7 +315,7 @@ in
     bash = {
       enable = true;
       bashrcExtra = ''
-        PS1="\[\033[38;5;239m\]λ\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;244m\]\W\[$(tput sgr0)\] \[$(tput sgr0)\]"
+        PS1="\[\033[38;5;245m\]λ\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;244m\]\W\[$(tput sgr0)\] \[$(tput sgr0)\]"
         export PATH="$HOME/.emacs.d/bin:$PATH"
       '';
       shellAliases = {
@@ -481,9 +481,9 @@ in
     *.background: ${background}
     *.cursorColor: ${cursor}
 
-    *.color0: ${color1}
-    *.color1: ${color2}
-    *.color2: ${color3}
+    *.color0: ${color0}
+    *.color1: ${color1}
+    *.color2: ${color2}
     *.color3: ${color3}
     *.color4: ${color4}
     *.color5: ${color5}

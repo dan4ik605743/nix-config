@@ -1,3 +1,4 @@
 ''
-  (package! helm-nixos-options)
+  (package! centaur-tabs
+  :recipe(:host github :repo "MoritzMaxeiner/centaur-tabs" :branch "daemon"))
 ''

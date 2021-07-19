@@ -196,7 +196,6 @@
       vlc
       wpsoffice
       qbittorrent
-      spotify-wrapped
 
       # nur
       nur.repos.dan4ik605743.lyra-cursors
@@ -227,7 +226,7 @@
       python3Packages.isort
       python3Packages.nose
       python3Packages.pytest
-      python3Packages.python-language-server
+      python3Packages.python-lsp-server
       (ripgrep.override { withPCRE2 = true; })
 
       # nix-tools
