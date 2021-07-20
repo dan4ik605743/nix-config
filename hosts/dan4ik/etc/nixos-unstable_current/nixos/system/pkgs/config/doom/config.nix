@@ -37,6 +37,7 @@
   (projectile-add-known-project "~/test/")
   (projectile-add-known-project "~/nur/")
   (projectile-add-known-project "~/nix-config/")
+  (projectile-add-known-project "~/nixpkgs/")
   (projectile-add-known-project "~/Documents/code/")
   (projectile-add-known-project "/etc/nixos")
 
