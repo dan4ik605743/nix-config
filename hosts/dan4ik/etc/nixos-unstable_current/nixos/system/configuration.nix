@@ -196,6 +196,8 @@
       vlc
       wpsoffice
       qbittorrent
+      viber
+      modem-manager-gui
 
       # nur
       nur.repos.dan4ik605743.lyra-cursors

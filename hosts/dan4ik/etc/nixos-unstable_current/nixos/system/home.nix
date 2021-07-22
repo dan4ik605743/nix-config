@@ -327,6 +327,7 @@ in
         lsa = "ls -al";
         dew = "doas emacs -nw";
         emr = "systemctl --user restart emacs.service";
+        ems = "systemctl --user stop emacs.service";
         nup = "doas bash -c 'nix flake update /etc/nixos && nixos-rebuild switch --flake /etc/nixos'";
         nsw = "doas nixos-rebuild switch --flake /etc/nixos";
       };
@@ -449,11 +450,11 @@ in
     URxvt.keysym.Control-plus: resize-font:bigger
     URxvt.keysym.Control-equal: resize-font:reset
     URxvt.keysym.Control-question: resize-font:show
-    URxvt.keysym.Control-Shift-T:     tabbedex:new_tab
-    URxvt.keysym.Control-Shift-R:     tabbedex:rename_tab
-    URxvt.keysym.Control-Shift-W:     tabbedex:kill_tab
-    URxvt.keysym.Control-Next:        tabbedex:next_tab
-    URxvt.keysym.Control-Prior:       tabbedex:prev_tab
+    URxvt.keysym.Control-Shift-T: tabbedex:new_tab
+    URxvt.keysym.Control-Shift-R: tabbedex:rename_tab
+    URxvt.keysym.Control-Shift-W: tabbedex:kill_tab
+    URxvt.keysym.Control-Next: tabbedex:next_tab
+    URxvt.keysym.Control-Prior: tabbedex:prev_tab
 
     ! Perl
     URxvt.perl-ext-common: default,url-select,resize-font,tabbedex
@@ -461,20 +462,20 @@ in
     URvxt.url-select.button: 2
     URxvt.url-select.launcher: qutebrowser
     URxvt.url-select.underline: true
-    URxvt.tabbedex.no-tabbedex-keys:  yes
-    URxvt.tabbedex.new-button:        false
-    URXvt.tabbedex.reopen-on-close:   yes
-    URxvt.tabbedex.autohide:          yes
-    URxvt.tabbedex.tabbar-fg:         5
-    URxvt.tabbedex.tabbar-bg:         0
-    URxvt.tabbedex.tab-fg:            15
-    URxvt.tabbedex.tab-bg:            0
-    URxvt.tabbedex.bell-fg:           0
-    URxvt.tabbedex.bell-bg:           0
-    URxvt.tabbedex.bell-tab-fg:       0
-    URxvt.tabbedex.bell-tab-bg:       0
-    URxvt.tabbedex.title-fg:          15
-    URxvt.tabbedex.title-bg:          0
+    URxvt.tabbedex.no-tabbedex-keys: yes
+    URxvt.tabbedex.new-button: false
+    URXvt.tabbedex.reopen-on-close: yes
+    URxvt.tabbedex.autohide: yes
+    URxvt.tabbedex.tabbar-fg: 5
+    URxvt.tabbedex.tabbar-bg: 0
+    URxvt.tabbedex.tab-fg: 15
+    URxvt.tabbedex.tab-bg: 0
+    URxvt.tabbedex.bell-fg: 0
+    URxvt.tabbedex.bell-bg: 0
+    URxvt.tabbedex.bell-tab-fg: 0
+    URxvt.tabbedex.bell-tab-bg: 0
+    URxvt.tabbedex.title-fg: 15
+    URxvt.tabbedex.title-bg: 0
 
     ! Colors
     *.foreground: ${foreground}
