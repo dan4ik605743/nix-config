@@ -362,7 +362,7 @@ in
       enableBashIntegration = false;
     };
     command-not-found.enable = true;
-    chromium.enable = true;
+    firefox.enable = true;
   };
   home = {
     sessionVariables = {
