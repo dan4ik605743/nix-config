@@ -128,6 +128,7 @@
     interfaces = {
       enp2s0f2.useDHCP = true;
       wlp3s0.useDHCP = true;
+      wwp0s20u1u1u3i1.useDHCP = true;
     };
     nameservers = [
       "1.1.1.1"
