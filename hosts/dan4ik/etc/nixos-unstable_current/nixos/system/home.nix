@@ -77,6 +77,7 @@ in
 
         assigns = {
           "1" = [{ class = "^qutebrowser$"; }];
+          "5" = [{ class = "^discord$"; }];
           "7" = [{ class = "^Wps$"; }];
           "8" = [{ class = "^Wpp$"; }];
         };
@@ -326,8 +327,6 @@ in
         nb = "nix-build -E 'with import <nixpkgs> {}; callPackage ./default.nix {}'";
         lsa = "ls -al";
         dew = "doas emacs -nw";
-        emr = "systemctl --user restart emacs.service";
-        ems = "systemctl --user stop emacs.service";
         nup = "doas bash -c 'nix flake update /etc/nixos && nixos-rebuild switch --flake /etc/nixos'";
         nsw = "doas nixos-rebuild switch --flake /etc/nixos";
       };
@@ -366,7 +365,7 @@ in
   };
   home = {
     sessionVariables = {
-      EDITOR = "emacseditor";
+      EDITOR = "emacsclient -c -a emacs";
       BROWSER = "qutebrowser";
       TERMINAL = "urxvtc";
       XDG_DESKTOP_DIR = "${config.home.homeDirectory}/Downloads";

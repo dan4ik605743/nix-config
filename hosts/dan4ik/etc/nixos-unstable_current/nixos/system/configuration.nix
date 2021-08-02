@@ -99,9 +99,13 @@
     };
   };
 
-  systemd.services = {
-    ModemManager = {
-      wantedBy = [ "network.target" ];
+  dan4ik605743 = {
+    services = {
+      emacs = {
+        enable = true;
+        install = true;
+        package = pkgs.emacsUnstable;
+      };
     };
   };
 
@@ -112,17 +116,18 @@
   networking = {
     hostName = "nixos";
     firewall.enable = false;
-    dhcpcd.enable = false;
-    useDHCP = false;
+    useDHCP = true;
     wireless = {
-      enable = false;
+      enable = true;
       interfaces = [ "wlp3s0" ];
-      networks.TP-Link_D482.psk = "Qq135790-";
+      networks = {
+        TP-Link_D482.psk = "Qq135790-";
+        huawei.psk = "zxcursed";
+      };
     };
     interfaces = {
       enp2s0f2.useDHCP = true;
       wlp3s0.useDHCP = true;
-      wwp0s20u1u1u3i1.useDHCP = true;
     };
     nameservers = [
       "1.1.1.1"
@@ -130,16 +135,15 @@
       "8.8.8.8"
       "8.8.4.4"
     ];
-    networkmanager = {
+    dhcpcd = {
       enable = true;
-      dns = "none";
+      wait = "background";
     };
   };
 
   hardware = {
     bluetooth.enable = false;
     cpu.intel.updateMicrocode = true;
-    usbWwan.enable = true;
     opengl = {
       enable = true;
       driSupport32Bit = true;
@@ -186,7 +190,7 @@
       brightnessctl
       pciutils
       usbutils
-      networkmanagerapplet
+      wpa_supplicant
       p7zip
       maim
       xclip
@@ -202,6 +206,7 @@
       xorg.xev
       vk-cli
       ranger
+      betterdiscordctl
 
       # apps
       pinta
@@ -209,7 +214,7 @@
       wpsoffice
       qbittorrent
       viber
-      modem-manager-gui
+      discord
 
       # nur
       nur.repos.dan4ik605743.lyra-cursors
@@ -277,12 +282,6 @@
       };
     };
 
-    emacs = {
-      enable = true;
-      install = true;
-      package = pkgs.emacsUnstable;
-    };
-
     xserver = {
       enable = true;
       videoDrivers = [ "nvidia" ];
@@ -328,7 +327,7 @@
       isNormalUser = true;
       shell = pkgs.bash;
       hashedPassword = "$6$JXAfjAuNeCsxAF5e$pUbTjZ9mVOw8rdk/61ZvzT1RaRLrY2qamAiopPneYvrJa6SnAIHHNM3UJ6Ie1mU6v/a8t6z2CBjyVS4F1yqlh.";
-      extraGroups = [ "wheel" "audio" "video" "networkmanager" ];
+      extraGroups = [ "wheel" "audio" "video" ];
     };
   };
 

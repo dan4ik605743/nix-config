@@ -1,4 +1,4 @@
-{ config, home, inputs, nixpkgs, overlays, ... }:
+{ config, home, nur, inputs, nixpkgs, overlays, ... }:
 
 nixpkgs.lib.nixosSystem rec {
   system = "x86_64-linux";
@@ -14,6 +14,15 @@ nixpkgs.lib.nixosSystem rec {
         users.dan4ik = import ./home.nix;
       };
       nixpkgs = { inherit config overlays; };
+      imports =
+        let
+          nur-modules = import nur {
+            nurpkgs = import nixpkgs { system = "x86_64-linux"; };
+          };
+        in
+        [
+          nur-modules.repos.dan4ik605743.modules.emacs
+        ];
     }
 
     ./configuration.nix

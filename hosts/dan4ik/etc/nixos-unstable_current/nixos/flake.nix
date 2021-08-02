@@ -37,7 +37,7 @@
     in
     {
       nixosConfigurations.nixos = import ./system {
-        inherit config home inputs nixpkgs overlays;
+        inherit config home nur inputs nixpkgs overlays;
       };
     };
 }
