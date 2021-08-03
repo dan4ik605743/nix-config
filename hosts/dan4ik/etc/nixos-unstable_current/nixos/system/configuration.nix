@@ -177,6 +177,9 @@
         consoleMode = "2";
       };
     };
+    kernel.sysctl = {
+      "net.ipv4.ip_default_ttl" = 65;
+    };
   };
 
   environment = {
@@ -207,6 +210,7 @@
       vk-cli
       ranger
       betterdiscordctl
+      aircrack-ng
 
       # apps
       pinta
