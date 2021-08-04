@@ -219,6 +219,7 @@
       qbittorrent
       viber
       discord
+      lutris
 
       # nur
       nur.repos.dan4ik605743.lyra-cursors
