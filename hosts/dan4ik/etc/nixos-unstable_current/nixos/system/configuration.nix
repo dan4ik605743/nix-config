@@ -109,6 +109,17 @@
     };
   };
 
+  # Temporarily no connection except modem
+  hardware.usbWwan.enable = true;
+  systemd.services.ModemManager = {
+    enable = true;
+    wantedBy = [ "network.target" ];
+  };
+  networking.networkmanager = {
+    enable = true;
+    dns = "none";
+  };
+
   powerManagement.enable = false;
   time.timeZone = "Asia/Krasnoyarsk";
   system.stateVersion = "20.03";
@@ -116,9 +127,9 @@
   networking = {
     hostName = "nixos";
     firewall.enable = false;
-    useDHCP = true;
+    useDHCP = false;
     wireless = {
-      enable = true;
+      enable = false;
       interfaces = [ "wlp3s0" ];
       networks = {
         TP-Link_D482.psk = "Qq135790-";
@@ -128,6 +139,7 @@
     interfaces = {
       enp2s0f2.useDHCP = true;
       wlp3s0.useDHCP = true;
+      wwp0s20u3u3i1.useDHCP = true; # Modem
     };
     nameservers = [
       "1.1.1.1"
@@ -136,7 +148,7 @@
       "8.8.4.4"
     ];
     dhcpcd = {
-      enable = true;
+      enable = false;
       wait = "background";
     };
   };
@@ -176,9 +188,6 @@
         enable = true;
         consoleMode = "2";
       };
-    };
-    kernel.sysctl = {
-      "net.ipv4.ip_default_ttl" = 65;
     };
   };
 
