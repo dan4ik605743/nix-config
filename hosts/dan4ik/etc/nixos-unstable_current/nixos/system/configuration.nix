@@ -220,6 +220,7 @@
       ranger
       betterdiscordctl
       aircrack-ng
+      cmus
 
       # apps
       pinta
