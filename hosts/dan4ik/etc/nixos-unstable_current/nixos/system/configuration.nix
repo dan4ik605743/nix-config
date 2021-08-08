@@ -221,6 +221,7 @@
       betterdiscordctl
       aircrack-ng
       cmus
+      tree
 
       # apps
       pinta
@@ -266,6 +267,7 @@
       # nix-tools
       nix-prefetch-scripts
       nixpkgs-fmt
+      nixpkgs-review
       patchelf
 
       # audio-tools
@@ -349,7 +351,7 @@
   fonts = {
     fonts = with pkgs; [
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-      nur.repos.dan4ik605743.waffle-font
+      nur.repos.dan4ik605743.bitmap-fonts
       nur.repos.fortuneteller2k.iosevka-ft-bin
       font-awesome
       font-awesome-ttf
