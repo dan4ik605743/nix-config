@@ -159,36 +159,17 @@ in
   services = with pywal.special; with pywal.colors; {
     polybar =
       let
-        ac = "#4DD0E1";
         bg = "${background}";
         fg = "${foreground}";
-        custom = "${color4}";
-        trans = "#00000000";
-        white = "#FFFFFF";
-        black = "#000000";
-        red = "#EC7875";
-        pink = "#EC407A";
-        purple = "#BA68C8";
-        blue = "#42A5F5";
-        cyan = "#4DD0E1";
-        teal = "#00B19F";
-        green = "#61C766";
-        lime = "#B9C244";
-        yellow = "#FDD835";
-        amber = "#FBC02D";
-        orange = "#E57C46";
-        brown = "#AC8476";
-        grey = "#8C8C8C";
-        indigo = "#6C77BB";
-        blue-gray = "#6D8895";
+        ct = "${color4}";
       in
       {
         enable = true;
         script = "polybar main &";
-        package = pkgs.stable.polybar.override {
+        package = pkgs.polybar.override {
           i3GapsSupport = true;
-          alsaSupport = true;
           pulseSupport = true;
+          alsaSupport = false;
           githubSupport = false;
           iwSupport = false;
           mpdSupport = false;
@@ -213,9 +194,9 @@ in
             background = bg;
             foreground = fg;
             line-size = 2;
-            line-color = ac;
+            line-color = ct;
             border-bottom-size = 0;
-            border-color = ac;
+            border-color = ct;
             tray-background = bg;
 
             radius = 0;
@@ -232,7 +213,7 @@ in
             tray-padding = 2;
             enable-ipc = true;
 
-            font-0 = "Scientifica:size=8;2";
+            font-0 = "DejaVu Sans:size=8;2";
             font-1 = "waffle:size=12;2";
 
             modules-left = "i3 sep";
@@ -257,24 +238,23 @@ in
             label-volume = "%percentage%%";
             format-muted-prefix = "";
             label-muted = " Muted";
-            label-muted-foreground = ac;
+            label-muted-foreground = ct;
             use-ui-max = false;
             ramp-volume-0 = "";
             ramp-volume-1 = "";
             ramp-volume-2 = "";
             ramp-volume-3 = "";
             ramp-volume-4 = "";
-            ramp-volume-foreground = pink;
+            ramp-volume-foreground = ct;
           };
           "module/date" = {
-            type = "internal/date";
+            type = "custom/script";
             interval = "1.0";
-            date = "It's %A, %d %B %Y";
-            time = "at %k:%M:%S";
+            exec = ''LANG=ru_RU.UTF-8 ${pkgs.coreutils}/bin/date +%A,\ %d\ %B\ %Y\ %k:%M:%S'';
             format = "<label>";
             format-prefix = " ";
-            format-prefix-foreground = red;
-            label = "%date% %time%";
+            format-prefix-foreground = ct;
+            label = "%output%";
           };
           "module/i3" = {
             type = "internal/i3";
@@ -287,7 +267,7 @@ in
             label-focused-padding = 2;
             label-focused-foreground = fg;
             label-focused-background = bg;
-            label-focused-underline = custom;
+            label-focused-underline = ct;
             label-unfocused = "%index%";
             label-unfocused-padding = 2;
             label-visible = "%index%";
