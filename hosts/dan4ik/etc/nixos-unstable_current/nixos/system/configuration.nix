@@ -184,9 +184,11 @@
     supportedFilesystems = [ "xfs" "ntfs" ];
     loader = {
       efi.canTouchEfiVariables = true;
-      systemd-boot = {
+      grub = {
         enable = true;
-        consoleMode = "2";
+        efiSupport = true;
+        devices = [ "nodev" ];
+        version = 2;
       };
     };
   };
