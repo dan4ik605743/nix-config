@@ -309,6 +309,7 @@ in
         nb = "nix-build -E 'with import <nixpkgs> {}; callPackage ./default.nix {}'";
         lsa = "ls -al";
         dew = "doas emacs -nw";
+        eww = "emacsclient -c -a emacs";
         nup = "doas bash -c 'nix flake update /etc/nixos && nixos-rebuild switch --flake /etc/nixos'";
         nsw = "doas nixos-rebuild switch --flake /etc/nixos";
       };
@@ -347,6 +348,7 @@ in
   };
   home = {
     sessionVariables = {
+      EDITOR = "emacsclient -c -a emacs";
       BROWSER = "qutebrowser";
       TERMINAL = "urxvtc";
       XDG_DESKTOP_DIR = "${config.home.homeDirectory}/Downloads";
