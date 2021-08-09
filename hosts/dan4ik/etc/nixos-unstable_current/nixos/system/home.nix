@@ -347,7 +347,6 @@ in
   };
   home = {
     sessionVariables = {
-      EDITOR = "emacsclient -c -a emacs";
       BROWSER = "qutebrowser";
       TERMINAL = "urxvtc";
       XDG_DESKTOP_DIR = "${config.home.homeDirectory}/Downloads";

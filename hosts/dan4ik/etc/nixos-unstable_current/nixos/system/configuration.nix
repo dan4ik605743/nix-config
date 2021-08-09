@@ -104,6 +104,7 @@
       emacs = {
         enable = true;
         install = true;
+        defaultEditor = true;
         package = pkgs.emacsUnstable;
       };
     };
