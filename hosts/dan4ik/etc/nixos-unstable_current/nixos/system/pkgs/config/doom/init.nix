@@ -56,6 +56,7 @@
          (lua +lsp)
          (python +lsp)
          (web +lsp)
+         (yaml +lsp)
          common-lisp
          emacs-lisp
          markdown

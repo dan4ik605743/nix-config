@@ -33,10 +33,12 @@
   )
 
   ;; Projectile
-  (projectile-add-known-project "~/test/")
-  (projectile-add-known-project "~/nur/")
-  (projectile-add-known-project "~/nix-config/")
-  (projectile-add-known-project "~/nixpkgs/")
+  (projectile-add-known-project "~/git/nix-config")
+  (projectile-add-known-project "~/git/nixpkgs")
+  (projectile-add-known-project "~/git/nur/")
+  (projectile-add-known-project "~/git/dan4ik605743.github.io/")
+  (projectile-add-known-project "~/git/dan4ik605743/")
+  (projectile-add-known-project "~/work/")
   (projectile-add-known-project "~/Documents/code/")
   (projectile-add-known-project "~/Documents/pkgs/")
   (projectile-add-known-project "/etc/nixos")

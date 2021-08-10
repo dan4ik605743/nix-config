@@ -258,6 +258,7 @@
       nodePackages.vscode-json-languageserver
       nodePackages.vscode-html-languageserver-bin
       nodePackages.vscode-css-languageserver-bin
+      nodePackages.yaml-language-server
       nodePackages.stylelint
       nodePackages.js-beautify
       python3Packages.isort
@@ -279,7 +280,7 @@
       playerctl
 
       # scripts
-      (pkgs.writeShellScriptBin "dotup" "doas cp -r /etc/nixos/* ~/nix-config/hosts/dan4ik/etc/nixos-unstable_current/nixos/ && echo Finish!")
+      (pkgs.writeShellScriptBin "dotup" "doas cp -r /etc/nixos/* ~/git/nix-config/hosts/dan4ik/etc/nixos-unstable_current/nixos/ && echo Finish!")
       (pkgs.writeShellScriptBin "prime-run" ''__NV_PRIME_RENDER_OFFLOAD=1 __VK_LAYER_NV_optimus=NVIDIA_only __GLX_VENDOR_LIBRARY_NAME=nvidia "$@"'')
     ];
   };
