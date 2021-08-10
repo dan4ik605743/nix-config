@@ -323,7 +323,7 @@ in
     qutebrowser = {
       enable = true;
       searchEngines = { DEFAULT = "https://google.com/search?q={}"; };
-      settings.url.start_pages = [ "https://vk.com" ];
+      settings.url.start_pages = [ "https://dan4ik605743.github.io" ];
       extraConfig = import ./pkgs/config/qutebrowser.nix;
     };
     git = {
