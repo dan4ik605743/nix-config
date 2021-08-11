@@ -26,8 +26,8 @@ in
     enable = true;
     numlock.enable = true;
     initExtra = ''
-      #xrandr --output eDP-1 --off
-      xinput set-prop 15 "Device Accel Constant Deceleration" 2.6
+      xrandr --output eDP-1 --off
+      xinput set-prop 14 "Device Accel Constant Deceleration" 2.6
       xinput set-prop 21 "libinput Accel Speed" -0.4
       xset s off && xset dpms 0 0 0
     '';

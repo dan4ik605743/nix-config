@@ -109,17 +109,6 @@
     };
   };
 
-  # Temporarily no connection except modem
-  hardware.usbWwan.enable = true;
-  systemd.services.ModemManager = {
-    enable = true;
-    wantedBy = [ "network.target" ];
-  };
-  networking.networkmanager = {
-    enable = true;
-    dns = "none";
-  };
-
   powerManagement.enable = false;
   time.timeZone = "Asia/Krasnoyarsk";
   system.stateVersion = "20.03";
@@ -127,7 +116,7 @@
   networking = {
     hostName = "nixos";
     firewall.enable = false;
-    useDHCP = false;
+    useDHCP = true;
     wireless = {
       enable = false;
       interfaces = [ "wlp3s0" ];
@@ -139,7 +128,6 @@
     interfaces = {
       enp2s0f2.useDHCP = true;
       wlp3s0.useDHCP = true;
-      wwp0s20u3u3i1.useDHCP = true; # Modem
     };
     nameservers = [
       "1.1.1.1"
@@ -148,7 +136,7 @@
       "8.8.4.4"
     ];
     dhcpcd = {
-      enable = false;
+      enable = true;
       wait = "background";
     };
   };
