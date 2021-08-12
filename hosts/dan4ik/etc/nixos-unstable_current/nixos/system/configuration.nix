@@ -257,6 +257,7 @@
 
       # nix-tools
       nix-prefetch-scripts
+      nix-tree
       nixpkgs-fmt
       nixpkgs-review
       patchelf
