@@ -17,9 +17,11 @@ let
     sha256 = "0lhm6dflcrzl8vj4al2yaxry02jpx452kickbm38ba83kylv0jnq";
   };
   tabbedex = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/shaggytwodope/tabbedex-urxvt/master/tabbedex";
-    sha256 = "0q642f54wjaksdgiv7p01268nbn14wz9xm8gz6xhflkjlbc5wgaa";
+    url = "https://raw.githubusercontent.com/stepb/urxvt-tabbedex/master/tabbedex";
+    sha256 = "sha256-RirynHRM07psha4RqtvZoBasncAW9bt8FRF1H2DdZqk=";
   };
+  ## Ssh
+  sshpub = pkgs.writeText "sshpubkey" "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDeOpbBncJZV+x+glutyCsRzsS2igzzCGjlpYjOZQ6aI dan4ik";
 in
 {
   xsession = {
@@ -27,7 +29,7 @@ in
     numlock.enable = true;
     initExtra = ''
       xrandr --output eDP-1 --off
-      xinput set-prop 14 "Device Accel Constant Deceleration" 2.6
+      xinput set-prop 15 "Device Accel Constant Deceleration" 2.6
       xinput set-prop 21 "libinput Accel Speed" -0.4
       xset s off && xset dpms 0 0 0
     '';
@@ -411,6 +413,9 @@ in
       };
       ".urxvt/ext/tabbedex" = {
         text = builtins.readFile "${tabbedex}";
+      };
+      ".ssh/id_ed5519.pub" = {
+        text = builtins.readFile "${sshpub}";
       };
     };
     username = "dan4ik";
