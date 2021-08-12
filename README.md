@@ -11,12 +11,13 @@
 Get the latest NixOS 21.11 image <a href="https://releases.nixos.org/?prefix=nixos/unstable/">here</a>, do your partitions (root must be mounted at =/mnt=), then run the following commands
 ```
 # move the output file of this to hosts/dan4ik(default host)/etc/nixos-unstable_current/nixos/hardware-configuration.nix
-nixos-generate-config
+nixos-generate-config --root /mnt/
 
 nix-shell -p git nixFlakes
 git clone https://github.com/dan4ik605743/nix-config ~/
 cp -r ~/nix-config/hosts/dan4ik/etc/nixos-unstable_current/nixos/* /mnt/etc/nixos/
-sudo nixos-install --flake '/mnt/etc/nixos#nixos'
+sudo nix build /mnt/etc/nixos#nixosConfigurations.nixos(hostname).config.system.build.toplevel --experimental-features "flakes nix-command" --store "/mnt" --impure
+sudo nixos-install --root /mnt --system ./result
 ```
 
 ### Caveats
