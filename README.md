@@ -11,17 +11,18 @@
 Get the latest NixOS 21.11 image <a href="https://releases.nixos.org/?prefix=nixos/unstable/">here</a>, do your partitions (root must be mounted at =/mnt=), then run the following commands
 ```
 # move the output file of this to hosts/dan4ik(default host)/etc/nixos/hardware-configuration.nix
-nixos-generate-config --root /mnt/
+nixos-generate-config --root /mnt
 
 nix-shell -p git nixFlakes
 git clone https://github.com/dan4ik605743/nix-config ~/
-cp -r ~/nix-config/hosts/dan4ik/etc/nixos/* /mnt/etc/nixos/
-sudo nix build /mnt/etc/nixos#nixosConfigurations.nixos(hostname).config.system.build.toplevel --experimental-features "flakes nix-command" --store "/mnt" --impure
-sudo nixos-install --root /mnt --system ./result
+cp -r ~/nix-config/hosts/dan4ik/etc/nixos/* /mnt/etc/nixos
+nix build /mnt/etc/nixos#nixosConfigurations.nixos(hostname).config.system.build.toplevel --experimental-features "flakes nix-command" --store "/mnt" --impure
+nixos-install --root /mnt --system ./result
 ```
 
 ### Caveats
 * You probably should replace <a href="https://github.com/dan4ik605743/nix-config/blob/master/hosts/dan4ik/etc/nixos/system/hardware-configuration.nix">hardware-configuration.nix</a> with your own with nixos-generate-config.
+* You probably want to disable <a href="https://github.com/dan4ik605743/nur/blob/master/modules/emacs.nix"> my module for Emacs</a>, as well as the <a href="https://github.com/dan4ik605743/nix-config/tree/master/hosts/dan4ik/etc/nixos/system/pkgs/config/doom"> my Doom Emacs configuration</a>.
 * You should probably change the options a little for yourself.
 
 ## Description
