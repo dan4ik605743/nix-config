@@ -38,6 +38,7 @@
   (projectile-add-known-project "~/git/nur/")
   (projectile-add-known-project "~/git/dan4ik605743.github.io/")
   (projectile-add-known-project "~/git/dan4ik605743/")
+  (projectile-add-known-project "~/git/Lyra-Cursors-Bin/")
   (projectile-add-known-project "~/work/")
   (projectile-add-known-project "~/Documents/code/")
   (projectile-add-known-project "~/Documents/pkgs/")
