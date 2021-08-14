@@ -93,7 +93,6 @@ in
         };
 
         defaultWorkspace = "workspace number 1";
-        fonts = [ "Iosevka FT Extended" ];
 
         terminal = "urxvtc";
         menu = "rofi -show drun -show-icons";
