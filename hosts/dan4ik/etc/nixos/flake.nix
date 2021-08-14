@@ -33,7 +33,7 @@
 
         nur.overlay
         emacs.overlay
-      ] ++ (importNixFiles ./system/pkgs/overlays);
+      ] ++ (importNixFiles ./system/overlays);
     in
     {
       nixosConfigurations.nixos = import ./system {

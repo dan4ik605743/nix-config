@@ -326,7 +326,7 @@ in
       enable = true;
       searchEngines = { DEFAULT = "https://google.com/search?q={}"; };
       settings.url.start_pages = [ "https://dan4ik605743.github.io" ];
-      extraConfig = import ./pkgs/config/qutebrowser.nix;
+      extraConfig = import ./config/qutebrowser.nix;
     };
     git = {
       enable = true;
@@ -391,19 +391,19 @@ in
       ];
     file = {
       ".config/bpytop/bpytop.conf" = {
-        text = import ./pkgs/config/bpytop.nix;
+        text = import ./config/bpytop.nix;
       };
       ".config/nixpkgs/config.nix" = {
-        text = import ./pkgs/config/nixpkgs.nix;
+        text = import ./config/nixpkgs.nix;
       };
       ".doom.d/config.el" = {
-        text = import ./pkgs/config/doom/config.nix;
+        text = import ./config/doom/config.nix;
       };
       ".doom.d/init.el" = {
-        text = import ./pkgs/config/doom/init.nix;
+        text = import ./config/doom/init.nix;
       };
       ".doom.d/packages.el" = {
-        text = import ./pkgs/config/doom/packages.nix;
+        text = import ./config/doom/packages.nix;
       };
       ".urxvt/ext/url-select" = {
         text = builtins.readFile "${url-select}";
@@ -421,5 +421,5 @@ in
     username = "dan4ik";
     homeDirectory = "/home/${config.home.username}";
   };
-  xresources.extraConfig = import ./pkgs/config/xresources.nix { inherit pywal; };
+  xresources.extraConfig = import ./config/xresources.nix { inherit pywal; };
 }
