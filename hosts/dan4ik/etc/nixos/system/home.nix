@@ -80,6 +80,7 @@ in
         assigns = {
           "1" = [{ class = "^qutebrowser$"; }];
           "5" = [{ class = "^discord$"; }];
+          "6" = [{ class = "^Steam$"; }];
           "7" = [{ class = "^Wps$"; }];
           "8" = [{ class = "^Wpp$"; }];
         };
