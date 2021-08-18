@@ -3,8 +3,9 @@
 
   inputs = {
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    stable.url = "github:nixos/nixpkgs/nixos-20.09";
-    home.url = "github:nix-community/home-manager/release-21.05";
+    stable.url = "github:nixos/nixpkgs/nixos-21.05";
+    oldstable.url = "github:nixos/nixpkgs/nixos-20.09";
+    home.url = "github:nix-community/home-manager";
     nur.url = "github:nix-community/NUR";
     emacs.url = "github:nix-community/emacs-overlay";
 
@@ -29,6 +30,7 @@
           {
             unstable = import unstable { inherit config system; };
             stable = import stable { inherit config system; };
+            oldstable = import oldstable { inherit config system; };
           })
 
         nur.overlay

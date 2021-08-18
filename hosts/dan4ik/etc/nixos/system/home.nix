@@ -35,7 +35,7 @@ in
     '';
     windowManager.i3 = with pywal.colors; {
       enable = true;
-      package = pkgs.stable.i3-gaps;
+      package = pkgs.oldstable.i3-gaps;
       config = rec {
         modifier = "Mod4";
         bars = [ ];
