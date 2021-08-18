@@ -192,7 +192,6 @@
       xorg.xev
       vk-cli
       ranger
-      betterdiscordctl
       aircrack-ng
       cmus
       tree
@@ -203,7 +202,6 @@
       wpsoffice
       qbittorrent
       viber
-      discord
       lutris
 
       # nur
