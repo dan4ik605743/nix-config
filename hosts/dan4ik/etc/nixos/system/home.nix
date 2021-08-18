@@ -302,6 +302,7 @@ in
       bashrcExtra = ''
         PS1="\[\033[38;5;245m\]λ\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;244m\]\W\[$(tput sgr0)\] \[$(tput sgr0)\]"
         export PATH="$HOME/.emacs.d/bin:$PATH"
+        export TERM='xterm-256color'
       '';
       shellAliases = {
         tb = "nc termbin.com 9999";
