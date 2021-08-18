@@ -189,12 +189,13 @@
       lxappearance
       ncdu
       pfetch
-      xorg.xev
       vk-cli
       ranger
       aircrack-ng
       cmus
       tree
+      xorg.xev
+      (winetricks.override { wine = wineWowPackages.staging; })
 
       # apps
       pinta
@@ -202,6 +203,7 @@
       wpsoffice
       qbittorrent
       viber
+      ripcord
       lutris
 
       # nur
