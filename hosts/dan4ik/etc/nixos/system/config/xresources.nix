@@ -12,8 +12,8 @@
   URxvt.keysym.Control-Shift-V: eval:paste_clipboard
   URxvt.keysym.Control-Shift-U: url-select:select_next
   URxvt.keysym.Control-minus: resize-font:smaller
-  URxvt.keysym.Control-plus: resize-font:bigger
-  URxvt.keysym.Control-equal: resize-font:reset
+  URxvt.keysym.Control-equal: resize-font:bigger
+  URxvt.keysym.Control-plus: resize-font:reset
   URxvt.keysym.Control-question: resize-font:show
   URxvt.keysym.Control-Shift-T: tabbedex:new_tab
   URxvt.keysym.Control-Shift-R: tabbedex:rename_tab
