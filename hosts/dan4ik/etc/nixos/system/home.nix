@@ -302,7 +302,6 @@ in
       bashrcExtra = ''
         PS1="\[\033[38;5;245m\]λ\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;244m\]\W\[$(tput sgr0)\] \[$(tput sgr0)\]"
         export PATH="$HOME/.emacs.d/bin:$PATH"
-        export TERM='xterm-256color'
       '';
       shellAliases = {
         tb = "nc termbin.com 9999";
@@ -315,6 +314,7 @@ in
         eww = "emacsclient -c -a emacs";
         nup = "doas bash -c 'nix flake update /etc/nixos && nixos-rebuild switch --flake /etc/nixos'";
         nsw = "doas nixos-rebuild switch --flake /etc/nixos";
+        ssh = "TERM='xterm-256color' ssh";
       };
     };
     rofi = {
