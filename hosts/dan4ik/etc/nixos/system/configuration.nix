@@ -262,7 +262,6 @@
     udisks2.enable = false;
     blueman.enable = false;
     openssh.enable = true;
-    fstrim.enable = true;
     urxvtd.enable = true;
     udev.packages = [ pkgs.android-udev-rules ];
 

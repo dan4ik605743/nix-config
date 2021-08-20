@@ -1,10 +1,11 @@
-{ config, home, nur, inputs, nixpkgs, overlays, ... }:
+{ config, hardware, home, nur, inputs, nixpkgs, overlays, ... }:
 
 nixpkgs.lib.nixosSystem rec {
   system = "x86_64-linux";
 
   modules = [
     home.nixosModules.home-manager
+    hardware.nixosModules.common-pc-ssd
     nixpkgs.nixosModules.notDetected
 
     {

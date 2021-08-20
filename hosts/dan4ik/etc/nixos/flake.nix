@@ -5,6 +5,7 @@
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     stable.url = "github:nixos/nixpkgs/nixos-21.05";
     oldstable.url = "github:nixos/nixpkgs/nixos-20.09";
+    hardware.url = "github:nixos/nixos-hardware";
     home.url = "github:nix-community/home-manager";
     nur.url = "github:nix-community/NUR";
     emacs.url = "github:nix-community/emacs-overlay";
@@ -12,7 +13,7 @@
     nixpkgs.follows = "unstable";
   };
 
-  outputs = { self, nixpkgs, home, nur, ... } @ inputs:
+  outputs = { self, nixpkgs, hardware, home, nur, ... } @ inputs:
     with nixpkgs.lib;
     let
       config = {
@@ -39,7 +40,7 @@
     in
     {
       nixosConfigurations.nixos = import ./system {
-        inherit config home nur inputs nixpkgs overlays;
+        inherit config hardware home nur inputs nixpkgs overlays;
       };
     };
 }
