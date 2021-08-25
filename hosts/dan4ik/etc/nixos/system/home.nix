@@ -7,6 +7,8 @@ let
   color = pkgs.callPackage ./pkgs/pywal/default.nix { };
   pywal = builtins.fromJSON (builtins.readFile "${color}/colors-gb.json");
   rofi-theme = builtins.readFile "${color}/colors-rofi-dark-gb.rasi";
+  ## Ssh
+  sshpub = pkgs.writeText "sshpubkey" "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDeOpbBncJZV+x+glutyCsRzsS2igzzCGjlpYjOZQ6aI dan4ik";
   ## Rxvt-unicode
   url-select = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/muennich/urxvt-perls/master/deprecated/url-select";
@@ -20,8 +22,11 @@ let
     url = "https://raw.githubusercontent.com/stepb/urxvt-tabbedex/master/tabbedex";
     sha256 = "sha256-RirynHRM07psha4RqtvZoBasncAW9bt8FRF1H2DdZqk=";
   };
-  ## Ssh
-  sshpub = pkgs.writeText "sshpubkey" "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDeOpbBncJZV+x+glutyCsRzsS2igzzCGjlpYjOZQ6aI dan4ik";
+  ## Cmus
+  cmustheme = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/egel/cmus-gruvbox/master/gruvbox-dark.theme";
+    sha256 = "sha256-3BHdmoWiKF/UxP9fGSthrzF9PJeUHQxPwkEXNOkWQqk=";
+  };
 in
 {
   xsession = {
@@ -421,6 +426,9 @@ in
       };
       ".ssh/id_ed5519.pub" = {
         text = builtins.readFile "${sshpub}";
+      };
+      ".config/cmus/gruvbox.theme" = {
+        text = builtins.readFile "${cmustheme}";
       };
     };
     username = "dan4ik";
