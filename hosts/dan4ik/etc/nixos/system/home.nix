@@ -337,8 +337,22 @@ in
     };
     git = {
       enable = true;
-      userEmail = "6057430gu@gmail.com";
       userName = "dan4ik";
+      userEmail = "6057430gu@gmail.com";
+      aliases = {
+        a = "add";
+        b = "branch";
+        c = "commit -m";
+        p = "push -f";
+        r = "rebase -i";
+        s = "status";
+        cc = "checkout";
+        pp = "pull";
+      };
+      extraConfig = {
+        web.browser = "${config.home.sessionVariables.BROWSER}";
+        core.editor = "${config.home.sessionVariables.EDITOR}";
+      };
     };
     htop = {
       enable = true;
