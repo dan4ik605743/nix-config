@@ -41,6 +41,7 @@
     trustedUsers = [
       "root"
       "dan4ik"
+      "@wheel"
     ];
     binaryCaches = [
       "https://cache.nixos.org?priority=10"
