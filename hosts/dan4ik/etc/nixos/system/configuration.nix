@@ -204,7 +204,10 @@
       wpsoffice
       qbittorrent
       ripcord
+      discord
       lutris
+      vk-messenger
+      gimp
       (viber.overrideAttrs (attr: { src = fetchurl { url = "https://download.cdn.viber.com/cdn/desktop/Linux/viber.deb"; sha256 = "sha256-EDekjXTK7zPRI7Fm2iv7H+j6Z1kLhmns8lsxT0E3Qmc="; }; }))
 
       # nur
