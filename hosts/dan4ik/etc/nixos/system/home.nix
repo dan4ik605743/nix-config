@@ -321,6 +321,7 @@ in
         nup = "doas bash -c 'nix flake update /etc/nixos && nixos-rebuild switch --flake /etc/nixos'";
         nsw = "doas nixos-rebuild switch --flake /etc/nixos";
         ssh = "TERM='xterm-256color' ssh";
+        minecraft = "nix-shell ~/Documents/pkgs/TL/default.nix ; exit";
       };
     };
     rofi = {

@@ -35,5 +35,5 @@ with import <nixpkgs> { };
         libXi
         libXxf86vm
       ]));
-    runScript = "bash -c 'prime-run java -jar ~/pkgs/TL/TLauncher.jar'";
+    runScript = "bash -c 'prime-run java -jar ~/Documents/pkgs/TL/TLauncher.jar'";
   }).env
