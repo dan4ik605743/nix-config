@@ -258,13 +258,14 @@ in
             ramp-volume-foreground = ct;
           };
           "module/date" = {
-            type = "custom/script";
+            type = "internal/date";
             interval = "1.0";
-            exec = ''LANG=ru_RU.UTF-8 ${pkgs.coreutils}/bin/date +%A,\ %d\ %B\ %Y\ %k:%M:%S'';
+            date = "%A, %d %B %Y";
+            time = "%k:%M:%S";
             format = "<label>";
             format-prefix = " ";
             format-prefix-foreground = ct;
-            label = "%output%";
+            label = "%date% %time%";
           };
           "module/i3" = {
             type = "internal/i3";
