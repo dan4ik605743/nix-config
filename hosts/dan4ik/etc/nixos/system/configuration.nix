@@ -88,6 +88,12 @@
     };
   };
 
+  nixpkgs = {
+    config.packageOverrides = {
+      steam = pkgs.oldstable.steam;
+    };
+  };
+
   dan4ik605743 = {
     services = {
       emacs = {
