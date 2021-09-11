@@ -75,6 +75,25 @@
     };
   };
 
+  nixpkgs = {
+    config = {
+      packageOverrides = pkgs: {
+        winetricks = pkgs.winetricks.override {
+          wine = pkgs.wineWowPackages.staging;
+        };
+        ripgrep = pkgs.ripgrep.override {
+          withPCRE2 = true;
+        };
+        viber = pkgs.viber.overrideAttrs (attr: {
+          src = pkgs.fetchurl {
+            url = "https://download.cdn.viber.com/cdn/desktop/Linux/viber.deb";
+            sha256 = "sha256-EDekjXTK7zPRI7Fm2iv7H+j6Z1kLhmns8lsxT0E3Qmc=";
+          };
+        });
+      };
+    };
+  };
+
   programs = {
     dconf.enable = true;
     steam.enable = true;
@@ -85,12 +104,6 @@
     java = {
       enable = true;
       package = pkgs.jre;
-    };
-  };
-
-  nixpkgs = {
-    config.packageOverrides = {
-      steam = pkgs.oldstable.steam;
     };
   };
 
@@ -205,8 +218,8 @@
       aircrack-ng
       cmus
       tree
+      winetricks
       xorg.xev
-      (winetricks.override { wine = wineWowPackages.staging; })
 
       # apps
       pinta
@@ -218,7 +231,7 @@
       lutris
       vk-messenger
       gimp
-      (viber.overrideAttrs (attr: { src = fetchurl { url = "https://download.cdn.viber.com/cdn/desktop/Linux/viber.deb"; sha256 = "sha256-EDekjXTK7zPRI7Fm2iv7H+j6Z1kLhmns8lsxT0E3Qmc="; }; }))
+      viber
 
       # nur
       nur.repos.dan4ik605743.lyra-cursors
@@ -228,6 +241,7 @@
       fd
       zstd
       imagemagick
+      ripgrep
       nixfmt
       glslang
       shellcheck
@@ -251,7 +265,6 @@
       python3Packages.nose
       python3Packages.pytest
       python3Packages.python-lsp-server
-      (ripgrep.override { withPCRE2 = true; })
 
       # nix-tools
       nix-prefetch-scripts
