@@ -84,6 +84,10 @@
         ripgrep = pkgs.ripgrep.override {
           withPCRE2 = true;
         };
+        # https://github.com/NixOS/nixpkgs/pull/137307
+        steam = pkgs.steam.override {
+          extraPkgs = pkgs: with pkgs; [ pango harfbuzz libthai ];
+        };
         viber = pkgs.viber.overrideAttrs (attr: {
           src = pkgs.fetchurl {
             url = "https://download.cdn.viber.com/cdn/desktop/Linux/viber.deb";
