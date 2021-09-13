@@ -236,6 +236,7 @@
       vk-messenger
       gimp
       viber
+      teamspeak_client
 
       # nur
       nur.repos.dan4ik605743.lyra-cursors
