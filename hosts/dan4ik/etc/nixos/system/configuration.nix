@@ -130,7 +130,7 @@
     firewall.enable = false;
     useDHCP = true;
     wireless = {
-      enable = false;
+      enable = true;
       interfaces = [ "wlp3s0" ];
       networks = {
         TP-Link_D482.psk = "Qq135790-";
