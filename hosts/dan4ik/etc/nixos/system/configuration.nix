@@ -1,7 +1,6 @@
 { config, pkgs, lib, inputs, ... }:
 
 {
-
   qt5 = {
     enable = true;
     platformTheme = "gtk2";
@@ -72,29 +71,6 @@
       automatic = true;
       dates = "weekly";
       options = "-d";
-    };
-  };
-
-  nixpkgs = {
-    config = {
-      packageOverrides = pkgs: {
-        winetricks = pkgs.winetricks.override {
-          wine = pkgs.wineWowPackages.staging;
-        };
-        ripgrep = pkgs.ripgrep.override {
-          withPCRE2 = true;
-        };
-        # https://github.com/NixOS/nixpkgs/pull/137307
-        steam = pkgs.steam.override {
-          extraPkgs = pkgs: with pkgs; [ pango harfbuzz libthai ];
-        };
-        viber = pkgs.viber.overrideAttrs (attr: {
-          src = pkgs.fetchurl {
-            url = "https://download.cdn.viber.com/cdn/desktop/Linux/viber.deb";
-            sha256 = "sha256-EDekjXTK7zPRI7Fm2iv7H+j6Z1kLhmns8lsxT0E3Qmc=";
-          };
-        });
-      };
     };
   };
 
