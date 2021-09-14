@@ -322,6 +322,8 @@ in
         nup = "doas bash -c 'nix flake update /etc/nixos && nixos-rebuild switch --flake /etc/nixos'";
         nsw = "doas nixos-rebuild switch --flake /etc/nixos";
         ssh = "TERM='xterm-256color' ssh";
+        wttr = "curl wttr.in/krasnoyarsk";
+        flatout = "steam-run prime-run sh ~/Documents/Games/FlatOut2/start.sh -w ; exit";
         minecraft = "nix-shell ~/Documents/pkgs/TL/default.nix ; exit";
       };
     };
