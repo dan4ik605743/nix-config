@@ -199,6 +199,7 @@
       cmus
       tree
       winetricks
+      screen
       xorg.xev
 
       # apps
