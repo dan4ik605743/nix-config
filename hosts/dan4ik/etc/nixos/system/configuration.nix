@@ -214,6 +214,7 @@
       gimp
       viber
       teamspeak_client
+      multimc
 
       # nur
       nur.repos.dan4ik605743.lyra-cursors
