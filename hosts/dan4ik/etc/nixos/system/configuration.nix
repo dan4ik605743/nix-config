@@ -176,7 +176,6 @@
       feh
       jmtpfs
       bpytop
-      killall
       brightnessctl
       pciutils
       usbutils
