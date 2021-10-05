@@ -35,7 +35,7 @@
     nixPath = [
       "nixpkgs=${inputs.nixpkgs}"
       "nixos-config=/etc/nixos/system/configuration.nix"
-      "/nix/var/nix/profiles/per-user/root/channels"
+      "home-manager=${inputs.home}"
     ];
     trustedUsers = [
       "root"
