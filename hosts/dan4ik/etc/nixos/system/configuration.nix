@@ -191,10 +191,10 @@
       vk-cli
       ranger
       aircrack-ng
-      cmus
       tree
       winetricks
       screen
+      nodejs
       xorg.xev
 
       # apps
@@ -247,6 +247,7 @@
       # nix-tools
       nix-prefetch-scripts
       nix-tree
+      rnix-lsp
       nixpkgs-fmt
       nixpkgs-review
       patchelf
@@ -256,6 +257,12 @@
       pavucontrol
       pulseaudio
       playerctl
+      cmus
+
+      # dotnet
+      dotnet-sdk
+      dotnet-netcore
+      dotnet-aspnetcore
 
       # scripts
       (pkgs.writeShellScriptBin "dotup" "doas cp -r /etc/nixos/* ~/git/nix-config/hosts/dan4ik/etc/nixos/ && echo Finish!")
