@@ -77,10 +77,6 @@
   programs = {
     dconf.enable = true;
     steam.enable = true;
-    ssh.extraConfig = ''
-      ServerAliveInterval 9999999
-      ServerAliveCountMax 9999999
-    '';
     java = {
       enable = true;
       package = pkgs.jre;
