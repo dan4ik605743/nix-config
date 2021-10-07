@@ -328,6 +328,7 @@ in
     };
     rofi = {
       enable = true;
+      package = pkgs.oldstable.rofi;
       font = "Hack 9";
       terminal = "urxvtc";
       theme = builtins.toString (pkgs.writeText "rofi-theme" "${rofi-theme}");
