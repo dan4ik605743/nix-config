@@ -351,6 +351,7 @@ in
         s = "status";
         cc = "checkout";
         pp = "pull";
+        rr = "restore";
       };
       extraConfig = {
         web.browser = "${config.home.sessionVariables.BROWSER}";
