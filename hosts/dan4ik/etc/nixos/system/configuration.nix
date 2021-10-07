@@ -341,7 +341,6 @@
       font-awesome
       font-awesome-ttf
       noto-fonts-emoji
-      emacs-all-the-icons-fonts
       unifont
       roboto
       hack-font
