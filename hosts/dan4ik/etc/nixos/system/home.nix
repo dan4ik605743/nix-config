@@ -307,17 +307,13 @@ in
       enable = true;
       bashrcExtra = ''
         PS1="\[\033[38;5;245m\]λ\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;244m\]\W\[$(tput sgr0)\] \[$(tput sgr0)\]"
-        export PATH="$HOME/.emacs.d/bin:$PATH"
       '';
       shellAliases = {
         tb = "nc termbin.com 9999";
-        ew = "emacs -nw";
         xp = "xclip -sel clip";
         ls = "ls -l -F --color=auto";
         nb = "nix-build -E 'with import <nixpkgs> {}; callPackage ./default.nix {}'";
         lsa = "ls -al";
-        dew = "doas emacs -nw";
-        eww = "emacsclient -c -a emacs";
         nup = "doas bash -c 'nix flake update /etc/nixos && nixos-rebuild switch --flake /etc/nixos'";
         nsw = "doas nixos-rebuild switch --flake /etc/nixos";
         ssh = "TERM='xterm-256color' ssh";
@@ -448,11 +444,31 @@ in
           }
         ];
     };
+    neovim = {
+      enable = true;
+      package = pkgs.neovim-nightly;
+      withNodeJs = false;
+      withRuby = false;
+      withPython3 = false;
+      vimAlias = false;
+      viAlias = false;
+      extraConfig = import ./config/neovim/neovim.nix;
+      plugins = with pkgs.vimPlugins; [
+        vim-nix
+        vim-closetag
+        vim-clap
+        lightline-vim
+        coc-nvim
+        indent-blankline-nvim
+        nerdtree
+        gruvbox
+      ];
+    };
     command-not-found.enable = true;
   };
   home = {
     sessionVariables = {
-      EDITOR = "emacsclient -c -a emacs";
+      EDITOR = "nvim";
       BROWSER = "qutebrowser";
       TERMINAL = "urxvtc";
       XDG_DESKTOP_DIR = "${config.home.homeDirectory}/Downloads";
@@ -498,14 +514,8 @@ in
       ".config/nixpkgs/config.nix" = {
         text = import ./config/nixpkgs.nix;
       };
-      ".doom.d/config.el" = {
-        text = import ./config/doom/config.nix;
-      };
-      ".doom.d/init.el" = {
-        text = import ./config/doom/init.nix;
-      };
-      ".doom.d/packages.el" = {
-        text = import ./config/doom/packages.nix;
+      ".config/nvim/coc-settings.json" = {
+        text = import ./config/neovim/coc-settings.nix;
       };
       ".urxvt/ext/url-select" = {
         text = builtins.readFile "${url-select}";

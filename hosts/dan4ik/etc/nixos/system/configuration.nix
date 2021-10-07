@@ -83,16 +83,6 @@
     };
   };
 
-  dan4ik605743 = {
-    services = {
-      emacs = {
-        enable = true;
-        install = true;
-        package = pkgs.emacsUnstable;
-      };
-    };
-  };
-
   powerManagement.enable = false;
   time.timeZone = "Asia/Krasnoyarsk";
   system.stateVersion = "20.03";
@@ -214,35 +204,6 @@
       # nur
       nur.repos.dan4ik605743.lyra-cursors
       nur.repos.dan4ik605743.i3lock-color
-
-      # emacs
-      fd
-      zstd
-      imagemagick
-      ripgrep
-      nixfmt
-      glslang
-      shellcheck
-      ccls
-      python3
-      sbcl
-      hlint
-      discount
-      pipenv
-      nodejs
-      jq
-      html-tidy
-      nodePackages.typescript-language-server
-      nodePackages.vscode-json-languageserver
-      nodePackages.vscode-html-languageserver-bin
-      nodePackages.vscode-css-languageserver-bin
-      nodePackages.yaml-language-server
-      nodePackages.stylelint
-      nodePackages.js-beautify
-      python3Packages.isort
-      python3Packages.nose
-      python3Packages.pytest
-      python3Packages.python-lsp-server
 
       # nix-tools
       nix-prefetch-scripts

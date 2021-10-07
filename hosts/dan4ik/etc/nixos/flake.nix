@@ -8,7 +8,7 @@
     hardware.url = "github:nixos/nixos-hardware";
     home.url = "github:nix-community/home-manager";
     nur.url = "github:nix-community/NUR";
-    emacs.url = "github:nix-community/emacs-overlay";
+    neovim.url = "github:neovim/neovim?dir=contrib";
 
     nixpkgs.follows = "unstable";
   };
@@ -32,10 +32,10 @@
             unstable = import unstable { inherit config system; };
             stable = import stable { inherit config system; };
             oldstable = import oldstable { inherit config system; };
+            neovim-nightly = neovim.packages.${system}.neovim;
           })
 
         nur.overlay
-        emacs.overlay
       ] ++ (importNixFiles ./system/overlays);
     in
     {

@@ -21,9 +21,7 @@ nixpkgs.lib.nixosSystem rec {
             nurpkgs = import nixpkgs { system = "x86_64-linux"; };
           };
         in
-        [
-          nur-modules.repos.dan4ik605743.modules.emacs
-        ];
+        [ ];
     }
 
     ./configuration.nix
