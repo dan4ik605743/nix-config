@@ -4,7 +4,7 @@
 
 <p align="center">
 <a href="https://github.com/dan4ik605743/nix-config/actions/workflows/flake-check.yml"><img src="https://github.com/dan4ik605743/nix-config/actions/workflows/flake-check.yml/badge.svg"/></a> <a href="https://github.com/dan4ik605743/nix-config/actions/workflows/format-check.yml"><img src="https://github.com/dan4ik605743/nix-config/actions/workflows/format-check.yml/badge.svg"/></a> <a href="https://github.com/dan4ik605743/nix-config/actions/workflows/build-check.yml"><img src="https://github.com/dan4ik605743/nix-config/actions/workflows/build-check.yml/badge.svg"></a>
-</p><p align="center"><a href="https://github.com/hlissner/doom-emacs"><img src = "https://img.shields.io/badge/Made_with-Doom_Emacs-blueviolet.svg?&logo=GNU%20Emacs&logoColor=white"></a> <a href="https://github.com/nixos/nixpkgs"><img src="https://img.shields.io/badge/NixOS-21.11-informational?style=flat.svg"/></a>
+</p><p align="center"><a href="https://github.com/nixos/nixpkgs"><img src="https://img.shields.io/badge/NixOS-21.11-informational?style=flat.svg"/></a>
 </p>
 
 ## Installation
@@ -22,7 +22,7 @@ nixos-install --root /mnt --system ./result
 
 ### Caveats
 * You probably should replace <a href="https://github.com/dan4ik605743/nix-config/blob/master/hosts/dan4ik/etc/nixos/system/hardware-configuration.nix">hardware-configuration.nix</a> with your own with nixos-generate-config.
-* You probably want to disable <a href="https://github.com/dan4ik605743/nur/blob/master/modules/emacs.nix"> my module for Emacs</a>, as well as the <a href="https://github.com/dan4ik605743/nix-config/tree/master/hosts/dan4ik/etc/nixos/system/config/doom"> my Doom Emacs configuration</a>.
+* You probably want to change <a href="https://github.com/dan4ik605743/nix-config/tree/master/hosts/dan4ik/etc/nixos/system/config/neovim"> my Neovim configuration</a>.
 * You should probably change the options a little for yourself.
 
 ## Description
@@ -60,7 +60,8 @@ Resources and configurations I used to base on:
 * Maim and Xclip (Screenshoter) <space><space><space><space><space>
 * Rofi (Application Launcher) <space><space><space><space><space>
 * Brightnessctl (Brightness control) <space><space><space><space><space>
-* Emacs (Text Editor) <space><space><space><space><space>
+* Neovim (Text Editor) <space><space><space><space><space>
+* Visual Studio Code (IDE) <space><space><space><space><space>
 
 ## Appearance
 
