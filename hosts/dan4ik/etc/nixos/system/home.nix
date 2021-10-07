@@ -449,7 +449,6 @@ in
         ];
     };
     command-not-found.enable = true;
-    firefox.enable = true;
   };
   home = {
     sessionVariables = {
