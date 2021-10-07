@@ -311,9 +311,6 @@
           };
         };
       };
-      deviceSection = ''
-        Option "TearFree" "on"
-      '';
     };
     logind = {
       extraConfig = "HandlePowerKey=suspend";
