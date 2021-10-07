@@ -31,7 +31,6 @@ in
 {
   xsession = {
     enable = true;
-    numlock.enable = true;
     initExtra = ''
       xrandr --output eDP-1 --off
       xinput set-prop 12 "Device Accel Constant Deceleration" 2.6
