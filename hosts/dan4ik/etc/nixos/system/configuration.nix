@@ -306,6 +306,7 @@
       font-awesome
       font-awesome-ttf
       noto-fonts-emoji
+      jetbrains-mono
       unifont
       roboto
       hack-font
