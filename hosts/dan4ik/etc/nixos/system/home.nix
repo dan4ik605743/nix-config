@@ -375,6 +375,7 @@ in
         [
           ms-dotnettools.csharp
           pkief.material-icon-theme
+          vscodevim.vim
         ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace
           [
             {
@@ -382,6 +383,12 @@ in
               publisher = "tomphilbin";
               version = "1.0.0";
               sha256 = "sha256-DnwASBp1zvJluDc/yhSB87d0WM8PSbzqAvoICURw03c=";
+            }
+            {
+              name = "fluent-icons";
+              publisher = "miguelsolorio";
+              version = "0.0.12";
+              sha256 = "sha256-lrufKKATmWTxG8vyFSZkxtHOf2KqdJ13dSnibKA003E";
             }
             {
               name = "nix-env-selector";
@@ -406,13 +413,29 @@ in
           enableCrashReporter = false;
         };
         workbench = {
-          iconTheme = "material-icon-theme";
           colorTheme = "Gruvbox Dark (Medium)";
+          iconTheme = "material-icon-theme";
+          productIconTheme = "fluent-icons";
         };
         editor = {
-          fontFamily = "Iosevka FT Extended";
+          fontFamily = "JetBrains Mono NL Medium";
           fontLigatures = true;
           fontSize = 14;
+        };
+        debug.console = {
+          fontFamily = "JetBrains Mono NL Medium";
+          fontLigatures = true;
+          fontSize = 14;
+        };
+        vim = {
+          easymotion = true;
+          useSystemClipboard = true;
+          useCtrlKeys = true;
+          cursorStylePerMode.insert = "line";
+          cursorStylePerMode.normal = "line";
+          cursorStylePerMode.replace = "line";
+          cursorStylePerMode.visual = "line";
+          cursorStylePerMode.visualblock = "line";
         };
         terminal.integrated.shell.linux = "bash";
       };
