@@ -554,6 +554,7 @@ in
     };
     username = "dan4ik";
     homeDirectory = "/home/${config.home.username}";
+    stateVersion = "21.05";
   };
   xdg = {
     enable = true;
