@@ -300,7 +300,6 @@
 
   fonts = {
     fonts = with pkgs; [
-      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
       nur.repos.dan4ik605743.bitmap-fonts
       nur.repos.fortuneteller2k.iosevka-ft-bin
       font-awesome
