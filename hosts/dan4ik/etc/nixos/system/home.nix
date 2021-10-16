@@ -511,7 +511,7 @@ in
             ty=690
 
             setxkbmap us
-            i3lock-color -i ~/Documents/wallpaper/i3lock2.jpg --force-clock -e --indicator \
+            i3lock-color -i ~/Documents/pictures/wallpaper/i3lock2.jpg --force-clock -e --indicator \
             --timecolor=$white --datecolor=$white --insidevercolor=$transparency --insidewrongcolor=$transparency \
             --insidecolor=$transparency --ringvercolor=$white --ringwrongcolor=$white --ringcolor=$white \
             --linecolor=$transparency --keyhlcolor=$black --bshlcolor=$black \
