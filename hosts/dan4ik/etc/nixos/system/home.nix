@@ -494,10 +494,6 @@ in
       EDITOR = "nvim";
       BROWSER = "qutebrowser";
       TERMINAL = "urxvtc";
-      XDG_DESKTOP_DIR = "${config.home.homeDirectory}/Downloads";
-      XDG_DOWNLOAD_DIR = "${config.home.homeDirectory}/Downloads";
-      XDG_PICTURES_DIR = "${config.home.homeDirectory}/Downloads";
-      XDG_RUNTIME_DIR = "/run/user/1000";
     };
     keyboard = {
       options = [ "grp:alt_shift_toggle" ];
@@ -558,6 +554,18 @@ in
     };
     username = "dan4ik";
     homeDirectory = "/home/${config.home.username}";
+  };
+  xdg = {
+    enable = true;
+    userDirs = {
+      enable = true;
+      download = "${config.home.homeDirectory}/Downloads";
+      desktop = "${config.home.homeDirectory}";
+      documents = "${config.home.homeDirectory}/Documents";
+      music = "${config.home.homeDirectory}/Documents/music";
+      pictures = "${config.home.homeDirectory}/Documents/pictures";
+      videos = "${config.home.homeDirectory}/Documents/videos";
+    };
   };
   xresources.extraConfig = import ./config/xresources.nix { inherit pywal; };
 }
