@@ -185,6 +185,7 @@
       winetricks
       screen
       nodejs
+      llpp
       xorg.xev
 
       # apps
