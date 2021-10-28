@@ -3,7 +3,7 @@
   syntax on
   set number
   set mouse=a
-  set clipboard=unnamed
+  set clipboard+=unnamedplus
   set background=dark
   colorscheme gruvbox
 
@@ -24,6 +24,7 @@
   \ 'colorscheme': 'gruvbox',
   \ }
 
-  " Clap
-  nnoremap <C-f> :Clap filer<CR>
+  " Fzf
+  nnoremap <C-f> :Files<CR>
+  let g:fzf_preview_window = 'right:60%'
 ''
