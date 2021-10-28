@@ -477,9 +477,8 @@ in
       extraConfig = import ./config/neovim/neovim.nix;
       plugins = with pkgs.vimPlugins; [
         vim-nix
-        vim-closetag
-        vim-clap
         lightline-vim
+        fzf-vim
         coc-nvim
         indent-blankline-nvim
         nerdtree
