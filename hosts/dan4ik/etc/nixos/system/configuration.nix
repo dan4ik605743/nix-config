@@ -147,6 +147,7 @@
       # system
       wget
       feh
+      git
       jmtpfs
       bpytop
       brightnessctl
@@ -172,7 +173,11 @@
       winetricks
       screen
       nodejs
+      yarn
       llpp
+      neovim
+      fzf
+      file
       xorg.xev
 
       # apps
@@ -208,10 +213,12 @@
       playerctl
       cmus
 
-      # dotnet
+      # c#
       dotnet-sdk
       dotnet-netcore
       dotnet-aspnetcore
+      omnisharp-roslyn
+      mono
 
       # scripts
       (pkgs.writeShellScriptBin "dotup" "doas cp -r /etc/nixos/* ~/git/nix-config/hosts/dan4ik/etc/nixos/ && echo Finish!")
