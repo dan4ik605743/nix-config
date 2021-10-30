@@ -7,8 +7,6 @@ let
   color = pkgs.callPackage ./pkgs/pywal/default.nix { };
   pywal = builtins.fromJSON (builtins.readFile "${color}/colors-gb.json");
   rofi-theme = builtins.readFile "${color}/colors-rofi-dark-gb.rasi";
-  ## Ssh
-  sshpub = pkgs.writeText "sshpubkey" "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDeOpbBncJZV+x+glutyCsRzsS2igzzCGjlpYjOZQ6aI dan4ik";
   ## Rxvt-unicode
   url-select = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/muennich/urxvt-perls/master/deprecated/url-select";
@@ -542,9 +540,6 @@ in
       };
       ".urxvt/ext/tabbedex" = {
         text = builtins.readFile "${tabbedex}";
-      };
-      ".ssh/id_ed5519.pub" = {
-        text = builtins.readFile "${sshpub}";
       };
       ".config/cmus/gruvbox.theme" = {
         text = builtins.readFile "${cmustheme}";
