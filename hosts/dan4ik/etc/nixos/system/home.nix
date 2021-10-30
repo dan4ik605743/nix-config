@@ -366,25 +366,6 @@ in
       enableZshIntegration = false;
       enableBashIntegration = false;
     };
-    neovim = {
-      enable = true;
-      package = pkgs.neovim-nightly;
-      withNodeJs = false;
-      withRuby = false;
-      withPython3 = false;
-      vimAlias = false;
-      viAlias = false;
-      extraConfig = import ./config/neovim/neovim.nix;
-      plugins = with pkgs.vimPlugins; [
-        vim-nix
-        lightline-vim
-        fzf-vim
-        coc-nvim
-        indent-blankline-nvim
-        nerdtree
-        gruvbox
-      ];
-    };
     command-not-found.enable = true;
   };
   home = {
@@ -430,6 +411,9 @@ in
       };
       ".config/nixpkgs/config.nix" = {
         text = import ./config/nixpkgs.nix;
+      };
+      ".config/nvim/init.vim" = {
+        text = import ./config/neovim/neovim.nix { inherit pkgs; };
       };
       ".config/nvim/coc-settings.json" = {
         text = import ./config/neovim/coc-settings.nix;
