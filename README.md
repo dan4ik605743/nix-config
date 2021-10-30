@@ -61,7 +61,6 @@ Resources and configurations I used to base on:
 * Rofi (Application Launcher) <space><space><space><space><space>
 * Brightnessctl (Brightness control) <space><space><space><space><space>
 * Neovim (Text Editor) <space><space><space><space><space>
-* Visual Studio Code (IDE) <space><space><space><space><space>
 
 ## Appearance
 
