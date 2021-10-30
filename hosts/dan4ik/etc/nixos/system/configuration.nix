@@ -127,11 +127,6 @@
         libvdpau-va-gl
       ];
     };
-    nvidia.prime = {
-      offload.enable = true;
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:4:0:0";
-    };
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -228,7 +223,6 @@
 
       # scripts
       (pkgs.writeShellScriptBin "dotup" "doas cp -r /etc/nixos/* ~/git/nix-config/hosts/dan4ik/etc/nixos/ && echo Finish!")
-      (pkgs.writeShellScriptBin "prime-run" ''__NV_PRIME_RENDER_OFFLOAD=1 __VK_LAYER_NV_optimus=NVIDIA_only __GLX_VENDOR_LIBRARY_NAME=nvidia "$@"'')
     ];
   };
 
@@ -255,7 +249,7 @@
 
     xserver = {
       enable = true;
-      videoDrivers = [ "nvidia" ];
+      videoDrivers = [ "modesetting" "nouveau" ];
       synaptics = {
         enable = true;
         twoFingerScroll = true;
