@@ -74,15 +74,7 @@
     };
   };
 
-  programs = {
-    dconf.enable = true;
-    steam.enable = true;
-    java = {
-      enable = true;
-      package = pkgs.jre;
-    };
-  };
-
+  programs.dconf.enable = true;
   powerManagement.enable = false;
   time.timeZone = "Asia/Krasnoyarsk";
   system.stateVersion = "20.03";
