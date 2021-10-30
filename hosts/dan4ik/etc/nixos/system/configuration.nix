@@ -159,7 +159,6 @@
       xclip
       libva-utils
       mesa-demos
-      jdk
       gparted
       pywal
       lm_sensors
@@ -171,7 +170,6 @@
       aircrack-ng
       tree
       winetricks
-      screen
       nodejs
       yarn
       llpp
@@ -189,13 +187,10 @@
       discord
       lutris
       vk-messenger
-      gimp
       viber
       teamspeak_client
-      multimc
 
       # nur
-      nur.repos.dan4ik605743.lyra-cursors
       nur.repos.dan4ik605743.i3lock-color
 
       # nix-tools
