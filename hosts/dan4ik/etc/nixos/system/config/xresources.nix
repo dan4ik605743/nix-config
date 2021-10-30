@@ -20,6 +20,8 @@
   URxvt.keysym.Control-Shift-W: tabbedex:kill_tab
   URxvt.keysym.Control-Next: tabbedex:next_tab
   URxvt.keysym.Control-Prior: tabbedex:prev_tab
+  URxvt.keysym.Control-Left: \033[1;5D
+  URxvt.keysym.Control-Right: \033[1;5C
 
   ! Perl
   URxvt.perl-ext-common: default,url-select,resize-font,tabbedex
