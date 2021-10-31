@@ -14,6 +14,7 @@
     Plug 'junegunn/fzf.vim'
     Plug 'jiangmiao/auto-pairs'
     Plug 'dense-analysis/ale'
+    Plug 'mg979/vim-visual-multi', {'branch': 'master'}
     Plug 'lukas-reineke/indent-blankline.nvim'
     Plug 'morhetz/gruvbox'
   call plug#end()
@@ -49,8 +50,6 @@
   " AirLine
   let g:airline_powerline_fonts=1
   let g:airline_theme='minimalist'
-  let g:tmuxline_powerline_separators = 0
-  let g:airline#extensions#tmuxline#enabled = 0
 
   " OmniSharp
   let g:OmniSharp_server_path = '${pkgs.omnisharp-roslyn}/bin/omnisharp'
@@ -67,6 +66,9 @@
   " Ale
   let g:ale_linters = {
   \ 'cs': ['OmniSharp']
+  \}
+  let g:ale_linters = {
+  \ 'nix': ['rnix-lsp']
   \}
 
   " VimSpector
