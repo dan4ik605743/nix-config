@@ -115,8 +115,6 @@ in
           "XF86AudioPlay" = "exec playerctl play-pause";
           "XF86AudioPrev" = "exec playerctl previous";
           "XF86AudioNext" = "exec playerctl next";
-          "XF86MonBrightnessUp" = "exec brightnessctl s +10%";
-          "XF86MonBrightnessDown" = "exec brightnessctl s 10%-";
           "XF86AudioRaiseVolume" = "exec pactl set-sink-volume 0 +5%";
           "XF86AudioLowerVolume" = "exec pactl set-sink-volume 0 -5%";
           "XF86AudioMute" = "exec pactl set-sink-mute 0 toggle";
