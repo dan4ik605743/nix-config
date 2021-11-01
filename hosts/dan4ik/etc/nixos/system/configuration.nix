@@ -92,7 +92,7 @@
       };
     };
     interfaces = {
-      enp2s0f2.useDHCP = true;
+      enp4s0.useDHCP = true;
       wlp3s0.useDHCP = true;
     };
     nameservers = [
