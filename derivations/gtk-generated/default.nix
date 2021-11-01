@@ -17,6 +17,7 @@
 
 stdenv.mkDerivation rec {
   name = "generated";
+
   src = fetchFromGitHub {
     owner = "themix-project";
     repo = "oomox";
@@ -24,12 +25,15 @@ stdenv.mkDerivation rec {
     sha256 = "0xz2j6x8zf44bjsq2h1b5105h35z8mbrh8b97i5z5j0zb8k5zhj2";
     fetchSubmodules = true;
   };
+
   dontBuild = true;
+
   nativeBuildInputs = [
     glib
     libxml2
     bc
   ];
+
   buildInputs = [
     gnome3.gnome-themes-extra
     gdk-pixbuf
@@ -38,20 +42,21 @@ stdenv.mkDerivation rec {
     inkscape
     optipng
   ];
+
   propagatedUserEnvPkgs = [
     gtk-engine-murrine
   ];
-  installPhase = with pywal.special;
-    with pywal.colors;
+
+  installPhase = with pywal.special; with pywal.colors;
     let
       toRGB = x: lib.removePrefix "#" x;
     in
     ''
-      # gtk theme
+      # gtk theme 
         mkdir -p $out/share/themes/generated
         pushd plugins/theme_oomox/gtk-theme
         patchShebangs .
-        echo "
+        echo "  
         BG=${toRGB background}
         FG=${toRGB foreground}
         MENU_BG=${toRGB background}
@@ -80,4 +85,4 @@ stdenv.mkDerivation rec {
         HOME=/build/source ./change_color.sh -o generated -t $out/share/themes /build/source/generated.colors
         popd
     '';
-}
+}   

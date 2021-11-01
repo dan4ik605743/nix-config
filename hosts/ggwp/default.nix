@@ -12,9 +12,9 @@ nixpkgs.lib.nixosSystem rec {
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
-        users.dan4ik = import ./home.nix;
+        users.dan4ik = import ../../users/dan4ik/default.nix;
       };
-      nixpkgs = { inherit config overlays; };
+
       imports =
         let
           nur-modules = import nur {
@@ -22,6 +22,9 @@ nixpkgs.lib.nixosSystem rec {
           };
         in
         [ ];
+
+      nix = import ../../config/nix-conf.nix { inherit inputs system nixpkgs; };
+      nixpkgs = { inherit config overlays; };
     }
 
     ./configuration.nix

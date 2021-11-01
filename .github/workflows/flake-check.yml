@@ -14,4 +14,4 @@ jobs:
         install_url: https://github.com/numtide/nix-unstable-installer/releases/download/nix-2.4pre20210823_af94b54/install
         extra_nix_config: |
           experimental-features = nix-command flakes
-    - run: nix flake check ./hosts/dan4ik/etc/nixos
+    - run: nix flake check ./

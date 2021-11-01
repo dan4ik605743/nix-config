@@ -1,4 +1,8 @@
-{ pywal }: with pywal.special; with pywal.colors;
+{ pywal }:
+
+with pywal.special;
+with pywal.colors;
+
 ''
   ! Settings
   URxvt.font: xft:Iosevka FT Extended:size=9

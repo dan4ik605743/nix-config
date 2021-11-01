@@ -1,4 +1,5 @@
 { pkgs }:
+
 ''
   " Plugins
   call plug#begin('/home/dan4ik/.vim/plugged')

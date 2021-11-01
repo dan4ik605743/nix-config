@@ -14,8 +14,14 @@
     swapDevices = 1;
   };
 
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "us";
+  };
+
   security = {
     sudo.enable = false;
+
     doas = {
       enable = true;
       extraRules = [{
@@ -26,81 +32,39 @@
     };
   };
 
-  nix = rec {
-    package = pkgs.nixFlakes;
-    trustedBinaryCaches = binaryCaches;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-    nixPath = [
-      "nixpkgs=${inputs.nixpkgs}"
-      "nixos-config=/etc/nixos/system/configuration.nix"
-      "home-manager=${inputs.home}"
-    ];
-    trustedUsers = [
-      "root"
-      "dan4ik"
-      "@wheel"
-    ];
-    binaryCaches = [
-      "https://cache.nixos.org?priority=10"
-      "https://cache.ngi0.nixos.org/"
-      "https://emacsng.cachix.org"
-      "https://mjlbach.cachix.org"
-      "https://nix-community.cachix.org"
-      "https://dan4ik605743.cachix.org"
-    ];
-    binaryCachePublicKeys = [
-      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-      "cache.ngi0.nixos.org-1:KqH5CBLNSyX184S9BKZJo1LxrxJ9ltnY2uAs5c/f1MA="
-      "emacsng.cachix.org-1:i7wOr4YpdRpWWtShI8bT6V7lOTnPeI7Ho6HaZegFWMI="
-      "mjlbach.cachix.org-1:dR0V90mvaPbXuYria5mXvnDtFibKYqYc2gtl9MWSkqI="
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "dan4ik605743.cachix.org-1:rhJb/S+2G33sj0wR2fXp0WqMKPCYHpeWG2AjS4dwUaA="
-    ];
-    registry = {
-      system.flake = inputs.self;
-      default.flake = inputs.nixpkgs;
-      home-manager.flake = inputs.home;
-    };
-    optimise = {
-      automatic = true;
-      dates = [ "13:00" ];
-    };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "-d";
-    };
-  };
-
   programs.dconf.enable = true;
   powerManagement.enable = false;
+  i18n.defaultLocale = "en_US.UTF-8";
   time.timeZone = "Asia/Krasnoyarsk";
   system.stateVersion = "20.03";
 
   networking = {
-    hostName = "nixos";
+    hostName = "ggwp";
     firewall.enable = false;
     useDHCP = true;
+
     wireless = {
       enable = false;
       interfaces = [ "wlp3s0" ];
+
       networks = {
         TP-Link_D482.psk = "Qq135790-";
         huawei.psk = "zxcursed";
       };
     };
+
     interfaces = {
       enp4s0.useDHCP = true;
       wlp3s0.useDHCP = true;
     };
+
     nameservers = [
       "1.1.1.1"
       "1.0.0.1"
       "8.8.8.8"
       "8.8.4.4"
     ];
+
     dhcpcd = {
       enable = true;
       wait = "background";
@@ -109,9 +73,11 @@
 
   hardware = {
     cpu.intel.updateMicrocode = true;
+
     opengl = {
       enable = true;
       driSupport32Bit = true;
+
       extraPackages = with pkgs; [
         intel-media-driver
         vaapiVdpau
@@ -120,16 +86,11 @@
     };
   };
 
-  i18n.defaultLocale = "en_US.UTF-8";
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "us";
-  };
-
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod;
     kernelParams = [ "intel_idle.max_cstate=1" "mitigations=off" ];
     supportedFilesystems = [ "xfs" "ntfs" ];
+
     loader.grub = {
       enable = true;
       device = "/dev/sda";
@@ -209,7 +170,7 @@
       mono
 
       # scripts
-      (pkgs.writeShellScriptBin "dotup" "doas cp -r /etc/nixos/* ~/git/nix-config/hosts/dan4ik/etc/nixos/ && echo Finish!")
+      (pkgs.writeShellScriptBin "dotup" "doas cp -r /etc/nixos/* ~/git/nix-config/ && echo Finish!")
     ];
   };
 
@@ -227,6 +188,7 @@
     pipewire = {
       enable = true;
       pulse.enable = true;
+
       alsa = {
         enable = true;
         support32Bit = true;
@@ -238,13 +200,17 @@
       videoDrivers = [ "modesetting" "nouveau" ];
       synaptics.enable = true;
       desktopManager.xterm.enable = true;
+
       displayManager = {
         defaultSession = "xterm";
+
         lightdm = {
           enable = true;
+
           greeters.mini = {
             enable = true;
             user = "dan4ik";
+
             extraConfig = ''
               [greeter]
               show-password-label = false
@@ -255,6 +221,7 @@
         };
       };
     };
+
     logind = {
       extraConfig = "HandlePowerKey=suspend";
       lidSwitch = "ignore";
@@ -265,6 +232,7 @@
 
   users = {
     mutableUsers = false;
+
     users.dan4ik = {
       isNormalUser = true;
       shell = pkgs.bash;
@@ -286,6 +254,7 @@
       hack-font
       siji
     ];
+
     fontconfig = {
       enable = true;
       defaultFonts.emoji = [ "Noto Color Emoji" ];
