@@ -108,7 +108,6 @@
   };
 
   hardware = {
-    bluetooth.enable = false;
     cpu.intel.updateMicrocode = true;
     opengl = {
       enable = true;
