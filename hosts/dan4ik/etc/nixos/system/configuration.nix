@@ -145,7 +145,6 @@
       git
       jmtpfs
       bpytop
-      brightnessctl
       pciutils
       usbutils
       wpa_supplicant
@@ -178,7 +177,6 @@
       vlc
       wpsoffice
       qbittorrent
-      ripcord
       discord
       lutris
       vk-messenger
