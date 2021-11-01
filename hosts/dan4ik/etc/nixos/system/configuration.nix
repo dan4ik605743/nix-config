@@ -130,14 +130,10 @@
     kernelPackages = pkgs.linuxPackages_xanmod;
     kernelParams = [ "intel_idle.max_cstate=1" "mitigations=off" ];
     supportedFilesystems = [ "xfs" "ntfs" ];
-    loader = {
-      efi.canTouchEfiVariables = true;
-      grub = {
-        enable = true;
-        efiSupport = true;
-        devices = [ "nodev" ];
-        version = 2;
-      };
+    loader.grub = {
+      enable = true;
+      device = "/dev/sda";
+      version = 2;
     };
   };
 
