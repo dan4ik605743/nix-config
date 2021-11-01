@@ -40,6 +40,9 @@
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
   \ exe "normal! g`\"" |
   \ endif
+  
+  " Clear last search highlighting
+  nnoremap <Leader><esc> :noh<return><esc>
 
   " NerdTree
   let g:NERDTreeDirArrowExpandable = '▸'
