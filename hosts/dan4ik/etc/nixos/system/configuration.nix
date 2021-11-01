@@ -236,14 +236,8 @@
     xserver = {
       enable = true;
       videoDrivers = [ "modesetting" "nouveau" ];
-      synaptics = {
-        enable = true;
-        twoFingerScroll = true;
-        buttonsMap = [ 1 0 3 ];
-      };
-      desktopManager = {
-        xterm.enable = true;
-      };
+      synaptics.enable = true;
+      desktopManager.xterm.enable = true;
       displayManager = {
         defaultSession = "xterm";
         lightdm = {
