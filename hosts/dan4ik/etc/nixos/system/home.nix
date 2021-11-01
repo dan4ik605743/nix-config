@@ -145,6 +145,10 @@ in
   };
   gtk = {
     enable = true;
+    font = {
+      name = "JetBrains Mono Bold";
+      size = 9;
+    };
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
