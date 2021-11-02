@@ -15,13 +15,13 @@
     Plug 'junegunn/fzf.vim'
     Plug 'jiangmiao/auto-pairs'
     Plug 'dense-analysis/ale'
+    Plug 'preservim/tagbar'
     Plug 'mg979/vim-visual-multi', {'branch': 'master'}
     Plug 'lukas-reineke/indent-blankline.nvim'
     Plug 'morhetz/gruvbox'
   call plug#end()
 
   " Settings
-  syntax on
   set number
   set mouse=a
   set clipboard+=unnamedplus
@@ -30,8 +30,10 @@
   set nobackup       
   set nowritebackup  
   set noswapfile
+  set autochdir
   scriptencoding utf-8
   colorscheme gruvbox
+  syntax on
   :set tabstop=4
   :set shiftwidth=4
   :set expandtab
@@ -43,13 +45,14 @@
   \ endif
   
   " Clear last search highlighting
-  nnoremap <Leader><esc> :noh<return><esc>
+  nnoremap <Leader><Esc> :noh<Return><Esc>
 
   " NerdTree
   let g:NERDTreeDirArrowExpandable = '▸'
   let g:NERDTreeDirArrowCollapsible = '▾'
   let g:NERDTreeCustomOpenArgs={'file':{'where': 't'}}
-  nnoremap <C-n> :NERDTree<CR>
+  let NERDTreeChDirMode=2
+  nnoremap <C-x> :NERDTreeToggle .<CR>
 
   " AirLine
   let g:airline_powerline_fonts=1
@@ -71,11 +74,16 @@
   let g:ale_linters = {
   \ 'cs': ['OmniSharp']
   \}
+
   let g:ale_linters = {
   \ 'nix': ['rnix-lsp']
   \}
 
   " VimSpector
   let g:vimspector_enable_mappings = 'HUMAN'
-  nnoremap <leader>vr :VimspectorReset<CR>
+  nnoremap <Leader>vr :VimspectorReset<CR>
+
+  " Tagbar 
+  let g:tagbar_ctags_bin = '${pkgs.ctags}/bin/ctags'
+  nnoremap <Leader>tt :TagbarToggle<CR> 
 ''
