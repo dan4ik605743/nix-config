@@ -5,7 +5,7 @@ rec {
   trustedBinaryCaches = binaryCaches;
   daemonNiceLevel = 1;
   daemonIONiceLevel = 1;
-  maxJobs = 4;
+  maxJobs = 1;
 
   extraOptions = ''
     experimental-features = nix-command flakes
