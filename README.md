@@ -11,11 +11,11 @@
 Get the latest NixOS 21.11 image <a href="https://releases.nixos.org/?prefix=nixos/unstable/">here</a>, do your partitions (root must be mounted at `/mnt`), then run the following commands
 ```
 # move the output file of this to hosts/ggwp/hardware-configuration.nix
-nixos-generate-config
+nixos-generate-config --root /mnt
 
 nix-shell -p git nixFlakes
 git clone https://github.com/dan4ik605743/nix-config /etc/nixos
-nix build /mnt/etc/nixos#nixosConfigurations.ggwp.config.system.build.toplevel --experimental-features "flakes nix-command" --store "/mnt" --impure
+nix build /mnt/etc/nixos#nixosConfigurations.ggwp.config.system.build.toplevel --experimental-features "flakes nix-command" --store "/mnt"
 nixos-install --root /mnt --system ./result
 ```
 
@@ -49,7 +49,7 @@ Resources and configurations I used to base on:
 * Playerctl (Playback control) <space><space><space><space><space>
 * Maim (Screenshoter) <space><space><space><space><space>
 * Rofi (Launcher) <space><space><space><space><space>
-* Neovim (Text Editor) <space><space><space><space><space>
+* Neovim (Code Editor) <space><space><space><space><space>
 
 ## Appearance
 
