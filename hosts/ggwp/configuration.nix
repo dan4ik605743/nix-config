@@ -125,12 +125,7 @@
       aircrack-ng
       tree
       winetricks
-      nodejs
-      yarn
       llpp
-      neovim
-      fzf
-      file
       xorg.xev
 
       # apps
@@ -161,6 +156,14 @@
       pulseaudio
       playerctl
       cmus
+
+      # neovim
+      neovim
+      fzf
+      file
+      nodejs
+      yarn
+      ctags
 
       # c#
       dotnet-sdk
