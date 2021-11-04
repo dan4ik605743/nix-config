@@ -138,7 +138,7 @@ in
 
         startup = [
           {
-            command = "feh --bg-fill /etc/nixos/derivations/pywal/current";
+            command = "feh --bg-fill /etc/nixos/assets/wallpapers/current.png";
             always = false;
             notification = false;
           }
