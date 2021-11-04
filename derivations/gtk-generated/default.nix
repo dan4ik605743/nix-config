@@ -1,5 +1,5 @@
 { stdenv
-, pywal
+, colors
 , lib
 , fetchFromGitHub
 , glib
@@ -12,11 +12,10 @@
 , inkscape
 , optipng
 , gtk-engine-murrine
-, ...
 }:
 
 stdenv.mkDerivation rec {
-  name = "generated";
+  name = "GTK-Generated";
 
   src = fetchFromGitHub {
     owner = "themix-project";
@@ -47,13 +46,13 @@ stdenv.mkDerivation rec {
     gtk-engine-murrine
   ];
 
-  installPhase = with pywal.special; with pywal.colors;
+  installPhase = with colors;
     let
       toRGB = x: lib.removePrefix "#" x;
     in
     ''
       # gtk theme 
-        mkdir -p $out/share/themes/generated
+        mkdir -p $out/share/themes/${name}
         pushd plugins/theme_oomox/gtk-theme
         patchShebangs .
         echo "  
@@ -82,7 +81,7 @@ stdenv.mkDerivation rec {
         CARET2_FG=${toRGB background}
         CARET_SIZE=0.08
         " > /build/source/generated.colors
-        HOME=/build/source ./change_color.sh -o generated -t $out/share/themes /build/source/generated.colors
+        HOME=/build/source ./change_color.sh -o ${name} -t $out/share/themes /build/source/generated.colors
         popd
     '';
 }   

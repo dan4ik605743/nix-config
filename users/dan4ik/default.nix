@@ -1,13 +1,15 @@
 { config, pkgs, lib, inputs, ... }:
 
 let
-  # Gtk
-  generated = pkgs.callPackage ../../derivations/gtk-generated/default.nix { inherit pywal; };
+  # Theme
+  colors = import ../../config/colors.nix;
+  rofi-theme = import ./config/rofi.nix { inherit colors; };
+  gtk-theme = pkgs.callPackage ../../derivations/gtk-generated/default.nix { inherit colors; };
 
-  # Pywal
-  color = pkgs.callPackage ../../derivations/pywal/default.nix { };
-  pywal = builtins.fromJSON (builtins.readFile "${color}/colors-gb.json");
-  rofi-theme = builtins.readFile "${color}/colors-rofi-dark-gb.rasi";
+  cmus-theme = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/xero/dotfiles/master/cmus/.cmus/nord.theme";
+    sha256 = "sha256-ZqhaNSJwZJOycmOfxIdzpI4gHx/ye57INJnZ7e9cV/k=";
+  };
 
   # Rxvt-unicode
   url-select = pkgs.fetchurl {
@@ -24,12 +26,6 @@ let
     url = "https://raw.githubusercontent.com/stepb/urxvt-tabbedex/master/tabbedex";
     sha256 = "sha256-RirynHRM07psha4RqtvZoBasncAW9bt8FRF1H2DdZqk=";
   };
-
-  # Cmus
-  cmustheme = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/egel/cmus-gruvbox/master/gruvbox-dark.theme";
-    sha256 = "sha256-3BHdmoWiKF/UxP9fGSthrzF9PJeUHQxPwkEXNOkWQqk=";
-  };
 in
 {
   xsession = {
@@ -41,7 +37,7 @@ in
       xset s off && xset dpms 0 0 0
     '';
 
-    windowManager.i3 = with pywal.colors; {
+    windowManager.i3 = with colors; {
       enable = true;
       package = pkgs.oldstable.i3-gaps;
 
@@ -173,8 +169,8 @@ in
     };
 
     theme = {
-      package = generated;
-      name = "generated";
+      package = gtk-theme;
+      name = "GTK-Generated";
     };
 
     gtk3.extraConfig = {
@@ -188,7 +184,7 @@ in
     '';
   };
 
-  services = with pywal.special; with pywal.colors; {
+  services = with colors; {
     polybar =
       let
         bg = "${background}";
@@ -482,8 +478,8 @@ in
         text = builtins.readFile "${tabbedex}";
       };
 
-      ".config/cmus/gruvbox.theme" = {
-        text = builtins.readFile "${cmustheme}";
+      ".config/cmus/cmus.theme" = {
+        text = builtins.readFile "${cmus-theme}";
       };
     };
 
@@ -506,5 +502,5 @@ in
     };
   };
 
-  xresources.extraConfig = import ./config/xresources.nix { inherit pywal; };
+  xresources.extraConfig = import ./config/xresources.nix { inherit colors; };
 }

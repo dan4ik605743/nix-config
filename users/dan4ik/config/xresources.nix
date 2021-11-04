@@ -1,7 +1,6 @@
-{ pywal }:
+{ colors }:
 
-with pywal.special;
-with pywal.colors;
+with colors;
 
 ''
   ! Settings
