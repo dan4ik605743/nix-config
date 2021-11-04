@@ -1,28 +1,24 @@
 ''
-  # Settings
-  c.auto_save.session = True
-  c.fonts.default_family = "Iosevka FT Extended"
-  c.fonts.default_size = "13px"
-  c.colors.webpage.darkmode.enabled = True
-  c.colors.webpage.darkmode.policy.images = "never"
+  # base16-qutebrowser (https://github.com/theova/base16-qutebrowser)
+  # Base16 qutebrowser template by theova and Daniel Mulford
+  # Nord scheme by arcticicestudio
 
-  # Theme
-  base00 = "#1d2021"
-  base01 = "#3c3836"
-  base02 = "#504945"
-  base03 = "#665c54"
-  base04 = "#bdae93"
-  base05 = "#d5c4a1"
-  base06 = "#ebdbb2"
-  base07 = "#fbf1c7"
-  base08 = "#fb4934"
-  base09 = "#fe8019"
-  base0A = "#fabd2f"
-  base0B = "#b8bb26"
-  base0C = "#8ec07c"
-  base0D = "#83a598"
-  base0E = "#d3869b"
-  base0F = "#d65d0e"
+  base00 = "#2E3440"
+  base01 = "#3B4252"
+  base02 = "#434C5E"
+  base03 = "#4C566A"
+  base04 = "#D8DEE9"
+  base05 = "#E5E9F0"
+  base06 = "#ECEFF4"
+  base07 = "#8FBCBB"
+  base08 = "#BF616A"
+  base09 = "#D08770"
+  base0A = "#EBCB8B"
+  base0B = "#A3BE8C"
+  base0C = "#88C0D0"
+  base0D = "#81A1C1"
+  base0E = "#B48EAD"
+  base0F = "#5E81AC"
 
   # set qutebrowser colors
 
@@ -165,6 +161,9 @@
 
   # Background color for the selected item in filename prompts.
   c.colors.prompts.selected.bg = base02
+
+  # Foreground color for the selected item in filename prompts.
+  c.colors.prompts.selected.fg = base05
 
   # Foreground color of the statusbar.
   c.colors.statusbar.normal.fg = base05
