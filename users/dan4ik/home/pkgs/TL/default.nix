@@ -3,6 +3,7 @@ with import <nixpkgs> { };
 (buildFHSUserEnv
   {
     name = "TLauncher";
+
     targetPkgs = pkgs: (with pkgs;
       [
         fontconfig
@@ -25,6 +26,7 @@ with import <nixpkgs> { };
         jre
         alsaOss
       ] ++ (with xorg;
+
       [
         libX11
         libXext
@@ -35,5 +37,6 @@ with import <nixpkgs> { };
         libXi
         libXxf86vm
       ]));
+
     runScript = "bash -c 'prime-run java -jar ~/Documents/pkgs/TL/TLauncher.jar'";
   }).env
