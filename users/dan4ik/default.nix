@@ -362,7 +362,15 @@ in
       enable = true;
       searchEngines = { DEFAULT = "https://google.com/search?q={}"; };
       settings.url.start_pages = [ "https://dan4ik605743.github.io" ];
-      extraConfig = import ./config/qutebrowser.nix;
+
+      extraConfig = ''
+        c.auto_save.session = True
+        c.fonts.default_family = "Iosevka FT Extended"
+        c.fonts.default_size = "13px"
+        c.colors.webpage.darkmode.enabled = True
+        c.colors.webpage.darkmode.policy.images = "never"
+        config.source('qutebrowser-theme.py')
+      '';
     };
 
     git = {
@@ -462,6 +470,10 @@ in
 
       ".config/nvim/coc-settings.json" = {
         text = import ./config/neovim/coc-settings.nix;
+      };
+
+      ".config/qutebrowser/qutebrowser-theme.py" = {
+        text = import ./config/qutebrowser.nix;
       };
 
       ".urxvt/ext/url-select" = {
