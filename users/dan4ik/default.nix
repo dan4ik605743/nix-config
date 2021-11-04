@@ -425,7 +425,7 @@ in
       layout = "us,ru";
     };
 
-    packages = with pkgs;
+    packages =
       let
         myscreenlock = pkgs.writeShellScriptBin "screenlock"
           ''
