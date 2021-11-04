@@ -111,8 +111,6 @@ in
         menu = "rofi -show drun -show-icons";
 
         keybindings = lib.mkOptionDefault {
-          "${modifier}+XF86MonBrightnessUp" = "exec brightnessctl s +10%";
-          "${modifier}+XF86MonBrightnessDown" = "exec brightnessctl s 10%-";
           "${modifier}+Print" = "exec maim -u | xclip -selection clipboard -t image/png";
           "${modifier}+F12" = "exec pavucontrol";
           "${modifier}+F11" = "exec screenlock";
