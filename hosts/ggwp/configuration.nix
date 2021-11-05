@@ -139,9 +139,6 @@
       viber
       teamspeak_client
 
-      # nur
-      nur.repos.dan4ik605743.i3lock-color
-
       # nix-tools
       nix-prefetch-scripts
       nix-tree
@@ -171,6 +168,9 @@
       dotnet-aspnetcore
       omnisharp-roslyn
       mono
+
+      # nur
+      nur.repos.dan4ik605743.i3lock-color
 
       # scripts
       (pkgs.writeShellScriptBin "dotup" "doas cp -r /etc/nixos/* ~/git/nix-config/ && echo Finish!")
