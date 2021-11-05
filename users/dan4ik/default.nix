@@ -450,6 +450,10 @@ in
       ];
 
     file = {
+      ".config/qutebrowser/qutebrowser-theme.py" = {
+        text = import ./config/qutebrowser.nix;
+      };
+
       ".config/bpytop/bpytop.conf" = {
         text = import ./config/bpytop.nix;
       };
@@ -458,16 +462,16 @@ in
         text = import ./config/nixpkgs.nix;
       };
 
-      ".config/nvim/init.vim" = {
-        text = import ./config/neovim/neovim.nix { inherit pkgs; };
-      };
-
       ".config/nvim/coc-settings.json" = {
         text = import ./config/neovim/coc-settings.nix;
       };
 
-      ".config/qutebrowser/qutebrowser-theme.py" = {
-        text = import ./config/qutebrowser.nix;
+      ".config/nvim/init.vim" = {
+        text = import ./config/neovim/neovim.nix { inherit pkgs; };
+      };
+
+      ".config/cmus/cmus.theme" = {
+        text = builtins.readFile "${cmus-theme}";
       };
 
       ".urxvt/ext/url-select" = {
@@ -480,10 +484,6 @@ in
 
       ".urxvt/ext/tabbedex" = {
         text = builtins.readFile "${tabbedex}";
-      };
-
-      ".config/cmus/cmus.theme" = {
-        text = builtins.readFile "${cmus-theme}";
       };
     };
 
