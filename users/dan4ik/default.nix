@@ -183,140 +183,134 @@ in
   };
 
   services = with colors; {
-    polybar =
-      let
-        bg = "${background}";
-        fg = "${foreground}";
-        ct = "${color4}";
-      in
-      {
-        enable = true;
-        script = "polybar main &";
+    polybar = {
+      enable = true;
+      script = "polybar main &";
 
-        package = pkgs.polybar.override {
-          i3GapsSupport = true;
-          pulseSupport = true;
-          alsaSupport = false;
-          githubSupport = false;
-          iwSupport = false;
-          mpdSupport = false;
-          nlSupport = false;
+      package = pkgs.polybar.override {
+        i3GapsSupport = true;
+        pulseSupport = true;
+        alsaSupport = false;
+        githubSupport = false;
+        iwSupport = false;
+        mpdSupport = false;
+        nlSupport = false;
+      };
+
+      config = {
+        "global/wm" = {
+          margin-bottom = 0;
+          margin-top = 0;
         };
 
-        config = {
-          "global/wm" = {
-            margin-bottom = 0;
-            margin-top = 0;
-          };
+        "bar/main" = {
+          monitor-strict = false;
+          override-redirect = false;
+          bottom = false;
+          fixed-center = true;
 
-          "bar/main" = {
-            monitor-strict = false;
-            override-redirect = false;
-            bottom = false;
-            fixed-center = true;
+          width = "100%";
+          height = 25;
+          offset-x = "0%";
+          offset-y = "0%";
 
-            width = "100%";
-            height = 25;
-            offset-x = "0%";
-            offset-y = "0%";
+          background = bg;
+          foreground = fg;
+          line-size = 2;
+          line-color = ct;
+          border-bottom-size = 0;
+          border-color = ct;
+          tray-background = bg;
 
-            background = bg;
-            foreground = fg;
-            line-size = 2;
-            line-color = ct;
-            border-bottom-size = 0;
-            border-color = ct;
-            tray-background = bg;
+          radius = 0;
+          padding = 2;
+          spacing = 0;
+          dim-value = "1.0";
+          module-margin-left = 1;
+          module-margin-right = 1;
+          tray-position = "right";
+          tray-detached = false;
+          tray-maxsize = 16;
+          tray-offset-x = 0;
+          tray-offset-y = 0;
+          tray-padding = 2;
+          enable-ipc = true;
 
-            radius = 0;
-            padding = 2;
-            spacing = 0;
-            dim-value = "1.0";
-            module-margin-left = 1;
-            module-margin-right = 1;
-            tray-position = "right";
-            tray-detached = false;
-            tray-maxsize = 16;
-            tray-offset-x = 0;
-            tray-offset-y = 0;
-            tray-padding = 2;
-            enable-ipc = true;
+          font-0 = "DejaVu Sans:size=8;2";
+          font-1 = "waffle:size=12;2";
 
-            font-0 = "DejaVu Sans:size=8;2";
-            font-1 = "waffle:size=12;2";
+          modules-left = "i3 sep";
+          modules-center = "date";
+          modules-right = "sep volume sep";
+        };
 
-            modules-left = "i3 sep";
-            modules-center = "date";
-            modules-right = "sep volume sep";
-          };
+        "settings" = {
+          throttle-output = 5;
+          throttle-output-for = 10;
+          throttle-input-for = 30;
+          screenchange-reload = false;
+          compositing-background = "source";
+          compositing-foreground = "over";
+          compositing-overline = "over";
+          comppositing-underline = "over";
+          compositing-border = "over";
+          pseudo-transparency = false;
+        };
 
-          "settings" = {
-            throttle-output = 5;
-            throttle-output-for = 10;
-            throttle-input-for = 30;
-            screenchange-reload = false;
-            compositing-background = "source";
-            compositing-foreground = "over";
-            compositing-overline = "over";
-            comppositing-underline = "over";
-            compositing-border = "over";
-            pseudo-transparency = false;
-          };
+        "module/volume" = {
+          type = "internal/pulseaudio";
+          format-volume = "<ramp-volume> <label-volume>";
+          label-volume = "%percentage%%";
+          format-muted-prefix = "";
+          label-muted = " Muted";
+          label-muted-foreground = ct;
+          use-ui-max = false;
+          ramp-volume-0 = "";
+          ramp-volume-1 = "";
+          ramp-volume-2 = "";
+          ramp-volume-3 = "";
+          ramp-volume-4 = "";
+          ramp-volume-foreground = ct;
+        };
 
-          "module/volume" = {
-            type = "internal/pulseaudio";
-            format-volume = "<ramp-volume> <label-volume>";
-            label-volume = "%percentage%%";
-            format-muted-prefix = "";
-            label-muted = " Muted";
-            label-muted-foreground = ct;
-            use-ui-max = false;
-            ramp-volume-0 = "";
-            ramp-volume-1 = "";
-            ramp-volume-2 = "";
-            ramp-volume-3 = "";
-            ramp-volume-4 = "";
-            ramp-volume-foreground = ct;
-          };
+        "module/date" = {
+          type = "internal/date";
+          interval = "1.0";
+          date = "%A, %d %B %Y";
+          time = "%k:%M:%S";
+          format = "<label>";
+          format-prefix = " ";
+          format-prefix-foreground = ct;
+          label = "%date% %time%";
+        };
 
-          "module/date" = {
-            type = "internal/date";
-            interval = "1.0";
-            date = "%A, %d %B %Y";
-            time = "%k:%M:%S";
-            format = "<label>";
-            format-prefix = " ";
-            format-prefix-foreground = ct;
-            label = "%date% %time%";
-          };
+        "module/i3" = {
+          type = "internal/i3";
+          internal = 5;
+          format = "<label-state> <label-mode>";
+          label-mode = "%mode%";
+          index-sort = true;
+          wrapping-scroll = false;
+          label-focused = "%index%";
+          label-focused-padding = 2;
+          label-focused-foreground = fg;
+          label-focused-background = bg;
+          label-focused-underline = ct;
+          label-unfocused = "%index%";
+          label-unfocused-padding = 2;
+          label-visible = "%index%";
+          label-separator = "|";
+          label-separator-padding = 1;
+          label-urgent = "%index%";
+          label-urgent-padding = 2;
+        };
 
-          "module/i3" = {
-            type = "internal/i3";
-            internal = 5;
-            format = "<label-state> <label-mode>";
-            label-mode = "%mode%";
-            index-sort = true;
-            wrapping-scroll = false;
-            label-focused = "%index%";
-            label-focused-padding = 2;
-            label-focused-foreground = fg;
-            label-focused-background = bg;
-            label-focused-underline = ct;
-            label-unfocused = "%index%";
-            label-unfocused-padding = 2;
-            label-visible = "%index%";
-            label-separator = "|";
-            label-separator-padding = 1;
-            label-urgent = "%index%";
-            label-urgent-padding = 2;
-          };
-
-          "module/sep" = {
-            type = "custom/text";
-            content = "|";
-          };
+        "module/sep" = {
+          type = "custom/text";
+          content = "|";
         };
       };
+    };
 
     picom = {
       enable = true;
