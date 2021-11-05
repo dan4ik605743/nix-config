@@ -341,6 +341,7 @@ in
         nsw = "doas nixos-rebuild switch --flake /etc/nixos";
         ssh = "TERM='xterm-256color' ssh";
         wttr = "curl wttr.in/krasnoyarsk";
+        repl = "nix repl /etc/nixos/repl.nix";
       };
     };
 
