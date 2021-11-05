@@ -11,11 +11,16 @@ rec {
     experimental-features = nix-command flakes
   '';
 
-  nixPath = [
-    "nixpkgs=${inputs.nixpkgs}"
-    "nixos-config=/etc/nixos/hosts/ggwp/configuration.nix"
-    "home-manager=${inputs.home}"
-  ];
+  nixPath =
+    let
+      path = toString ../.;
+    in
+    [
+      "nixpkgs=${inputs.nixpkgs}"
+      "nixos-config=/etc/nixos/hosts/ggwp/configuration.nix"
+      "home-manager=${inputs.home}"
+      "repl=${path}/repl.nix"
+    ];
 
   trustedUsers = [
     "root"
