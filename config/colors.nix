@@ -3,6 +3,11 @@
   foreground = "#d8dee9";
   background = "#2e3440";
   cursor = "#d8dee9";
+
+  fg = "#d8dee9";
+  bg = "#2e3440";
+  ct = "#81a1c1";
+
   color0 = "#3b4252";
   color1 = "#bf616a";
   color2 = "#a3be8c";
