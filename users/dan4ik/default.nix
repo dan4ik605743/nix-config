@@ -182,8 +182,8 @@ in
     '';
   };
 
-  services = with colors; {
-    polybar = {
+  services = {
+    polybar = with colors; {
       enable = true;
       script = "polybar main &";
 
@@ -206,108 +206,140 @@ in
         "bar/main" = {
           monitor-strict = false;
           override-redirect = false;
-          bottom = false;
           fixed-center = true;
-
           width = "100%";
-          height = 25;
-          offset-x = "0%";
-          offset-y = "0%";
-
-          background = bg;
-          foreground = fg;
-          line-size = 2;
-          line-color = ct;
-          border-bottom-size = 0;
-          border-color = ct;
-          tray-background = bg;
-
-          radius = 0;
+          height = 27;
           padding = 2;
-          spacing = 0;
-          dim-value = "1.0";
-          module-margin-left = 1;
-          module-margin-right = 1;
-          tray-position = "right";
-          tray-detached = false;
-          tray-maxsize = 16;
-          tray-offset-x = 0;
-          tray-offset-y = 0;
-          tray-padding = 2;
+
           enable-ipc = true;
+          background = background;
+          foreground = foreground;
+          line-color = color4;
+          line-size = 3;
 
-          font-0 = "DejaVu Sans:size=8;2";
-          font-1 = "waffle:size=12;2";
+          tray-detached = false;
+          tray-position = "right";
+          tray-maxsize = 16;
+          tray-padding = 2;
+          tray-background = background;
 
-          modules-left = "i3 sep";
+          font-0 = "JetBrainsMono:size=9;2";
+          font-1 = "Font Awesome 5 Free:size=9;2";
+          font-2 = "Font Awesome 5 Free Solid:size=9;2";
+          font-3 = "Font Awesome 5 Brands:size=9;2";
+
+          modules-left = "workspaces";
           modules-center = "date";
-          modules-right = "sep volume sep";
+          modules-right = "volume";
         };
 
         "settings" = {
-          throttle-output = 5;
-          throttle-output-for = 10;
-          throttle-input-for = 30;
           screenchange-reload = false;
+          pseudo-transparency = false;
           compositing-background = "source";
           compositing-foreground = "over";
           compositing-overline = "over";
           comppositing-underline = "over";
           compositing-border = "over";
-          pseudo-transparency = false;
         };
 
         "module/volume" = {
           type = "internal/pulseaudio";
-          format-volume = "<ramp-volume> <label-volume>";
+          handle-events = false;
+
+          ramp-volume-0 = "";
+          ramp-volume-1 = "";
+          ramp-volume-2 = "";
+
+          ramp-volume-foreground = color4;
+          ramp-volume-font = 6;
+          ramp-volume-padding-right = 1;
+
           label-volume = "%percentage%%";
-          format-muted-prefix = "";
-          label-muted = " Muted";
-          label-muted-foreground = ct;
-          use-ui-max = false;
-          ramp-volume-0 = "";
-          ramp-volume-1 = "";
-          ramp-volume-2 = "";
-          ramp-volume-3 = "";
-          ramp-volume-4 = "";
-          ramp-volume-foreground = ct;
+          label-volume-foreground = foreground;
+          label-muted = "%percentage%%";
+          label-muted-foreground = color4;
+
+          format-volume = "<ramp-volume><label-volume>";
+          format-volume-padding = 1;
+          format-volume-margin = 0;
+          format-volume-background = background-alt;
+          format-volume-overline = background;
+          format-volume-underline = background;
+
+          format-muted-prefix = "";
+          format-muted-prefix-padding-right = 1;
+          format-muted-prefix-foreground = color4;
+          format-muted-padding = 1;
+          format-muted-margin = 0;
+          format-muted-foreground = color4;
+          format-muted-background = background-alt;
+          format-muted-overline = background;
+          format-muted-underline = background;
         };
 
         "module/date" = {
           type = "internal/date";
-          interval = "1.0";
-          date = "%A, %d %B %Y";
-          time = "%k:%M:%S";
-          format = "<label>";
-          format-prefix = " ";
-          format-prefix-foreground = ct;
           label = "%date% %time%";
+          date = "%a %d-%m-%Y";
+          time = "%H:%M";
+          interval = 5;
+
+          format-prefix = "";
+          format-prefix-font = 6;
+          format-prefix-padding-right = 1;
+          format-prefix-padding-left = 0;
+
+          format-padding = 1;
+          format-margin = 1;
+          format-overline = background;
+          format-underline = background;
+          format-prefix-foreground = color4;
+          format-background = background-alt;
         };
 
-        "module/i3" = {
-          type = "internal/i3";
-          internal = 5;
-          format = "<label-state> <label-mode>";
-          label-mode = "%mode%";
-          index-sort = true;
-          wrapping-scroll = false;
-          label-focused = "%index%";
-          label-focused-padding = 2;
-          label-focused-foreground = fg;
-          label-focused-background = bg;
-          label-focused-underline = ct;
-          label-unfocused = "%index%";
-          label-unfocused-padding = 2;
-          label-visible = "%index%";
-          label-separator = "|";
-          label-separator-padding = 1;
-          label-urgent = "%index%";
-          label-urgent-padding = 2;
-        };
+        "module/workspaces" = {
+          type = "internal/xworkspaces";
+          pin-workspaces = true;
+          enable-scroll = false;
+          enable-click = false;
 
-        "module/sep" = {
-          type = "custom/text";
-          content = "|";
+          icon-0 = "1;";
+          icon-1 = "2;";
+          icon-2 = "3;";
+          icon-3 = "4;";
+          icon-4 = "5;";
+          icon-5 = "7;";
+          icon-6 = "8;";
+          icon-7 = "9;";
+          icon-8 = "10;";
+          icon-default = "";
+
+          format = "<label-state>";
+          format-overline = background;
+          format-underline = background;
+
+          label-monitor = "%name%";
+          label-active = "%icon%";
+          label-active-foreground = foreground;
+          label-active-background = color4;
+
+          label-occupied = "%icon%";
+          label-occupied-foreground = foreground;
+          label-occupied-background = background-alt;
+
+          label-urgent = "%icon%";
+          label-urgent-foreground = foreground;
+          label-urgent-background = color4;
+
+          label-empty = "%icon%";
+          label-empty-foreground = foreground;
+          label-empty-background = background-alt;
+
+          label-active-padding = 1;
+          label-urgent-padding = 1;
+          label-occupied-padding = 1;
+          label-empty-padding = 1;
         };
       };
     };
