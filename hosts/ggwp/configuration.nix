@@ -172,8 +172,14 @@
       omnisharp-roslyn
       mono
 
+      # sddm
+      libsForQt5.plasma-framework
+      libsForQt5.qt5.qtgraphicaleffects
+      libsForQt5.qt5.qtquickcontrols
+
       # nur
       nur.repos.dan4ik605743.i3lock-color
+      nur.repos.dan4ik605743.sddm-chili
 
       # scripts
       (pkgs.writeShellScriptBin "dotup" "doas cp -r /etc/nixos/* ~/git/nix-config/ && echo Finish!")
@@ -210,20 +216,9 @@
       displayManager = {
         defaultSession = "xterm";
 
-        lightdm = {
+        sddm = {
           enable = true;
-
-          greeters.mini = {
-            enable = true;
-            user = "dan4ik";
-
-            extraConfig = ''
-              [greeter]
-              show-password-label = false
-              [greeter-theme]
-              background-image = ""
-            '';
-          };
+          theme = "sddm-chili";
         };
       };
     };
