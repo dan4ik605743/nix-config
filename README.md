@@ -47,6 +47,7 @@ Resources and configurations I used to base on:
 * Qutebrowser (Browser) <space><space><space><space><space>
 * Polybar (Bar) <space><space><space><space><space>
 * Playerctl (Playback control) <space><space><space><space><space>
+* Dunst (Demon notifications) <space><space><space><space><space>
 * Maim (Screenshoter) <space><space><space><space><space>
 * Rofi (Launcher) <space><space><space><space><space>
 * Neovim (Code Editor) <space><space><space><space><space>
