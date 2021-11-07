@@ -353,6 +353,55 @@ in
       activeOpacity = "1.0";
       inactiveOpacity = "1.0";
     };
+
+    dunst = with colors; {
+      enable = true;
+
+      iconTheme = {
+        name = "Papirus-Dark";
+        size = "32x32";
+        package = pkgs.papirus-icon-theme;
+      };
+
+      settings = {
+        global = {
+          show_indicators = false;
+          markup = "full";
+          alignment = "center";
+          word_wrap = "yes";
+          format = "<b>%s</b>\n%b";
+          font = "JetBrainsMono 9.2";
+          separator_color = "auto";
+          icon_position = "left";
+          geometry = "330x5-8+25";
+          frame_color = color4;
+          padding = 8;
+          horizontal_padding = 8;
+          frame_width = 2;
+          max_icon_size = 50;
+        };
+
+        urgency_low = {
+          foreground = foreground;
+          background = background;
+          frame_color = color4;
+          timeout = 2;
+        };
+
+        urgency_normal = {
+          foreground = foreground;
+          background = background;
+          frame_color = color4;
+          timeout = 4;
+        };
+
+        urgency_critical = {
+          foreground = foreground;
+          background = background;
+          frame_color = color4;
+        };
+      };
+    };
   };
 
   programs = {
