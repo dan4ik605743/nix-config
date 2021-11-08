@@ -50,5 +50,13 @@
       nixosConfigurations.ggwp = import ./hosts/ggwp {
         inherit config hardware home nur inputs nixpkgs overlays;
       };
+
+      ggwp = self.nixosConfigurations.ggwp.config.system.build.toplevel;
+
+      nixosConfigurations.iso = import ./iso {
+        inherit config home nur inputs nixpkgs overlays;
+      };
+
+      iso = self.nixosConfigurations.iso.config.system.build.isoImage;
     };
 }
