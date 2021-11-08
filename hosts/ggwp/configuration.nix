@@ -115,7 +115,6 @@
       libva-utils
       mesa-demos
       gparted
-      pywal
       lm_sensors
       lxappearance
       ncdu
