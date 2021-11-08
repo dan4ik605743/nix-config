@@ -23,7 +23,7 @@ nixpkgs.lib.nixosSystem rec {
         in
         [ ];
 
-      nix = import ../../config/nix-conf.nix { inherit inputs system nixpkgs; };
+      nix = import ../../config/nix.nix { inherit inputs system nixpkgs; };
       nixpkgs = { inherit config overlays; };
     }
 
