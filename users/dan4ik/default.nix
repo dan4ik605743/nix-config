@@ -511,24 +511,24 @@ in
       layout = "us,ru";
     };
 
-    packages =
+    packages = with colors;
       let
         myscreenlock = pkgs.writeShellScriptBin "screenlock"
           ''
-            white=ffffffff
+            text=${color7}
             transparency=00000000
-            black=000000ff
-            font="roboto"
+            color=${color4}
+            font="JetBrainsMono"
             tx=120
             ty=690
 
             setxkbmap us
-            i3lock-color -i /etc/nixos/assets/wallpapers/i3lock.jpg --force-clock -e --indicator \
-            --timecolor=$white --datecolor=$white --insidevercolor=$transparency --insidewrongcolor=$transparency \
-            --insidecolor=$transparency --ringvercolor=$white --ringwrongcolor=$white --ringcolor=$white \
-            --linecolor=$transparency --keyhlcolor=$black --bshlcolor=$black \
+            i3lock-color -i /etc/nixos/assets/wallpapers/i3lock.png --force-clock -e --indicator \
+            --timecolor=$text --datecolor=$text --insidevercolor=$transparency --insidewrongcolor=$transparency \
+            --insidecolor=$transparency --ringvercolor=$text --ringwrongcolor=$text --ringcolor=$text \
+            --linecolor=$transparency --keyhlcolor=$color --bshlcolor=$color \
             --timepos="$tx:$ty" --datepos="$tx:(($ty+20))" --indpos="(($tx + 120)):(($ty -4))" \
-            --timesize=45 --datesize=16 --radius 20 --ring-width 3.5 \
+            --timesize=32 --datesize=14 --radius 20 --ring-width 3.5 \
             --time-font=$font --date-font=$font \
             --timestr="%H:%M" --datestr="%d %A %B" --veriftext="" --wrongtext="" --noinputtext="" --locktext="" \
             --lockfailedtext=""
