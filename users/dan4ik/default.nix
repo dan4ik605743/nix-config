@@ -26,6 +26,12 @@ let
     url = "https://raw.githubusercontent.com/stepb/urxvt-tabbedex/master/tabbedex";
     sha256 = "sha256-RirynHRM07psha4RqtvZoBasncAW9bt8FRF1H2DdZqk=";
   };
+
+  # Vim-plug
+  vim-plug = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim";
+    sha256 = "sha256-VgaLrLphI8TsVB85iJM/3cf5wee0+bCmfzrZPf1t9L4=";
+  };
 in
 {
   xsession = {
@@ -568,6 +574,10 @@ in
 
       ".urxvt/ext/tabbedex" = {
         text = builtins.readFile "${tabbedex}";
+      };
+
+      ".local/share/nvim/site/autoload/plug.vim" = {
+        text = builtins.readFile "${vim-plug}";
       };
     };
 
