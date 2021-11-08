@@ -1,4 +1,4 @@
-name: "configurtion flake check"
+name: "Check flake"
 on:
   pull_request:
   push:
@@ -6,12 +6,15 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
       with:
           fetch-depth: 0
-    - uses: cachix/install-nix-action@v12
+    - name: Install nix
+      uses: cachix/install-nix-action@v12
       with:
         install_url: https://github.com/numtide/nix-unstable-installer/releases/download/nix-2.4pre20210823_af94b54/install
         extra_nix_config: |
           experimental-features = nix-command flakes
-    - run: nix flake check ./
+    - name: Check flake format
+      run: nix flake check

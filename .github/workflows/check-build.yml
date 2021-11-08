@@ -1,4 +1,4 @@
-name: "configurtion build check"
+name: "Check build"
 on:
   pull_request:
   push:
@@ -6,12 +6,17 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
       with:
           fetch-depth: 0
-    - uses: cachix/install-nix-action@v12
+    - name: Install nix
+      uses: cachix/install-nix-action@v12
       with:
         install_url: https://github.com/numtide/nix-unstable-installer/releases/download/nix-2.4pre20201221_9fab14a/install
         extra_nix_config: |
           experimental-features = nix-command flakes
-    - run: nix build .#nixosConfigurations.ggwp.config.system.build.toplevel
+    - name: Check hosts build
+      run: nix build .#ggwp
+    - name: Check iso build
+      run: nix build .#iso 
