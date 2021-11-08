@@ -425,7 +425,7 @@ in
         nb = "nix-build -E 'with import <nixpkgs> {}; callPackage ./default.nix {}'";
         lsa = "ls -al";
         nup = "doas bash -c 'nix flake update /etc/nixos && nixos-rebuild switch --flake /etc/nixos'";
-        nsw = "doas nixos-rebuild switch --flake /etc/nixos";
+        nsw = "doas nixos-rebuild switch --flake /etc/nixos#ggwp";
         ssh = "TERM='xterm-256color' ssh";
         wttr = "curl wttr.in/krasnoyarsk";
         repl = "nix repl /etc/nixos/repl.nix";
