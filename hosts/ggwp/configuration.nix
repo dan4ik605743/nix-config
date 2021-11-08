@@ -247,7 +247,6 @@
       nur.repos.dan4ik605743.bitmap-fonts
       nur.repos.fortuneteller2k.iosevka-ft-bin
       font-awesome
-      font-awesome-ttf
       noto-fonts-emoji
       jetbrains-mono
       unifont
