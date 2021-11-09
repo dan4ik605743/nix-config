@@ -2,26 +2,31 @@
   description = "NixOS configuration using Nix Flakes";
 
   inputs = {
-    # Flake inputs
     hardware.url = "github:nixos/nixos-hardware";
     home.url = "github:nix-community/home-manager";
     nur.url = "github:nix-community/NUR";
 
-    # Nixpkgs branches
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     stable.url = "github:nixos/nixpkgs/nixos-21.05";
     oldstable.url = "github:nixos/nixpkgs/nixos-20.09";
 
-    # Default Nixpkgs for packages and modules
     nixpkgs.follows = "unstable";
   };
 
   outputs = { self, nixpkgs, hardware, home, nur, ... } @ inputs:
     with nixpkgs.lib;
     let
+      system = "x86_64-linux";
+      pkgs = mkPkgs nixpkgs [ self.overlay ];
+
       config = {
         allowBroken = true;
         allowUnfree = true;
+      };
+
+      mkPkgs = pkgs: extraOverlays: import pkgs {
+        inherit system;
+        config = config;
       };
 
       filterNixFiles = k: v: v == "regular" && hasSuffix ".nix" k;
@@ -34,16 +39,13 @@
             system = final.stdenv.hostPlatform.system;
           in
           {
-            # Nixpkgs branches
             unstable = import unstable { inherit config system; };
             stable = import stable { inherit config system; };
             oldstable = import oldstable { inherit config system; };
           })
 
-        # Overlays provided by inputs
         nur.overlay
       ]
-      # Overlays from ./overlays directory
       ++ (importNixFiles ./overlays);
     in
     {
@@ -58,5 +60,7 @@
       };
 
       iso = self.nixosConfigurations.iso.config.system.build.isoImage;
+
+      devShell.${system} = import ./shell.nix { inherit pkgs; };
     };
 }
