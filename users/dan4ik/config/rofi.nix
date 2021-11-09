@@ -59,7 +59,7 @@ with colors;
 
   #textbox-prompt-colon {
       expand: false;
-      str: ":";
+      str: "";
       margin: 0px 0.3em 0em 0em;
       text-color: @normal-foreground;
   }
