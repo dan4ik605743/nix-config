@@ -429,6 +429,7 @@ in
         ssh = "TERM='xterm-256color' ssh";
         wttr = "curl wttr.in/krasnoyarsk";
         repl = "nix repl /etc/nixos/repl.nix";
+        develop = "nix develop /etc/nixos";
       };
     };
 
