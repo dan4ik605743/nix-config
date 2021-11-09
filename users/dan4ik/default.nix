@@ -438,6 +438,10 @@ in
       font = "Iosevka FT Extended 9";
       terminal = "urxvtc";
       theme = builtins.toString (pkgs.writeText "rofi-theme" "${rofi-theme}");
+
+      extraConfig = {
+        display-drun = "λ";
+      };
     };
 
     qutebrowser = {
