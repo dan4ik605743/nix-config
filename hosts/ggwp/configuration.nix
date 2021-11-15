@@ -123,6 +123,7 @@
       ranger
       aircrack-ng
       tree
+      wine
       winetricks
       steam-run
       llpp
