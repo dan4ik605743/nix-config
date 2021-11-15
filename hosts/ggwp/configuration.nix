@@ -137,7 +137,6 @@
       wpsoffice
       qbittorrent
       discord
-      lutris
       vk-messenger
       viber
       teamspeak_client
