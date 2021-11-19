@@ -128,7 +128,6 @@
       steam-run
       llpp
       libnotify
-      dunst
       xorg.xev
 
       # apps
