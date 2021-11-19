@@ -3,7 +3,6 @@
 with pkgs;
 
 mkShell {
-
   buildInputs = [
     autoPatchelfHook
   ];
