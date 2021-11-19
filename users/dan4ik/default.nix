@@ -359,12 +359,12 @@ in
 
     picom = {
       enable = true;
-      package = pkgs.nur.repos.dan4ik605743.compton;
-      backend = "glx";
       vSync = true;
       refreshRate = 60;
+      backend = "glx";
       activeOpacity = "1.0";
       inactiveOpacity = "1.0";
+      package = pkgs.nur.repos.dan4ik605743.compton;
     };
 
     dunst = with colors; {
