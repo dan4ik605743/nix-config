@@ -32,6 +32,13 @@ let
     url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim";
     sha256 = "sha256-VgaLrLphI8TsVB85iJM/3cf5wee0+bCmfzrZPf1t9L4=";
   };
+
+  # Cmus
+  cmus-rc = pkgs.writeText "rc" ''
+    add ~/Documents/music
+    set start_view=1
+    colorscheme cmus
+  '';
 in
 {
   xsession = {
@@ -434,6 +441,10 @@ in
       font = "Iosevka FT Extended 9";
       terminal = "urxvtc";
       theme = builtins.toString (pkgs.writeText "rofi-theme" "${rofi-theme}");
+
+      extraConfig = {
+        display-drun = "λ";
+      };
     };
 
     qutebrowser = {
@@ -558,6 +569,10 @@ in
 
       ".config/cmus/cmus.theme" = {
         text = builtins.readFile "${cmus-theme}";
+      };
+
+      ".config/cmus/rc" = {
+        text = builtins.readFile "${cmus-rc}";
       };
 
       ".urxvt/ext/url-select" = {
