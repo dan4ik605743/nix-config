@@ -222,10 +222,10 @@
     };
 
     logind = {
-      extraConfig = "HandlePowerKey=suspend";
       lidSwitch = "ignore";
       lidSwitchDocked = "ignore";
       lidSwitchExternalPower = "ignore";
+      extraConfig = "HandlePowerKey=suspend";
     };
   };
 
