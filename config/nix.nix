@@ -3,8 +3,6 @@
 rec {
   package = nixpkgs.legacyPackages."${system}".nixFlakes;
   trustedBinaryCaches = binaryCaches;
-  daemonNiceLevel = 1;
-  daemonIONiceLevel = 1;
   maxJobs = 1;
 
   extraOptions = ''
