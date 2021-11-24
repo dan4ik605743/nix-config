@@ -89,7 +89,7 @@
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod;
     kernelParams = [ "intel_idle.max_cstate=1" "mitigations=off" ];
-    supportedFilesystems = [ "xfs" "ntfs" ];
+    supportedFilesystems = [ "xfs" "ntfs" "nfs" ];
 
     loader.grub = {
       enable = true;
