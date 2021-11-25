@@ -35,7 +35,7 @@ let
 
   # Cmus
   cmus-rc = pkgs.writeText "rc" ''
-    add ~/Documents/music
+    add ~/nfs/music
     set start_view=1
     colorscheme cmus
   '';
