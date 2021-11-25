@@ -128,6 +128,7 @@
       steam-run
       llpp
       libnotify
+      tigervnc
       xorg.xev
 
       # apps
