@@ -54,8 +54,16 @@
     };
 
     interfaces = {
-      enp4s0.useDHCP = true;
       wlp3s0.useDHCP = true;
+
+      enp4s0 = {
+        useDHCP = true;
+
+        ipv4.addresses = [{
+          address = "192.168.0.110";
+          prefixLength = 16;
+        }];
+      };
     };
 
     nameservers = [
