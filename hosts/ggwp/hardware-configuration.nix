@@ -19,7 +19,7 @@
   };
 
   fileSystems."/home/dan4ik/nfs" = {
-    device = "192.168.0.101:/home";
+    device = "192.168.0.111:/home";
     options = [ "x-systemd.idle-timeout=300" "x-systemd.automount" "noauto" ];
     fsType = "nfs";
   };
