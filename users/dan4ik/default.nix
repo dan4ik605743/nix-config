@@ -133,6 +133,8 @@ in
           "Mod1+F2" = "exec playerctl play-pause";
           "Mod1+F3" = "exec playerctl previous";
           "Mod1+F4" = "exec playerctl next";
+          "Mod1+space" = "move scratchpad";
+          "Mod1+Tab" = "scratchpad show, resize set 1366 750, move position center";
           "XF86AudioPlay" = "exec playerctl play-pause";
           "XF86AudioPrev" = "exec playerctl previous";
           "XF86AudioNext" = "exec playerctl next";
