@@ -1,9 +1,10 @@
-{ config, hardware, home, nur, inputs, nixpkgs, overlays, ... }:
+{ config, hardware, home, nur, agenix, inputs, nixpkgs, overlays, ... }:
 
 nixpkgs.lib.nixosSystem rec {
   system = "x86_64-linux";
 
   modules = [
+    agenix.nixosModules.age
     home.nixosModules.home-manager
     hardware.nixosModules.common-pc-ssd
     nixpkgs.nixosModules.notDetected
@@ -13,6 +14,11 @@ nixpkgs.lib.nixosSystem rec {
         useGlobalPkgs = true;
         useUserPackages = true;
         users.dan4ik = import ../../users/dan4ik/default.nix;
+      };
+
+      age = {
+        secrets.secrets.file = ../../secrets/secrets.age;
+        sshKeyPaths = [ "/home/dan4ik/.ssh/id_ed25519" ];
       };
 
       imports =
