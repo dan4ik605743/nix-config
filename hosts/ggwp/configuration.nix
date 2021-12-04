@@ -137,6 +137,7 @@
       llpp
       libnotify
       tigervnc
+      agenix
       xorg.xev
 
       # apps
