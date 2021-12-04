@@ -3,6 +3,7 @@
 
   inputs = {
     hardware.url = "github:nixos/nixos-hardware";
+    agenix.url = "github:ryantm/agenix";
     home.url = "github:nix-community/home-manager";
     nur.url = "github:nix-community/NUR";
 
@@ -13,7 +14,7 @@
     nixpkgs.follows = "unstable";
   };
 
-  outputs = { self, nixpkgs, hardware, home, nur, ... } @ inputs:
+  outputs = { self, nixpkgs, hardware, home, nur, agenix, ... } @ inputs:
     with nixpkgs.lib;
     let
       system = "x86_64-linux";
@@ -39,6 +40,7 @@
             system = final.stdenv.hostPlatform.system;
           in
           {
+            agenix = agenix.defaultPackage.${system};
             unstable = import unstable { inherit config system; };
             stable = import stable { inherit config system; };
             oldstable = import oldstable { inherit config system; };
@@ -50,7 +52,7 @@
     in
     {
       nixosConfigurations.ggwp = import ./hosts/ggwp {
-        inherit config hardware home nur inputs nixpkgs overlays;
+        inherit config hardware home nur agenix inputs nixpkgs overlays;
       };
 
       ggwp = self.nixosConfigurations.ggwp.config.system.build.toplevel;
