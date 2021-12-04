@@ -173,9 +173,9 @@
       ctags
 
       # c#
-      dotnet-sdk
-      dotnet-netcore
-      dotnet-aspnetcore
+      dotnetCorePackages.sdk_5_0
+      dotnetCorePackages.runtime_5_0
+      dotnetCorePackages.aspnetcore_5_0
       omnisharp-roslyn
       mono
 
