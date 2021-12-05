@@ -1,3 +1,3 @@
 final: prev: {
-  wine = prev.wineWowPackages.staging;
+  wine = prev.stable.wine;
 }
