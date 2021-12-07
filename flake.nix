@@ -8,7 +8,7 @@
     nur.url = "github:nix-community/NUR";
 
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    stable.url = "github:nixos/nixpkgs/nixos-21.05";
+    stable.url = "github:nixos/nixpkgs/nixos-21.11";
     oldstable.url = "github:nixos/nixpkgs/nixos-20.09";
 
     nixpkgs.follows = "unstable";
