@@ -178,6 +178,7 @@
       dotnetCorePackages.runtime_5_0
       dotnetCorePackages.aspnetcore_5_0
       omnisharp-roslyn
+      netcoredbg
       mono
 
       # sddm
