@@ -18,7 +18,7 @@ nixpkgs.lib.nixosSystem rec {
 
       age = {
         secrets.secrets.file = ../../secrets/secrets.age;
-        sshKeyPaths = [ "/home/dan4ik/.ssh/id_ed25519" ];
+        identityPaths = [ "/home/dan4ik/.ssh/id_ed25519" ];
       };
 
       imports =
