@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   # Theme
@@ -35,7 +35,6 @@ let
 
   # Cmus
   cmus-rc = pkgs.writeText "rc" ''
-    add ~/Documents/music
     set start_view=1
     colorscheme cmus
   '';
@@ -105,7 +104,6 @@ in
           "7" = [{ class = "^Wps$"; }];
           "8" = [{ class = "^Wpp$"; }];
           "9" = [{ class = "^ViberPC$"; }];
-          "10" = [{ class = "^TeamSpeak 3$"; }];
         };
 
         window = {
@@ -132,6 +130,8 @@ in
           "Mod1+F2" = "exec playerctl play-pause";
           "Mod1+F3" = "exec playerctl previous";
           "Mod1+F4" = "exec playerctl next";
+          "Mod1+space" = "move scratchpad";
+          "Mod1+Tab" = "scratchpad show, resize set 1366 750, move position center";
           "XF86AudioPlay" = "exec playerctl play-pause";
           "XF86AudioPrev" = "exec playerctl previous";
           "XF86AudioNext" = "exec playerctl next";
@@ -324,7 +324,6 @@ in
           icon-5 = "7;";
           icon-6 = "8;";
           icon-7 = "9;";
-          icon-8 = "10;";
           icon-default = "";
 
           format = "<label-state>";
@@ -429,9 +428,11 @@ in
         xp = "xclip -sel clip";
         ls = "ls -l -F --color=auto";
         nb = "nix-build -E 'with import <nixpkgs> {}; callPackage ./default.nix {}'";
+        df = "df -hT";
         lsa = "ls -al";
         ssh = "TERM='xterm-256color' ssh";
         wttr = "curl wttr.in/krasnoyarsk";
+        inxi = "inxi -F";
       };
     };
 
