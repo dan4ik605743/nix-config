@@ -429,6 +429,7 @@ in
         tb = "nc termbin.com 9999";
         xp = "xclip -sel clip";
         ls = "ls -l -F --color=auto";
+        df = "df -hT";
         nb = "nix-build -E 'with import <nixpkgs> {}; callPackage ./default.nix {}'";
         lsa = "ls -al";
         nup = "doas bash -c 'nix flake update /etc/nixos && nixos-rebuild switch --flake /etc/nixos'";
@@ -436,6 +437,7 @@ in
         ssh = "TERM='xterm-256color' ssh";
         wttr = "curl wttr.in/krasnoyarsk";
         repl = "nix repl /etc/nixos/repl.nix";
+        inxi = "inxi -F";
         develop = "nix develop /etc/nixos";
       };
     };
