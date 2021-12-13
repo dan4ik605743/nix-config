@@ -326,7 +326,6 @@ in
           icon-5 = "7;";
           icon-6 = "8;";
           icon-7 = "9;";
-          icon-8 = "10;";
           icon-default = "";
 
           format = "<label-state>";
