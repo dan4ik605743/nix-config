@@ -147,9 +147,7 @@
       wpsoffice
       qbittorrent
       discord
-      vk-messenger
       viber
-      teamspeak_client
 
       # nix-tools
       nix-prefetch-scripts
