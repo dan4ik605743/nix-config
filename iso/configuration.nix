@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   qt5 = {
@@ -17,6 +17,7 @@
 
     doas = {
       enable = true;
+
       extraRules = [{
         groups = [ "wheel" ];
         keepEnv = true;
@@ -91,6 +92,7 @@
       llpp
       libnotify
       dunst
+      inxi
       xorg.xev
 
       # apps
@@ -99,9 +101,7 @@
       wpsoffice
       qbittorrent
       discord
-      vk-messenger
       viber
-      teamspeak_client
 
       # nix-tools
       nix-prefetch-scripts
@@ -130,6 +130,7 @@
       dotnet-sdk
       dotnet-netcore
       dotnet-aspnetcore
+      netcoredbg
       omnisharp-roslyn
       mono
 
