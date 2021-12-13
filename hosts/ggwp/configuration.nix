@@ -139,6 +139,7 @@
       libnotify
       tigervnc
       agenix
+      inxi
       xorg.xev
 
       # apps
