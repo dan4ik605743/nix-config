@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   qt5 = {
@@ -24,6 +24,7 @@
 
     doas = {
       enable = true;
+
       extraRules = [{
         groups = [ "wheel" ];
         keepEnv = true;
