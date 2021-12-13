@@ -23,6 +23,8 @@ nixos-install --root /mnt --system ./result
 * You probably should replace <a href="https://github.com/dan4ik605743/nix-config/blob/master/hosts/ggwp/hardware-configuration.nix">hardware-configuration.nix</a> with your own with `nixos-generate-config`.
 * You probably want to change <a href="https://github.com/dan4ik605743/nix-config/tree/master/users/dan4ik/config/neovim">neovim-configuration</a>.
 * You probably want to change <a href="https://github.com/dan4ik605743/nix-config/tree/master/iso">iso-configuration</a>.
+* You might want to change all instances of my username to yours.
+* You might want to disable `agenix`, for my secret cannot be decrypted without my private key. See <a href="https://github.com/dan4ik605743/nix-config/blob/master/hosts/ggwp/default.nix">default.nix</a>.
 
 ## Description
 NixOS configuration that I use daily, it contains the system-wide and home configuration, symlinked to `/etc/nixos`.
