@@ -20,6 +20,10 @@
       system = "x86_64-linux";
       pkgs = mkPkgs nixpkgs [ self.overlay ];
 
+      filterNixFiles = k: v: v == "regular" && hasSuffix ".nix" k;
+      importNixFiles = path: (lists.forEach (mapAttrsToList (name: _: path + ("/" + name))
+        (filterAttrs filterNixFiles (builtins.readDir path)))) import;
+
       config = {
         allowBroken = true;
         allowUnfree = true;
@@ -30,10 +34,6 @@
         config = config;
       };
 
-      filterNixFiles = k: v: v == "regular" && hasSuffix ".nix" k;
-      importNixFiles = path: (lists.forEach (mapAttrsToList (name: _: path + ("/" + name))
-        (filterAttrs filterNixFiles (builtins.readDir path)))) import;
-
       overlays = with inputs; [
         (final: _:
           let
@@ -41,14 +41,14 @@
           in
           {
             agenix = agenix.defaultPackage.${system};
+
             unstable = import unstable { inherit config system; };
             stable = import stable { inherit config system; };
             oldstable = import oldstable { inherit config system; };
           })
 
         nur.overlay
-      ]
-      ++ (importNixFiles ./overlays);
+      ] ++ (importNixFiles ./overlays);
     in
     {
       nixosConfigurations.ggwp = import ./hosts/ggwp {
