@@ -149,6 +149,7 @@
       qbittorrent
       discord
       viber
+      gimp
 
       # nix-tools
       nix-prefetch-scripts
