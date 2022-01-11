@@ -469,7 +469,6 @@ in
         c.fonts.default_size = "13px"
         c.colors.webpage.darkmode.enabled = True
         c.colors.webpage.darkmode.policy.images = "never"
-        config.set('content.notifications.enabled', True, 'vk.com/*')
         config.set('content.media.audio_capture', True, '*')
         config.source('qutebrowser-theme.py')
       '';
