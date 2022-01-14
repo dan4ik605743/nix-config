@@ -154,6 +154,7 @@
       discord
       viber
       gimp
+      teamspeak_client
 
       # nix-tools
       nix-prefetch-scripts
