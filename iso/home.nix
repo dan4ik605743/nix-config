@@ -30,7 +30,7 @@ let
   # Vim-plug
   vim-plug = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim";
-    sha256 = "sha256-CHWfgQuZIESTK6WRiWTlDTstEnUNp1oQ5Mj2CHvASVM=";
+    sha256 = "sha256-DU3EIsMVH/ZRBjslGTOzRlcUxbnzIm+vDKf4tKRApVI=";
   };
 
   # Cmus
@@ -101,9 +101,11 @@ in
         assigns = {
           "1" = [{ class = "^qutebrowser$"; }];
           "5" = [{ class = "^discord$"; }];
+          "6" = [{ class = "^Steam$"; }];
           "7" = [{ class = "^Wps$"; }];
           "8" = [{ class = "^Wpp$"; }];
           "9" = [{ class = "^ViberPC$"; }];
+          "10" = [{ class = "^TeamSpeak 3$"; }];
         };
 
         window = {
@@ -321,9 +323,11 @@ in
           icon-2 = "3;";
           icon-3 = "4;";
           icon-4 = "5;";
-          icon-5 = "7;";
-          icon-6 = "8;";
-          icon-7 = "9;";
+          icon-5 = "6;";
+          icon-6 = "7;";
+          icon-7 = "8;";
+          icon-8 = "9;";
+          icon-9 = "10;";
           icon-default = "";
 
           format = "<label-state>";
@@ -459,7 +463,6 @@ in
         c.fonts.default_size = "13px"
         c.colors.webpage.darkmode.enabled = True
         c.colors.webpage.darkmode.policy.images = "never"
-        config.set('content.notifications.enabled', True, 'vk.com/*')
         config.set('content.media.audio_capture', True, '*')
         config.source('qutebrowser-theme.py')
       '';
