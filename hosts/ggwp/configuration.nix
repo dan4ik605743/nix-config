@@ -100,7 +100,7 @@
   };
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod;
+    kernelPackages = pkgs.linuxPackages-libre;
     kernelParams = [ "intel_idle.max_cstate=1" "mitigations=off" ];
     supportedFilesystems = [ "xfs" "ntfs" "nfs" ];
 
