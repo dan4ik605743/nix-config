@@ -33,6 +33,15 @@
     };
   };
 
+  sound = {
+    enable = true;
+
+    extraConfig = ''
+      defaults.pcm.card 1
+      defaults.ctl.card 1
+    '';
+  };
+
   programs.dconf.enable = true;
   powerManagement.enable = false;
   i18n.defaultLocale = "en_US.UTF-8";
@@ -206,16 +215,6 @@
     zerotierone = {
       enable = true;
       joinNetworks = [ "17d709436cd7dbb5" ];
-    };
-
-    pipewire = {
-      enable = true;
-      pulse.enable = true;
-
-      alsa = {
-        enable = true;
-        support32Bit = true;
-      };
     };
 
     xserver = {
