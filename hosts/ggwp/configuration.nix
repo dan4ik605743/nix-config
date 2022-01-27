@@ -114,6 +114,10 @@
       device = "/dev/sda";
       version = 2;
     };
+
+    extraModprobeConfig = ''
+      options snd_hda_intel enable=0,1
+    '';
   };
 
   environment = {
