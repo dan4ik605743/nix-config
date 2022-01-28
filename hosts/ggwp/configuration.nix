@@ -160,7 +160,6 @@
       vlc
       wpsoffice
       qbittorrent
-      discord
       viber
       gimp
       teamspeak_client
@@ -172,13 +171,6 @@
       nixpkgs-fmt
       nixpkgs-review
       patchelf
-
-      # audio-tools
-      alsa-utils
-      pavucontrol
-      pulseaudio
-      playerctl
-      cmus
 
       # neovim
       neovim
