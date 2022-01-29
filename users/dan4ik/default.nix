@@ -205,8 +205,8 @@ in
 
       package = pkgs.polybar.override {
         i3GapsSupport = true;
-        pulseSupport = true;
-        alsaSupport = false;
+        alsaSupport = true;
+        pulseSupport = false;
         githubSupport = false;
         iwSupport = false;
         mpdSupport = false;
@@ -260,8 +260,9 @@ in
         };
 
         "module/volume" = {
-          type = "internal/pulseaudio";
+          type = "internal/alsa";
           handle-events = false;
+          master-mixer = "PCM";
 
           ramp-volume-0 = "";
           ramp-volume-1 = "";
@@ -299,7 +300,6 @@ in
           label = "%date% %time%";
           date = "%a %d-%m-%Y";
           time = "%H:%M";
-          interval = 5;
 
           format-prefix = "";
           format-prefix-font = 6;
@@ -324,12 +324,10 @@ in
           icon-1 = "2;";
           icon-2 = "3;";
           icon-3 = "4;";
-          icon-4 = "5;";
-          icon-5 = "6;";
-          icon-6 = "7;";
-          icon-7 = "8;";
-          icon-8 = "9;";
-          icon-9 = "10;";
+          icon-4 = "7;";
+          icon-5 = "8;";
+          icon-6 = "9;";
+          icon-7 = "10;";
           icon-default = "";
 
           format = "<label-state>";
