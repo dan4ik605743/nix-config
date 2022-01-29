@@ -130,6 +130,9 @@
       bpytop
       pciutils
       usbutils
+      alsa-utils
+      playerctl
+      cmus
       wpa_supplicant
       p7zip
       maim
