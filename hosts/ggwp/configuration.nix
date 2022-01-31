@@ -218,7 +218,7 @@
 
     xserver = {
       enable = true;
-      videoDrivers = [ "modesetting" "nouveau" ];
+      videoDrivers = [ "modesetting" ];
       synaptics.enable = true;
       desktopManager.xterm.enable = true;
 
