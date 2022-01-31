@@ -55,7 +55,7 @@
 
     wireless = {
       enable = false;
-      interfaces = [ "wlp3s0" ];
+      interfaces = [ "wlp2s0" ];
 
       networks = {
         TP-Link_D482.psk = "Qq135790-";
@@ -64,9 +64,9 @@
     };
 
     interfaces = {
-      wlp3s0.useDHCP = true;
+      wlp2s0.useDHCP = true;
 
-      enp4s0 = {
+      enp3s0 = {
         useDHCP = true;
 
         ipv4.addresses = [{
