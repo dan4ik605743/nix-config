@@ -52,7 +52,6 @@ in
 
     windowManager.i3 = with colors; {
       enable = true;
-      package = pkgs.oldstable.i3-gaps;
 
       config = rec {
         modifier = "Mod4";
@@ -102,8 +101,6 @@ in
 
         assigns = {
           "1" = [{ class = "^qutebrowser$"; }];
-          "5" = [{ class = "^discord$"; }];
-          "6" = [{ class = "^Steam$"; }];
           "7" = [{ class = "^Wps$"; }];
           "8" = [{ class = "^Wpp$"; }];
           "9" = [{ class = "^ViberPC$"; }];
@@ -126,7 +123,7 @@ in
 
         keybindings = lib.mkOptionDefault {
           "${modifier}+Print" = "exec maim -u | xclip -selection clipboard -t image/png";
-          "${modifier}+F12" = "exec pavucontrol";
+          "${modifier}+F12" = "exec urxvtc -e alsamixer";
           "${modifier}+F11" = "exec screenlock";
           "${modifier}+F10" = "exec urxvtc -e htop";
           "${modifier}+F1" = "exec qutebrowser";
@@ -139,9 +136,9 @@ in
           "XF86AudioPlay" = "exec playerctl play-pause";
           "XF86AudioPrev" = "exec playerctl previous";
           "XF86AudioNext" = "exec playerctl next";
-          "XF86AudioRaiseVolume" = "exec pactl set-sink-volume 0 +5%";
-          "XF86AudioLowerVolume" = "exec pactl set-sink-volume 0 -5%";
-          "XF86AudioMute" = "exec pactl set-sink-mute 0 toggle";
+          "XF86AudioRaiseVolume" = "exec amixer -q set PCM 4%-";
+          "XF86AudioLowerVolume" = "exec amixer -q set PCM 4%+";
+          "XF86AudioMute" = "exec amixer -q set PCM toggle";
           "XF86TouchpadToggle" = "exec synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')";
           "Print" = "exec maim -su | xclip -selection clipboard -t image/png";
         };
