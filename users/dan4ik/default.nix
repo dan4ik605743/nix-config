@@ -36,6 +36,9 @@ let
   # Cmus
   cmus-rc = pkgs.writeText "rc" ''
     add ~/nfs/music
+    set output_plugin=alsa
+    set dsp.alsa.device=default
+    set softvol=true
     set start_view=1
     colorscheme cmus
   '';
