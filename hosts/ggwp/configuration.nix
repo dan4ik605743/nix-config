@@ -42,7 +42,11 @@
     '';
   };
 
-  programs.dconf.enable = true;
+  programs = {
+    dconf.enable = true;
+    adb.enable = true;
+  };
+
   powerManagement.enable = false;
   i18n.defaultLocale = "en_US.UTF-8";
   time.timeZone = "Asia/Krasnoyarsk";
