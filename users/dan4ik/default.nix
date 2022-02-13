@@ -442,6 +442,7 @@ in
         wttr = "curl wttr.in/krasnoyarsk";
         repl = "nix repl /etc/nixos/repl.nix";
         inxi = "inxi -F";
+        fdisk = "doas fdisk -l";
         develop = "nix develop /etc/nixos";
       };
     };
