@@ -502,7 +502,6 @@ in
 
       settings = {
         vim_mode = true;
-        tree_view = true;
         hide_kernel_threads = true;
         hide_userland_threads = true;
       };
