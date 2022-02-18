@@ -45,6 +45,7 @@
   programs = {
     dconf.enable = true;
     adb.enable = true;
+    java.enable = true;
   };
 
   powerManagement.enable = false;
@@ -160,6 +161,7 @@
       tigervnc
       agenix
       inxi
+      jre
       xorg.xev
 
       # apps
