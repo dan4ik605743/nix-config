@@ -51,7 +51,7 @@ rec {
   };
 
   gc = {
-    automatic = true;
+    automatic = false;
     dates = "weekly";
     options = "-d";
   };
