@@ -4,11 +4,11 @@ with colors;
 
 ''
   * {
-      active-background: ${color4};
+      active-background: ${colorCt};
       active-foreground: @foreground;
       normal-background: @background;
       normal-foreground: @foreground;
-      urgent-background: ${color4};
+      urgent-background: ${colorCt};
       urgent-foreground: @foreground;
 
       alternate-active-background: @background;
@@ -18,16 +18,16 @@ with colors;
       alternate-urgent-background: @background;
       alternate-urgent-foreground: @foreground;
 
-      selected-active-background: ${color4};
+      selected-active-background: ${colorCt};
       selected-active-foreground: @foreground;
-      selected-normal-background: ${color4};
+      selected-normal-background: ${colorCt};
       selected-normal-foreground: @foreground;
-      selected-urgent-background: ${color4};
+      selected-urgent-background: ${colorCt};
       selected-urgent-foreground: @foreground;
 
       background-color: @background;
       background: ${background};
-      foreground: ${foreground};
+      foreground: ${color7};
       border-color: @background;
       spacing: 2;
   }
