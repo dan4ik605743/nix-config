@@ -65,23 +65,23 @@ in
             border = "#4c7899";
             background = "#285577";
             text = "#ffffff";
-            indicator = "${color4}";
-            childBorder = "${color4}";
+            indicator = "${colorCt}";
+            childBorder = "${colorCt}";
           };
 
           focusedInactive = {
             border = "#333333";
             background = "#5f676a";
             text = "#ffffff";
-            indicator = "${color4}";
-            childBorder = "${color4}";
+            indicator = "${colorCt}";
+            childBorder = "${colorCt}";
           };
 
           unfocused = {
             border = "#333333";
             background = "#222222";
             text = "#888888";
-            indicator = "${color4}";
+            indicator = "${colorCt}";
             childBorder = "#222222";
           };
 
@@ -89,16 +89,16 @@ in
             border = "#2f343a";
             background = "#900000";
             text = "#ffffff";
-            indicator = "${color4}";
-            childBorder = "${color4}";
+            indicator = "${colorCt}";
+            childBorder = "${colorCt}";
           };
 
           placeholder = {
             border = "#000000";
             background = "#0c0c0c";
             text = "#ffffff";
-            indicator = "${color4}";
-            childBorder = "${color4}";
+            indicator = "${colorCt}";
+            childBorder = "${colorCt}";
           };
         };
 
