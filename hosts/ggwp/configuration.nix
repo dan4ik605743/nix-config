@@ -45,7 +45,6 @@
   programs = {
     dconf.enable = true;
     adb.enable = true;
-    java.enable = true;
   };
 
   powerManagement.enable = false;
