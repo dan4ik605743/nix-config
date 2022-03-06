@@ -415,8 +415,7 @@ in
         ls = "ls -l -F --color=auto";
         df = "df -hT";
         nb = "nix-build -E 'with import <nixpkgs> {}; callPackage ./default.nix {}'";
-        db = "dotnet build";
-        dr = "dotnet run";
+        fd = "doas fdisk -l";
         lsa = "ls -al";
         nup = "doas bash -c 'nix flake update /etc/nixos && nixos-rebuild switch --flake /etc/nixos'";
         nsw = "doas nixos-rebuild switch --flake /etc/nixos#ggwp";
@@ -424,7 +423,6 @@ in
         wttr = "curl wttr.in/krasnoyarsk";
         repl = "nix repl /etc/nixos/repl.nix";
         inxi = "inxi -F";
-        fdisk = "doas fdisk -l";
         develop = "nix develop /etc/nixos";
       };
     };
