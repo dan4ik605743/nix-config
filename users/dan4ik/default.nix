@@ -480,6 +480,7 @@ in
     };
     htop = {
       enable = true;
+      package = pkgs.nur.repos.dan4ik605743.htop-solarized;
 
       settings = {
         vim_mode = true;
