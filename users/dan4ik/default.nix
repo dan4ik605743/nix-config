@@ -543,10 +543,6 @@ in
         text = import ./config/qutebrowser.nix;
       };
 
-      ".config/bpytop/bpytop.conf" = {
-        text = import ./config/bpytop.nix;
-      };
-
       ".config/nixpkgs/config.nix" = {
         text = import ./config/nixpkgs.nix;
       };
