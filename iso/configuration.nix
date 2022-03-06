@@ -26,7 +26,11 @@
     };
   };
 
-  programs.dconf.enable = true;
+  programs = {
+    dconf.enable = true;
+    adb.enable = true;
+  };
+
   powerManagement.enable = false;
   i18n.defaultLocale = "en_US.UTF-8";
   time.timeZone = "Asia/Krasnoyarsk";
@@ -70,10 +74,12 @@
       wget
       feh
       git
-      jmtpfs
-      bpytop
       pciutils
       usbutils
+      alsa-utils
+      playerctl
+      cmus
+      wpa_supplicant
       p7zip
       maim
       xclip
@@ -84,14 +90,12 @@
       lxappearance
       ncdu
       pfetch
-      vk-cli
-      ranger
       aircrack-ng
       tree
-      steam-run
       llpp
       libnotify
-      dunst
+      tigervnc
+      agenix
       inxi
       xorg.xev
 
@@ -100,8 +104,8 @@
       vlc
       wpsoffice
       qbittorrent
-      discord
       viber
+      gimp
 
       # nix-tools
       nix-prefetch-scripts
@@ -111,13 +115,6 @@
       nixpkgs-review
       patchelf
 
-      # audio-tools
-      alsa-utils
-      pavucontrol
-      pulseaudio
-      playerctl
-      cmus
-
       # neovim
       neovim
       fzf
@@ -126,13 +123,10 @@
       yarn
       ctags
 
-      # c#
-      dotnet-sdk
-      dotnet-netcore
-      dotnet-aspnetcore
-      netcoredbg
-      omnisharp-roslyn
-      mono
+      # c++
+      gcc 
+      clang
+      ccls
 
       # sddm
       libsForQt5.plasma-framework
@@ -207,15 +201,13 @@
 
   fonts = {
     fonts = with pkgs; [
-      nur.repos.dan4ik605743.bitmap-fonts
-      nur.repos.fortuneteller2k.iosevka-ft-bin
-      font-awesome
       noto-fonts-emoji
       jetbrains-mono
+      cascadia-code
+      font-awesome
+      hack-font
       unifont
       roboto
-      hack-font
-      siji
     ];
 
     fontconfig = {
