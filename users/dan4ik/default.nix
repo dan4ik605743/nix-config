@@ -171,7 +171,7 @@ in
     enable = true;
 
     font = {
-      name = "JetBrains Mono Bold";
+      name = "Cascadia Mono";
       size = 9;
     };
 
