@@ -514,19 +514,19 @@ in
       let
         myscreenlock = pkgs.writeShellScriptBin "screenlock"
           ''
-            text=${color7}
+            text=${color12}
             transparency=00000000
-            color=${color4}
+            color=${colorCt}
             font="JetBrainsMono"
             tx=120
             ty=690
 
             setxkbmap us
-            i3lock-color -i /etc/nixos/assets/wallpapers/i3lock.png --force-clock -e --indicator \
+            i3lock-color -i /etc/nixos/assets/wallpapers/i3lock.jpg --force-clock -e --indicator \
             --timecolor=$text --datecolor=$text --insidevercolor=$transparency --insidewrongcolor=$transparency \
-            --insidecolor=$transparency --ringvercolor=$text --ringwrongcolor=$text --ringcolor=$text \
+            --insidecolor=$transparency --ringvercolor=$color --ringwrongcolor=$text --ringcolor=$text \
             --linecolor=$transparency --keyhlcolor=$color --bshlcolor=$color \
-            --timepos="$tx:$ty" --datepos="$tx:(($ty+20))" --indpos="(($tx + 120)):(($ty -4))" \
+            --timepos="$tx:$ty" --datepos="$tx:(($ty+20))" --indpos="(($tx + 100)):(($ty -1))" \
             --timesize=32 --datesize=14 --radius 20 --ring-width 3.5 \
             --time-font=$font --date-font=$font \
             --timestr="%H:%M" --datestr="%d %A %B" --veriftext="" --wrongtext="" --noinputtext="" --locktext="" \
