@@ -446,10 +446,11 @@ in
 
       extraConfig = ''
         c.auto_save.session = True
-        c.fonts.default_family = "Iosevka FT Extended"
+        c.fonts.default_family = "Cascadia Mono"
         c.fonts.default_size = "13px"
         c.colors.webpage.darkmode.enabled = True
         c.colors.webpage.darkmode.policy.images = "never"
+        c.qt.args = ["enable-gpu-rasterization", "ignore-gpu-blacklist", "enable-native-gpu-memory-buffers", "num-raster-threads=2"]
         config.set('content.media.audio_capture', True, '*')
         config.source('qutebrowser-theme.py')
       '';
