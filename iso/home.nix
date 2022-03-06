@@ -7,8 +7,8 @@ let
   gtk-theme = pkgs.callPackage ../derivations/gtk-generated/default.nix { inherit colors; };
 
   cmus-theme = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/xero/dotfiles/master/cmus/.cmus/nord.theme";
-    sha256 = "sha256-ZqhaNSJwZJOycmOfxIdzpI4gHx/ye57INJnZ7e9cV/k=";
+    url = "https://raw.githubusercontent.com/cmus/cmus/master/data/solarized-dark.theme";
+    sha256 = "sha256-FRWdmxQpCaq5kpsLuO3buQ5JvduynzpSVYDBp6ceTnw=";
   };
 
   # Rxvt-unicode
@@ -44,13 +44,12 @@ in
     enable = true;
 
     initExtra = ''
-      xinput set-prop 11 "Device Accel Constant Deceleration" 2.6
+      xinput set-prop 10 "Device Accel Constant Deceleration" 2.6
       xset s off && xset dpms 0 0 0
     '';
 
     windowManager.i3 = with colors; {
       enable = true;
-      package = pkgs.oldstable.i3-gaps;
 
       config = rec {
         modifier = "Mod4";
@@ -61,23 +60,23 @@ in
             border = "#4c7899";
             background = "#285577";
             text = "#ffffff";
-            indicator = "${color4}";
-            childBorder = "${color4}";
+            indicator = "${colorCt}";
+            childBorder = "${colorCt}";
           };
 
           focusedInactive = {
             border = "#333333";
             background = "#5f676a";
             text = "#ffffff";
-            indicator = "${color4}";
-            childBorder = "${color4}";
+            indicator = "${colorCt}";
+            childBorder = "${colorCt}";
           };
 
           unfocused = {
             border = "#333333";
             background = "#222222";
             text = "#888888";
-            indicator = "${color4}";
+            indicator = "${colorCt}";
             childBorder = "#222222";
           };
 
@@ -85,27 +84,24 @@ in
             border = "#2f343a";
             background = "#900000";
             text = "#ffffff";
-            indicator = "${color4}";
-            childBorder = "${color4}";
+            indicator = "${colorCt}";
+            childBorder = "${colorCt}";
           };
 
           placeholder = {
             border = "#000000";
             background = "#0c0c0c";
             text = "#ffffff";
-            indicator = "${color4}";
-            childBorder = "${color4}";
+            indicator = "${colorCt}";
+            childBorder = "${colorCt}";
           };
         };
 
         assigns = {
           "1" = [{ class = "^qutebrowser$"; }];
-          "5" = [{ class = "^discord$"; }];
-          "6" = [{ class = "^Steam$"; }];
           "7" = [{ class = "^Wps$"; }];
           "8" = [{ class = "^Wpp$"; }];
           "9" = [{ class = "^ViberPC$"; }];
-          "10" = [{ class = "^TeamSpeak 3$"; }];
         };
 
         window = {
@@ -140,7 +136,6 @@ in
           "XF86AudioRaiseVolume" = "exec pactl set-sink-volume 0 +5%";
           "XF86AudioLowerVolume" = "exec pactl set-sink-volume 0 -5%";
           "XF86AudioMute" = "exec pactl set-sink-mute 0 toggle";
-          "XF86TouchpadToggle" = "exec synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')";
           "Print" = "exec maim -su | xclip -selection clipboard -t image/png";
         };
 
@@ -171,7 +166,7 @@ in
     enable = true;
 
     font = {
-      name = "JetBrains Mono Bold";
+      name = "Cascadia Mono";
       size = 9;
     };
 
@@ -222,22 +217,22 @@ in
           override-redirect = false;
           fixed-center = true;
           width = "100%";
-          height = 27;
+          height = 23;
           padding = 2;
 
           enable-ipc = true;
-          background = background;
-          foreground = foreground;
-          line-color = color4;
-          line-size = 3;
+          background = background-bar;
+          foreground = color7;
+          line-color = colorCt;
+          line-size = 0;
 
           tray-detached = false;
           tray-position = "right";
           tray-maxsize = 16;
           tray-padding = 2;
-          tray-background = background;
+          tray-background = background-bar;
 
-          font-0 = "JetBrainsMono:size=9;2";
+          font-0 = "Cascadia Mono:size=9;2";
           font-1 = "Font Awesome 5 Free:size=9;2";
           font-2 = "Font Awesome 5 Free Solid:size=9;2";
           font-3 = "Font Awesome 5 Brands:size=9;2";
@@ -252,8 +247,6 @@ in
           pseudo-transparency = false;
           compositing-background = "source";
           compositing-foreground = "over";
-          compositing-overline = "over";
-          comppositing-underline = "over";
           compositing-border = "over";
         };
 
@@ -265,51 +258,40 @@ in
           ramp-volume-1 = "";
           ramp-volume-2 = "";
 
-          ramp-volume-foreground = color4;
+          ramp-volume-foreground = colorCt;
           ramp-volume-font = 6;
           ramp-volume-padding-right = 1;
 
           label-volume = "%percentage%%";
-          label-volume-foreground = foreground;
+          label-volume-foreground = color7;
           label-muted = "%percentage%%";
-          label-muted-foreground = color4;
+          label-muted-foreground = colorCt;
 
           format-volume = "<ramp-volume><label-volume>";
           format-volume-padding = 1;
           format-volume-margin = 0;
-          format-volume-background = background-alt;
-          format-volume-overline = background;
-          format-volume-underline = background;
+          format-volume-background = background-bar;
 
           format-muted-prefix = "";
           format-muted-prefix-padding-right = 1;
-          format-muted-prefix-foreground = color4;
+          format-muted-prefix-foreground = colorCt;
           format-muted-padding = 1;
           format-muted-margin = 0;
-          format-muted-foreground = color4;
-          format-muted-background = background-alt;
-          format-muted-overline = background;
-          format-muted-underline = background;
+          format-muted-foreground = colorCt;
+          format-muted-background = background-bar;
         };
 
         "module/date" = {
           type = "internal/date";
           label = "%date% %time%";
-          date = "%a %d-%m-%Y";
+          date = "%d-%m-%Y";
           time = "%H:%M";
           interval = 5;
 
-          format-prefix = "";
-          format-prefix-font = 6;
-          format-prefix-padding-right = 1;
-          format-prefix-padding-left = 0;
-
           format-padding = 1;
           format-margin = 1;
-          format-overline = background;
-          format-underline = background;
-          format-prefix-foreground = color4;
-          format-background = background-alt;
+          format-prefix-foreground = colorCt;
+          format-background = background-bar;
         };
 
         "module/workspaces" = {
@@ -320,36 +302,31 @@ in
 
           icon-0 = "1;";
           icon-1 = "2;";
-          icon-2 = "3;";
-          icon-3 = "4;";
-          icon-4 = "5;";
-          icon-5 = "6;";
-          icon-6 = "7;";
-          icon-7 = "8;";
-          icon-8 = "9;";
-          icon-9 = "10;";
+          icon-2 = "3;";
+          icon-3 = "7;";
+          icon-4 = "8;";
+          icon-5 = "9;";
+          icon-6 = "10;";
           icon-default = "";
 
           format = "<label-state>";
-          format-overline = background;
-          format-underline = background;
 
           label-monitor = "%name%";
           label-active = "%icon%";
-          label-active-foreground = foreground;
-          label-active-background = color4;
+          label-active-foreground = color7;
+          label-active-background = colorCt;
 
           label-occupied = "%icon%";
-          label-occupied-foreground = foreground;
-          label-occupied-background = background-alt;
+          label-occupied-foreground = color7;
+          label-occupied-background = background-bar;
 
           label-urgent = "%icon%";
-          label-urgent-foreground = foreground;
-          label-urgent-background = color4;
+          label-urgent-foreground = color7;
+          label-urgent-background = colorCt;
 
           label-empty = "%icon%";
-          label-empty-foreground = foreground;
-          label-empty-background = background-alt;
+          label-empty-foreground = color7;
+          label-empty-background = background-bar;
 
           label-active-padding = 1;
           label-urgent-padding = 1;
@@ -361,12 +338,12 @@ in
 
     picom = {
       enable = true;
-      package = pkgs.nur.repos.dan4ik605743.compton;
-      backend = "glx";
       vSync = true;
       refreshRate = 60;
+      backend = "glx";
       activeOpacity = "1.0";
       inactiveOpacity = "1.0";
+      package = pkgs.nur.repos.dan4ik605743.compton;
     };
 
     dunst = with colors; {
@@ -385,7 +362,7 @@ in
           alignment = "center";
           word_wrap = "yes";
           format = "<b>%s</b>\n%b";
-          font = "JetBrainsMono 9.2";
+          font = "Cascadia Mono 9.2";
           separator_color = "auto";
           icon_position = "left";
           geometry = "330x5-8+25";
@@ -397,23 +374,23 @@ in
         };
 
         urgency_low = {
-          foreground = foreground;
+          foreground = color7;
           background = background;
-          frame_color = color4;
+          frame_color = colorCt;
           timeout = 2;
         };
 
         urgency_normal = {
-          foreground = foreground;
+          foreground = color7;
           background = background;
-          frame_color = color4;
+          frame_color = colorCt;
           timeout = 4;
         };
 
         urgency_critical = {
-          foreground = foreground;
+          foreground = color7;
           background = background;
-          frame_color = color4;
+          frame_color = colorCt;
         };
       };
     };
@@ -431,8 +408,9 @@ in
         tb = "nc termbin.com 9999";
         xp = "xclip -sel clip";
         ls = "ls -l -F --color=auto";
-        nb = "nix-build -E 'with import <nixpkgs> {}; callPackage ./default.nix {}'";
         df = "df -hT";
+        nb = "nix-build -E 'with import <nixpkgs> {}; callPackage ./default.nix {}'";
+        fd = "doas fdisk -l";
         lsa = "ls -al";
         ssh = "TERM='xterm-256color' ssh";
         wttr = "curl wttr.in/krasnoyarsk";
@@ -443,7 +421,7 @@ in
     rofi = {
       enable = true;
       package = pkgs.oldstable.rofi;
-      font = "Iosevka FT Extended 9";
+      font = "Cascadia Mono 9";
       terminal = "urxvtc";
       theme = builtins.toString (pkgs.writeText "rofi-theme" "${rofi-theme}");
 
@@ -459,10 +437,11 @@ in
 
       extraConfig = ''
         c.auto_save.session = True
-        c.fonts.default_family = "Iosevka FT Extended"
+        c.fonts.default_family = "Cascadia Mono"
         c.fonts.default_size = "13px"
         c.colors.webpage.darkmode.enabled = True
         c.colors.webpage.darkmode.policy.images = "never"
+        c.qt.args = ["enable-gpu-rasterization", "ignore-gpu-blacklist", "enable-native-gpu-memory-buffers", "num-raster-threads=4"]
         config.set('content.media.audio_capture', True, '*')
         config.source('qutebrowser-theme.py')
       '';
@@ -492,10 +471,10 @@ in
     };
     htop = {
       enable = true;
+      package = pkgs.nur.repos.dan4ik605743.htop-solarized;
 
       settings = {
         vim_mode = true;
-        tree_view = true;
         hide_kernel_threads = true;
         hide_userland_threads = true;
       };
@@ -526,19 +505,19 @@ in
       let
         myscreenlock = pkgs.writeShellScriptBin "screenlock"
           ''
-            text=${color7}
+            text=${color12}
             transparency=00000000
-            color=${color4}
+            color=${colorCt}
             font="JetBrainsMono"
             tx=120
             ty=690
 
             setxkbmap us
-            i3lock-color -i /home/dan4ik/.wallpapers/i3lock.png --force-clock -e --indicator \
+            i3lock-color -i /home/dan4ik/.wallpapers/i3lock.jpg --force-clock -e --indicator \
             --timecolor=$text --datecolor=$text --insidevercolor=$transparency --insidewrongcolor=$transparency \
-            --insidecolor=$transparency --ringvercolor=$text --ringwrongcolor=$text --ringcolor=$text \
+            --insidecolor=$transparency --ringvercolor=$color --ringwrongcolor=$text --ringcolor=$text \
             --linecolor=$transparency --keyhlcolor=$color --bshlcolor=$color \
-            --timepos="$tx:$ty" --datepos="$tx:(($ty+20))" --indpos="(($tx + 120)):(($ty -4))" \
+            --timepos="$tx:$ty" --datepos="$tx:(($ty+20))" --indpos="(($tx + 100)):(($ty -1))" \
             --timesize=32 --datesize=14 --radius 20 --ring-width 3.5 \
             --time-font=$font --date-font=$font \
             --timestr="%H:%M" --datestr="%d %A %B" --veriftext="" --wrongtext="" --noinputtext="" --locktext="" \
@@ -553,10 +532,6 @@ in
     file = {
       ".config/qutebrowser/qutebrowser-theme.py" = {
         text = import ../users/dan4ik/config/qutebrowser.nix;
-      };
-
-      ".config/bpytop/bpytop.conf" = {
-        text = import ../users/dan4ik/config/bpytop.nix;
       };
 
       ".config/nixpkgs/config.nix" = {
@@ -596,7 +571,7 @@ in
       };
 
       ".wallpapers/current.png".source = ../assets/wallpapers/current.png;
-      ".wallpapers/i3lock.png".source = ../assets/wallpapers/i3lock.png;
+      ".wallpapers/i3lock.png".source = ../assets/wallpapers/i3lock.jpg;
     };
 
     username = "dan4ik";
