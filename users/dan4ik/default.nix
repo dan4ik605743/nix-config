@@ -430,7 +430,7 @@ in
     rofi = {
       enable = true;
       package = pkgs.oldstable.rofi;
-      font = "Iosevka FT Extended 9";
+      font = "Cascadia Mono 9";
       terminal = "urxvtc";
       theme = builtins.toString (pkgs.writeText "rofi-theme" "${rofi-theme}");
 
