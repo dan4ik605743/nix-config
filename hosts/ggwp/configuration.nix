@@ -131,8 +131,6 @@
       wget
       feh
       git
-      jmtpfs
-      bpytop
       pciutils
       usbutils
       alsa-utils
@@ -149,8 +147,6 @@
       lxappearance
       ncdu
       pfetch
-      vk-cli
-      ranger
       aircrack-ng
       tree
       wine
@@ -161,7 +157,6 @@
       tigervnc
       agenix
       inxi
-      jre
       xorg.xev
 
       # apps
@@ -171,7 +166,6 @@
       qbittorrent
       viber
       gimp
-      teamspeak_client
 
       # nix-tools
       nix-prefetch-scripts
@@ -188,14 +182,6 @@
       nodejs
       yarn
       ctags
-
-      # c#
-      dotnetCorePackages.sdk_5_0
-      dotnetCorePackages.runtime_5_0
-      dotnetCorePackages.aspnetcore_5_0
-      omnisharp-roslyn
-      netcoredbg
-      mono
 
       # sddm
       libsForQt5.plasma-framework
