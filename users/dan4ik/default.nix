@@ -222,22 +222,22 @@ in
           override-redirect = false;
           fixed-center = true;
           width = "100%";
-          height = 27;
+          height = 23;
           padding = 2;
 
           enable-ipc = true;
-          background = background;
-          foreground = foreground;
-          line-color = color4;
-          line-size = 3;
+          background = background-bar;
+          foreground = color7;
+          line-color = colorCt;
+          line-size = 0;
 
           tray-detached = false;
           tray-position = "right";
           tray-maxsize = 16;
           tray-padding = 2;
-          tray-background = background;
+          tray-background = background-bar;
 
-          font-0 = "JetBrainsMono:size=9;2";
+          font-0 = "Cascadia Mono:size=9;2";
           font-1 = "Font Awesome 5 Free:size=9;2";
           font-2 = "Font Awesome 5 Free Solid:size=9;2";
           font-3 = "Font Awesome 5 Brands:size=9;2";
@@ -252,8 +252,6 @@ in
           pseudo-transparency = false;
           compositing-background = "source";
           compositing-foreground = "over";
-          compositing-overline = "over";
-          comppositing-underline = "over";
           compositing-border = "over";
         };
 
@@ -266,50 +264,39 @@ in
           ramp-volume-1 = "";
           ramp-volume-2 = "";
 
-          ramp-volume-foreground = color4;
+          ramp-volume-foreground = colorCt;
           ramp-volume-font = 6;
           ramp-volume-padding-right = 1;
 
           label-volume = "%percentage%%";
-          label-volume-foreground = foreground;
+          label-volume-foreground = color7;
           label-muted = "%percentage%%";
-          label-muted-foreground = color4;
+          label-muted-foreground = colorCt;
 
           format-volume = "<ramp-volume><label-volume>";
           format-volume-padding = 1;
           format-volume-margin = 0;
-          format-volume-background = background-alt;
-          format-volume-overline = background;
-          format-volume-underline = background;
+          format-volume-background = background-bar;
 
           format-muted-prefix = "";
           format-muted-prefix-padding-right = 1;
-          format-muted-prefix-foreground = color4;
+          format-muted-prefix-foreground = colorCt;
           format-muted-padding = 1;
           format-muted-margin = 0;
-          format-muted-foreground = color4;
-          format-muted-background = background-alt;
-          format-muted-overline = background;
-          format-muted-underline = background;
+          format-muted-foreground = colorCt;
+          format-muted-background = background-bar;
         };
 
         "module/date" = {
           type = "internal/date";
           label = "%date% %time%";
-          date = "%a %d-%m-%Y";
+          date = "%d-%m-%Y";
           time = "%H:%M";
-
-          format-prefix = "";
-          format-prefix-font = 6;
-          format-prefix-padding-right = 1;
-          format-prefix-padding-left = 0;
 
           format-padding = 1;
           format-margin = 1;
-          format-overline = background;
-          format-underline = background;
-          format-prefix-foreground = color4;
-          format-background = background-alt;
+          format-prefix-foreground = colorCt;
+          format-background = background-bar;
         };
 
         "module/workspaces" = {
@@ -320,34 +307,31 @@ in
 
           icon-0 = "1;";
           icon-1 = "2;";
-          icon-2 = "3;";
-          icon-3 = "4;";
-          icon-4 = "7;";
-          icon-5 = "8;";
-          icon-6 = "9;";
-          icon-7 = "10;";
+          icon-2 = "3;";
+          icon-3 = "7;";
+          icon-4 = "8;";
+          icon-5 = "9;";
+          icon-6 = "10;";
           icon-default = "";
 
           format = "<label-state>";
-          format-overline = background;
-          format-underline = background;
 
           label-monitor = "%name%";
           label-active = "%icon%";
-          label-active-foreground = foreground;
-          label-active-background = color4;
+          label-active-foreground = color7;
+          label-active-background = colorCt;
 
           label-occupied = "%icon%";
-          label-occupied-foreground = foreground;
-          label-occupied-background = background-alt;
+          label-occupied-foreground = color7;
+          label-occupied-background = background-bar;
 
           label-urgent = "%icon%";
-          label-urgent-foreground = foreground;
-          label-urgent-background = color4;
+          label-urgent-foreground = color7;
+          label-urgent-background = colorCt;
 
           label-empty = "%icon%";
-          label-empty-foreground = foreground;
-          label-empty-background = background-alt;
+          label-empty-foreground = color7;
+          label-empty-background = background-bar;
 
           label-active-padding = 1;
           label-urgent-padding = 1;
