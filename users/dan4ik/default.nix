@@ -141,7 +141,6 @@ in
           "XF86AudioRaiseVolume" = "exec amixer -q set PCM 4%+";
           "XF86AudioLowerVolume" = "exec amixer -q set PCM 4%-";
           "XF86AudioMute" = "exec amixer -q set PCM toggle";
-          "XF86TouchpadToggle" = "exec synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')";
           "Print" = "exec maim -su | xclip -selection clipboard -t image/png";
         };
 
