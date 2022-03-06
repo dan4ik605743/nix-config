@@ -442,7 +442,7 @@ in
     qutebrowser = {
       enable = true;
       searchEngines = { DEFAULT = "https://google.com/search?q={}"; };
-      settings.url.start_pages = [ "https://dan4ik605743.github.io" ];
+      settings.url.start_pages = [ "https://vk.com/dan4ikggwp" ];
 
       extraConfig = ''
         c.auto_save.session = True
