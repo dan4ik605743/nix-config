@@ -393,7 +393,7 @@ in
         };
 
         urgency_critical = {
-          foreground = color7; 
+          foreground = color7;
           background = background;
           frame_color = colorCt;
         };

@@ -2,7 +2,7 @@
 
 rec {
   package = nixpkgs.legacyPackages."${system}".nix;
- 
+
   extraOptions = ''
     experimental-features = nix-command flakes
   '';

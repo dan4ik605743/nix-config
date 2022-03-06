@@ -124,7 +124,7 @@
       ctags
 
       # c++
-      gcc 
+      gcc
       clang
       ccls
 
