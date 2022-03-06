@@ -7,7 +7,6 @@
     Plug 'ervandew/supertab'
     Plug 'neoclide/coc.nvim', { 'branch': 'release' }
     Plug 'LnL7/vim-nix'
-    Plug 'OmniSharp/omnisharp-vim'
     Plug 'itchyny/lightline.vim'
     Plug 'puremourning/vimspector'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -18,8 +17,7 @@
     Plug 'preservim/tagbar'
     Plug 'mg979/vim-visual-multi', { 'branch': 'master' }
     Plug 'lukas-reineke/indent-blankline.nvim'
-    Plug 'arcticicestudio/nord-vim'
-    Plug 'ap/vim-css-color'
+    Plug 'altercation/vim-colors-solarized'
     Plug 'plasticboy/vim-markdown'
     Plug 'mhinz/vim-startify'
     Plug 'SirVer/ultisnips'
@@ -27,14 +25,8 @@
   call plug#end()
 
   " Theme
-  colorscheme nord
+  colorscheme solarized
   set background =dark
-  let g:nord_uniform_diff_background =1
-  let g:nord_cursor_line_number_background =1
-  let g:nord_uniform_status_lines =1
-  let g:nord_italic =1
-  let g:nord_italic_comments =1
-  let g:nord_underline =1
 
   " Settings
   set relativenumber
@@ -61,10 +53,6 @@
   " Clear last search highlighting
   nnoremap <Leader><Esc> :noh<Return><Esc>
 
-  " Completion
-  let g:ycm_key_list_select_completion = [ '<C-n>', '<Down>' ]
-  let g:ycm_key_list_previous_completion = [ '<C-p>', '<Up>' ]
-
   " UltiSnips
   let g:UltiSnipsExpandTrigger = '<Tab>'
   let g:UltiSnipsJumpForwardTrigger = '<Tab>'
@@ -79,7 +67,7 @@
 
   " LightLine
   let g:lightline = {
-  \ 'colorscheme': 'nord',
+  \ 'colorscheme': 'solarized',
   \ 'active': {
   \   'right': [ [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
   \ [ 'lineinfo' ],
@@ -88,12 +76,6 @@
   \ 'tabline': {
   \   'left': [ ['tabs'] ],
   \   'right': [ ['close'] ]
-  \ },
-  \ 'separator': {
-  \   'left': '', 'right': ''
-  \ },
-  \ 'subseparator': {
-  \   'left': '', 'right': '' 
   \ },
   \ 'component_expand': {
   \  'linter_checking': 'lightline#ale#checking',
@@ -111,11 +93,6 @@
   \ }
   \ } 
 
-  " OmniSharp
-  let g:OmniSharp_server_path = '${pkgs.omnisharp-roslyn}/bin/omnisharp'
-  autocmd FileType cs nnoremap <Leader><Space> :OmniSharpGetCodeActions<CR>
-  autocmd FileType cs nnoremap <Leader>cc :OmniSharpCodeFormat<CR>
-
   " Fzf
   nnoremap <C-f> :Files<CR>
   let g:fzf_preview_window = 'right:60%'
@@ -125,10 +102,6 @@
   let g:SuperTabCrMapping =0
 
   " Ale
-  let g:ale_linters = {
-  \ 'cs': [ 'OmniSharp' ]
-  \}
-
   let g:ale_linters = {
   \ 'nix': [ 'rnix-lsp' ]
   \}
