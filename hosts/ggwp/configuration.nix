@@ -249,15 +249,13 @@
 
   fonts = {
     fonts = with pkgs; [
-      nur.repos.dan4ik605743.bitmap-fonts
-      nur.repos.fortuneteller2k.iosevka-ft-bin
-      font-awesome
       noto-fonts-emoji
       jetbrains-mono
+      cascadia-code
+      font-awesome
+      hack-font
       unifont
       roboto
-      hack-font
-      siji
     ];
 
     fontconfig = {
