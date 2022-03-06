@@ -63,7 +63,7 @@
 
       networks = {
         TP-Link_D482.psk = "Qq135790-";
-        huawei.psk = "zxcursed";
+        note4.psk = "zxcursed";
       };
     };
 
