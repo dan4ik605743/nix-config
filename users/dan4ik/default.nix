@@ -107,7 +107,6 @@ in
           "7" = [{ class = "^Wps$"; }];
           "8" = [{ class = "^Wpp$"; }];
           "9" = [{ class = "^ViberPC$"; }];
-          "10" = [{ class = "^TeamSpeak 3$"; }];
         };
 
         window = {
