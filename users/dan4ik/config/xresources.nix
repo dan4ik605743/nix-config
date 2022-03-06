@@ -4,7 +4,7 @@ with colors;
 
 ''
   ! Settings
-  URxvt.font: xft:Iosevka FT Extended:size=9
+  URxvt.font: xft:Cascadia Mono:size=9
   URxvt.saveline: 22222
   URxvt.internalBorder: 15
   URxvt.scrollBar: false
