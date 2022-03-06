@@ -7,8 +7,8 @@ let
   gtk-theme = pkgs.callPackage ../../derivations/gtk-generated/default.nix { inherit colors; };
 
   cmus-theme = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/xero/dotfiles/master/cmus/.cmus/nord.theme";
-    sha256 = "sha256-ZqhaNSJwZJOycmOfxIdzpI4gHx/ye57INJnZ7e9cV/k=";
+    url = "https://raw.githubusercontent.com/cmus/cmus/master/data/solarized-dark.theme";
+    sha256 = "sha256-FRWdmxQpCaq5kpsLuO3buQ5JvduynzpSVYDBp6ceTnw=";
   };
 
   # Rxvt-unicode
