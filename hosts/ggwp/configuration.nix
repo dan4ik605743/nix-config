@@ -182,6 +182,11 @@
       yarn
       ctags
 
+      # c++
+      gcc
+      clang
+      ccls
+
       # sddm
       libsForQt5.plasma-framework
       libsForQt5.qt5.qtgraphicaleffects
