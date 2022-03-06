@@ -367,7 +367,7 @@ in
           alignment = "center";
           word_wrap = "yes";
           format = "<b>%s</b>\n%b";
-          font = "JetBrainsMono 9.2";
+          font = "Cascadia Mono 9.2";
           separator_color = "auto";
           icon_position = "left";
           geometry = "330x5-8+25";
@@ -379,23 +379,23 @@ in
         };
 
         urgency_low = {
-          foreground = foreground;
+          foreground = color7;
           background = background;
-          frame_color = color4;
+          frame_color = colorCt;
           timeout = 2;
         };
 
         urgency_normal = {
-          foreground = foreground;
+          foreground = color7;
           background = background;
-          frame_color = color4;
+          frame_color = colorCt;
           timeout = 4;
         };
 
         urgency_critical = {
-          foreground = foreground;
+          foreground = color7; 
           background = background;
-          frame_color = color4;
+          frame_color = colorCt;
         };
       };
     };
