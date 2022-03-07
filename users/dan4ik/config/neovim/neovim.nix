@@ -22,6 +22,7 @@
     Plug 'mhinz/vim-startify'
     Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
+    Plug 'rhysd/vim-clang-format'
   call plug#end()
 
   " Theme
@@ -53,14 +54,17 @@
   " Clear last search highlighting
   nnoremap <Leader><Esc> :noh<Return><Esc>
 
+  " Completion
+  inoremap <C-Space> <C-x><C-n>
+
   " UltiSnips
   let g:UltiSnipsExpandTrigger = '<Tab>'
   let g:UltiSnipsJumpForwardTrigger = '<Tab>'
   let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
 
   " NerdTree
-  let g:NERDTreeDirArrowExpandable = '▸'
-  let g:NERDTreeDirArrowCollapsible = '▾'
+  let g:NERDTreeDirArrowExpandable = '~'
+  let g:NERDTreeDirArrowCollapsible = '~'
   let g:NERDTreeCustomOpenArgs = { 'file':{ 'where': 't' } }
   let NERDTreeChDirMode =2
   nnoremap <C-x> :NERDTreeToggle .<CR>
@@ -113,6 +117,10 @@
   " Tagbar 
   let g:tagbar_ctags_bin = '${pkgs.ctags}/bin/ctags'
   nnoremap <Leader>tt :TagbarToggle<CR> 
+
+  " Clang-format
+  let g:clang_format#code_style = 'chromium'
+  nnoremap <Leader>cc :ClangFormat<CR> 
 
   " Startify
   let g:startify_files_number =5
