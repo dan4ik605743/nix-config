@@ -184,8 +184,8 @@
 
       # c++
       gcc
-      clang
-      ccls
+      gdb
+      clang-tools
 
       # sddm
       libsForQt5.plasma-framework
