@@ -5,16 +5,11 @@
         "command": "rnix-lsp",
         "filetypes": ["nix"]
       },
-      "ccls": {
-        "command": "ccls",
-        "filetypes": ["c", "cpp", "c++" ],
-        "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
-        "initializationOptions": {
-          "cache": {
-            "directory": "/tmp/ccls"
-          }
+      "clangd": {
+        "command": "clangd",
+        "rootPatterns": ["compile_flags.txt", "compile_commands.json"],
+        "filetypes": ["cpp"]
         }
       }
-    }
   }
 ''
