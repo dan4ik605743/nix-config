@@ -20,8 +20,6 @@
     Plug 'altercation/vim-colors-solarized'
     Plug 'plasticboy/vim-markdown'
     Plug 'mhinz/vim-startify'
-    Plug 'SirVer/ultisnips'
-    Plug 'honza/vim-snippets'
     Plug 'rhysd/vim-clang-format'
   call plug#end()
 
@@ -56,11 +54,6 @@
 
   " Completion
   inoremap <C-Space> <C-x><C-n>
-
-  " UltiSnips
-  let g:UltiSnipsExpandTrigger = '<Tab>'
-  let g:UltiSnipsJumpForwardTrigger = '<Tab>'
-  let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
 
   " NerdTree
   let g:NERDTreeDirArrowExpandable = '~'
@@ -108,7 +101,7 @@
   " Ale
   let g:ale_linters = {
   \ 'nix': [ 'rnix-lsp' ]
-  \}
+  \ }
 
   " VimSpector
   let g:vimspector_enable_mappings = 'HUMAN'
@@ -143,15 +136,5 @@
   \ { 'n': '/etc/nixos/config/nix.nix' }
   \ ]
 
-  let g:startify_custom_header = [ 
-  \ "", 
-  \ "",
-  \ "     ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗",
-  \ "     ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║",
-  \ "     ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║",
-  \ "     ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║",
-  \ "     ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║",
-  \ "     ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝",
-  \ ""
-  \ ]
+  let g:startify_custom_header = [ ]
 ''
