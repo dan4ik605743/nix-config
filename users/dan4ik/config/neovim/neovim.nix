@@ -23,12 +23,8 @@
     Plug 'rhysd/vim-clang-format'
   call plug#end()
 
-  " Theme
-  colorscheme solarized
-  set background =dark
-
   " Settings
-  set relativenumber
+  set number
   set mouse =a
   set clipboard +=unnamedplus
   set encoding =utf-8
@@ -43,6 +39,10 @@
   :set shiftwidth =4
   :set expandtab
 
+  " Theme
+  colorscheme solarized
+  set background =dark
+
   " Back to the place
   autocmd BufReadPost *
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -54,6 +54,9 @@
 
   " Completion
   inoremap <C-Space> <C-x><C-n>
+
+  " Alt+backspace
+  inoremap <A-BS> <C-w>
 
   " NerdTree
   let g:NERDTreeDirArrowExpandable = '~'
@@ -114,6 +117,10 @@
   " Clang-format
   let g:clang_format#code_style = 'chromium'
   nnoremap <Leader>cc :ClangFormat<CR> 
+
+  " Coc-snippets
+  let g:coc_snippet_next = '<Tab>'
+  let g:coc_snippet_prev = '<S-Tab>'
 
   " Startify
   let g:startify_files_number =5
