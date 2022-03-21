@@ -15,7 +15,7 @@ nixos-generate-config --root /mnt
 
 nix-shell -p git nixFlakes
 git clone https://github.com/dan4ik605743/nix-config /mnt/etc/nixos
-nix build /mnt/etc/nixos#ggwp --experimental-features "flakes nix-command" --store "/mnt"
+nix build /mnt/etc/nixos#ggwp --experimental-features "flakes nix-command" --store "/mnt --impure"
 nixos-install --root /mnt --system ./result
 ```
 
