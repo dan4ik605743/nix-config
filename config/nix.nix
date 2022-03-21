@@ -25,7 +25,7 @@ rec {
   };
 
   settings = rec {
-    max-jobs = 1;
+    max-jobs = 4;
     trusted-substituters = substituters;
 
     trusted-users = [
