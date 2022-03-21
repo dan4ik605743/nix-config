@@ -128,7 +128,7 @@ in
           "${modifier}+F12" = "exec urxvtc -e alsamixer";
           "${modifier}+F11" = "exec screenlock";
           "${modifier}+F10" = "exec urxvtc -e htop";
-          "${modifier}+F1" = "exec qutebrowser";
+          "${modifier}+F1" = "exec nvidia-offload qutebrowser";
 
           "Mod1+F2" = "exec playerctl play-pause";
           "Mod1+F3" = "exec playerctl previous";
@@ -159,7 +159,7 @@ in
 
           {
             command = ''setxkbmap -layout "us,ru" -option "grp:alt_shift_toggle"'';
-            always = true;
+            always = false;
             notification = false;
           }
         ];
