@@ -450,7 +450,7 @@ in
         c.fonts.default_size = "13px"
         c.colors.webpage.darkmode.enabled = True
         c.colors.webpage.darkmode.policy.images = "never"
-        c.qt.args = ["enable-gpu-rasterization", "ignore-gpu-blacklist", "enable-native-gpu-memory-buffers", "num-raster-threads=2"]
+        c.qt.args = ["enable-accelerated-video-decode", "enable-gpu-rasterization", "ignore-gpu-blocklist", "enable-native-gpu-memory-buffers", "num-raster-threads=4"]
         config.set('content.media.audio_capture', True, '*')
         config.source('qutebrowser-theme.py')
       '';
