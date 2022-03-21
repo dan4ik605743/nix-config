@@ -48,8 +48,8 @@ in
     enable = true;
 
     initExtra = ''
-      xrandr --output LVDS-1 --off
-      xinput set-prop 10 "Device Accel Constant Deceleration" 2.6
+      xrandr --output eDP-1 --off
+      xinput set-prop 14 "Device Accel Constant Deceleration" 2.7
       xset s off && xset dpms 0 0 0
     '';
 
