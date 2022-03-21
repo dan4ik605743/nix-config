@@ -141,16 +141,12 @@
       xclip
       libva-utils
       mesa-demos
-      gparted
-      lm_sensors
       lxappearance
       ncdu
       pfetch
       aircrack-ng
       tree
       wine
-      winetricks
-      steam-run
       llpp
       libnotify
       tigervnc
@@ -195,9 +191,17 @@
       # nur
       nur.repos.dan4ik605743.i3lock-color
       nur.repos.dan4ik605743.sddm-chili
+      nur.repos.dan4ik605743.simp1e-cursors
 
       # scripts
       (pkgs.writeShellScriptBin "dotup" "doas cp -r /etc/nixos/* ~/git/nix-config/ && echo Finish!")
+      (pkgs.writeShellScriptBin "nvidia-offload" ''
+        export __NV_PRIME_RENDER_OFFLOAD=1
+        export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
+        export __GLX_VENDOR_LIBRARY_NAME=nvidia
+        export __VK_LAYER_NV_optimus=NVIDIA_only
+        exec -a "$0" "$@" 
+      '')
     ];
   };
 
