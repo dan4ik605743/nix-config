@@ -37,8 +37,8 @@
     enable = true;
 
     extraConfig = ''
-      defaults.pcm.card 1
-      defaults.ctl.card 1
+      defaults.pcm.card 2
+      defaults.ctl.card 2
     '';
   };
 
