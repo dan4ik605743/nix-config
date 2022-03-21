@@ -123,10 +123,13 @@
     kernelParams = [ "intel_idle.max_cstate=1" "mitigations=off" ];
     supportedFilesystems = [ "xfs" "ntfs" "nfs" ];
 
-    loader.grub = {
-      enable = true;
-      device = "/dev/sda";
-      version = 2;
+    loader = {
+      efi.canTouchEfiVariables = true;
+
+      systemd-boot = {
+        enable = true;
+        consoleMode = "max";
+      };
     };
 
     extraModprobeConfig = ''
