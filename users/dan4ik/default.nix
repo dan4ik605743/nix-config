@@ -156,7 +156,6 @@ in
             always = true;
             notification = false;
           }
-
           {
             command = ''setxkbmap -layout "us,ru" -option "grp:alt_shift_toggle"'';
             always = false;
@@ -186,12 +185,12 @@ in
     };
 
     gtk3.extraConfig = {
-      gtk-cursor-theme-name = "elementary";
+      gtk-cursor-theme-name = "Simp1e-Solarized-Dark";
       gtk-cursor-theme-size = 0;
     };
 
     gtk2.extraConfig = ''
-      gtk-cursor-theme-name="elementary"
+      gtk-cursor-theme-name="Simp1e-Solarized-Dark"
       gtk-cursor-theme-size=0
     '';
   };
