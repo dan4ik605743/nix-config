@@ -106,6 +106,16 @@
         libvdpau-va-gl
       ];
     };
+
+    nvidia = {
+      package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
+
+      prime = {
+        offload.enable = true;
+        intelBusId = "PCI:0:2:0";
+        nvidiaBusId = "PCI:4:0:0";
+      };
+    };
   };
 
   boot = {
@@ -218,7 +228,7 @@
 
     xserver = {
       enable = true;
-      videoDrivers = [ "modesetting" ];
+      videoDrivers = [ "nvidia" ];
       synaptics.enable = true;
       desktopManager.xterm.enable = true;
 
