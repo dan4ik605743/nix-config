@@ -23,13 +23,10 @@
     fsType = "vfat";
   };
 
-  /*
-    fileSystems."/home/dan4ik/nfs" = {
+  fileSystems."/home/dan4ik/nfs" = {
     device = "192.168.0.111:/export/home";
-    options = [ "x-systemd.idle-timeout=300" "x-systemd.automount" "noauto" ];
     fsType = "nfs";
-    };
-  */
+  };
 
   swapDevices = [ ];
 }
