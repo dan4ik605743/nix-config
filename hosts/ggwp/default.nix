@@ -24,7 +24,7 @@ nixpkgs.lib.nixosSystem rec {
       imports =
         let
           nur-modules = import nur {
-            nurpkgs = import nixpkgs { system = "x86_64-linux"; };
+            nurpkgs = import nixpkgs { system = system; };
           };
         in
         [ ];
