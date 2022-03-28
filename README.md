@@ -53,19 +53,5 @@ nix build ./nix-config#iso
 
 Or you can <a href="https://drive.google.com/file/d/1uiocJx6H2kzfmyZAfmpumDjz_Xq94eoN/view?usp=sharing">download</a> what I have already builded.
  
-## List of dependencies
-* I3 (Window Manager)
-* Bash (Shell)
-* Htop (Task Manager)
-* Compton (Composer)
-* Urxvt (Terminal)
-* Qutebrowser (Browser)
-* Polybar (Bar)
-* Playerctl (Playback control)
-* Dunst (Demon notifications)
-* Maim (Screenshoter)
-* Rofi (Launcher)
-* Neovim (Code Editor)
-
 ## Appearance
 ![dan4ik](assets/screenshot.png)
