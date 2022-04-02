@@ -193,8 +193,8 @@
 
       # c++
       gcc
+      gdb
       clang-tools
-      vscode-extensions.vadimcn.vscode-lldb
 
       # sddm
       libsForQt5.plasma-framework
