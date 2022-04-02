@@ -3,19 +3,19 @@
 ''
   " Plugins
   call plug#begin( '/home/dan4ik/.vim/plugged' )
+    Plug 'neoclide/coc.nvim', { 'branch': 'release' }
     Plug 'preservim/nerdtree'
     Plug 'ervandew/supertab'
-    Plug 'neoclide/coc.nvim', { 'branch': 'release' }
     Plug 'LnL7/vim-nix'
     Plug 'itchyny/lightline.vim'
     Plug 'puremourning/vimspector'
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf'
     Plug 'junegunn/fzf.vim'
     Plug 'jiangmiao/auto-pairs'
     Plug 'dense-analysis/ale'
     Plug 'maximbaz/lightline-ale'
     Plug 'preservim/tagbar'
-    Plug 'mg979/vim-visual-multi', { 'branch': 'master' }
+    Plug 'mg979/vim-visual-multi'
     Plug 'lukas-reineke/indent-blankline.nvim'
     Plug 'altercation/vim-colors-solarized'
     Plug 'plasticboy/vim-markdown'
