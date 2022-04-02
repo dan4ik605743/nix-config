@@ -495,7 +495,6 @@ in
       enableZshIntegration = false;
       enableBashIntegration = false;
     };
-
     command-not-found.enable = true;
   };
   home = {
