@@ -30,7 +30,7 @@ let
   # Vim-plug
   vim-plug = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim";
-    sha256 = "sha256-DU3EIsMVH/ZRBjslGTOzRlcUxbnzIm+vDKf4tKRApVI=";
+    sha256 = "sha256-oE29QJTlm2P10iJQU1mPApL1f99IFqVD3b0qP9adOMU=";
   };
 
   # Cmus
