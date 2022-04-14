@@ -48,13 +48,28 @@ in
     enable = true;
 
     initExtra = ''
-      xrandr --output eDP-1 --off
-      xinput set-prop 14 "Device Accel Constant Deceleration" 2.7
+      xrandr --output DP-1 --primary
+      xrandr --output eDP-1 --set "scaling mode" Full
+      xrandr --output eDP-1 --mode 1024x768 --right-of DP-1
+      xinput set-prop 17 "Device Accel Constant Deceleration" 2.7
       xset s off && xset dpms 0 0 0
     '';
 
     windowManager.i3 = with colors; {
       enable = true;
+
+      extraConfig = ''
+        workspace 1 output DP-1
+        workspace 2 output DP-1
+        workspace 3 output DP-1
+        workspace 4 output DP-1
+        workspace 5 output DP-1
+        workspace 6 output DP-1
+        workspace 7 output eDP-1
+        workspace 8 output eDP-1
+        workspace 9 output eDP-1
+        workspace 10 output eDP-1
+      '';
 
       config = rec {
         modifier = "Mod4";
@@ -104,8 +119,8 @@ in
 
         assigns = {
           "1" = [{ class = "^qutebrowser$"; }];
-          "7" = [{ class = "^Wps$"; }];
-          "8" = [{ class = "^Wpp$"; }];
+          "5" = [{ class = "^Wps$"; }];
+          "6" = [{ class = "^Wpp$"; }];
           "9" = [{ class = "^ViberPC$"; }];
         };
 
@@ -128,7 +143,7 @@ in
           "${modifier}+F12" = "exec urxvtc -e alsamixer";
           "${modifier}+F11" = "exec screenlock";
           "${modifier}+F10" = "exec urxvtc -e htop";
-          "${modifier}+F1" = "exec nvidia-offload qutebrowser";
+          "${modifier}+F1" = "exec qutebrowser";
 
           "Mod1+F2" = "exec playerctl play-pause";
           "Mod1+F3" = "exec playerctl previous";
@@ -153,7 +168,7 @@ in
 
           {
             command = "systemctl --user restart polybar.service";
-            always = true;
+            always = false;
             notification = false;
           }
           {
@@ -198,7 +213,7 @@ in
   services = {
     polybar = with colors; {
       enable = true;
-      script = "polybar main &";
+      script = ''polybar main & polybar main-eDP1 &'';
 
       package = pkgs.polybar.override {
         i3GapsSupport = true;
@@ -219,6 +234,7 @@ in
         "bar/main" = {
           monitor-strict = false;
           override-redirect = false;
+          monitor = "DP-1";
           fixed-center = true;
           width = "100%";
           height = 23;
@@ -244,6 +260,31 @@ in
           modules-left = "workspaces";
           modules-center = "date";
           modules-right = "volume";
+        };
+
+        "bar/main-eDP1" = {
+          monitor-strict = false;
+          override-redirect = false;
+          monitor = "eDP-1";
+          fixed-center = true;
+          width = "100%";
+          height = 23;
+          padding = 2;
+
+          enable-ipc = true;
+          background = background-bar;
+          foreground = color7;
+          line-color = colorCt;
+          line-size = 0;
+
+          font-0 = "Cascadia Mono:size=9;2";
+          font-1 = "Font Awesome 5 Free:size=9;2";
+          font-2 = "Font Awesome 5 Free Solid:size=9;2";
+          font-3 = "Font Awesome 5 Brands:size=9;2";
+
+          modules-left = "workspaces";
+          modules-center = "date";
+          modules-right = "layout";
         };
 
         "settings" = {
@@ -298,6 +339,11 @@ in
           format-background = background-bar;
         };
 
+        "module/layout" = {
+          type = "internal/xkeyboard";
+          format = "<label-layout>";
+        };
+
         "module/workspaces" = {
           type = "internal/xworkspaces";
           pin-workspaces = true;
@@ -307,8 +353,8 @@ in
           icon-0 = "1;";
           icon-1 = "2;";
           icon-2 = "3;";
-          icon-3 = "7;";
-          icon-4 = "8;";
+          icon-3 = "5;";
+          icon-4 = "6;";
           icon-5 = "9;";
           icon-6 = "10;";
           icon-default = "";
@@ -521,7 +567,7 @@ in
             ty=690
 
             setxkbmap us
-            i3lock-color -i /etc/nixos/assets/wallpapers/i3lock.jpg --force-clock -e --indicator \
+            i3lock-color -t -i /etc/nixos/assets/wallpapers/i3lock.jpg --force-clock -e --indicator \
             --timecolor=$text --datecolor=$text --insidevercolor=$transparency --insidewrongcolor=$transparency \
             --insidecolor=$transparency --ringvercolor=$color --ringwrongcolor=$text --ringcolor=$text \
             --linecolor=$transparency --keyhlcolor=$color --bshlcolor=$color \
