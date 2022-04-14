@@ -142,6 +142,7 @@
       tigervnc
       agenix
       inxi
+      tty-clock
       xorg.xev
 
       # apps
