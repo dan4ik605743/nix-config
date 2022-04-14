@@ -25,6 +25,7 @@
 
   fileSystems."/home/dan4ik/nfs" = {
     device = "192.168.0.111:/export/home";
+    options = [ "x-systemd.automount" "noauto" ];
     fsType = "nfs";
   };
 
