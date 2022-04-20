@@ -51,6 +51,8 @@
       ] ++ (importNixFiles ./overlays);
     in
     {
+      ## No vds, vps because they are non-flakes.
+
       nixosConfigurations.ggwp = import ./hosts/ggwp {
         inherit config hardware home nur agenix inputs nixpkgs overlays;
       };
