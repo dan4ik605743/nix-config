@@ -188,11 +188,6 @@
     urxvtd.enable = true;
     udev.packages = [ pkgs.android-udev-rules ];
 
-    zerotierone = {
-      enable = true;
-      joinNetworks = [ "17d709436cd7dbb5" ];
-    };
-
     xserver = {
       enable = true;
       videoDrivers = [ "modesetting" "nouveau" ];
