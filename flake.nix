@@ -65,6 +65,6 @@
 
       iso = self.nixosConfigurations.iso.config.system.build.isoImage;
 
-      devShell.${system} = import ./shell.nix { inherit pkgs; };
+      devShells.${system}.default = import ./shell.nix { inherit pkgs; };
     };
 }
