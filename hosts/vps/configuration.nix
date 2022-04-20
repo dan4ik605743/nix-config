@@ -127,7 +127,7 @@ in
         local-ttl=300
 
         addn-hosts=/home/vps/hosts-blocklists/hostnames.txt
-      ''; # add-conf sets default in module dnsmasq
+      ''; ## add-conf sets default in module dnsmasq
     };
   };
 
