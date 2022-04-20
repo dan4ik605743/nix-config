@@ -2,11 +2,7 @@
 
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
-
   boot.initrd.availableKernelModules = [ "ehci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod" "rtsx_usb_sdmmc" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
-  boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/df4c121b-04d0-40cb-8a0f-d40523d16566";
@@ -28,6 +24,4 @@
     options = [ "x-systemd.automount" "noauto" ];
     fsType = "nfs";
   };
-
-  swapDevices = [ ];
 }

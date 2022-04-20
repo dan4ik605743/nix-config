@@ -14,11 +14,6 @@
     swapDevices = 1;
   };
 
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "us";
-  };
-
   security = {
     sudo.enable = false;
 
@@ -37,8 +32,8 @@
     enable = true;
 
     extraConfig = ''
-      defaults.pcm.card 2
-      defaults.ctl.card 2
+      defaults.pcm.card 1
+      defaults.ctl.card 1
     '';
   };
 

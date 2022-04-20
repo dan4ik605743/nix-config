@@ -3,12 +3,12 @@
     "languageserver": {
       "nix": {
         "command": "rnix-lsp",
-        "filetypes": ["nix"]
+        "filetypes": [ "nix" ]
       },
       "clangd": {
         "command": "clangd",
         "rootPatterns": ["compile_flags.txt", "compile_commands.json"],
-        "filetypes": ["cpp"]
+        "filetypes": [ "cpp" ]
         }
       }
   }

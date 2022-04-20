@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
-  # Theme
+  ## Theme
   colors = import ../../config/colors.nix;
   rofi-theme = import ./config/rofi.nix { inherit colors; };
   gtk-theme = pkgs.callPackage ../../derivations/gtk-generated/default.nix { inherit colors; };
@@ -11,7 +11,7 @@ let
     sha256 = "sha256-FRWdmxQpCaq5kpsLuO3buQ5JvduynzpSVYDBp6ceTnw=";
   };
 
-  # Rxvt-unicode
+  ## Rxvt-unicode
   url-select = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/muennich/urxvt-perls/master/deprecated/url-select";
     sha256 = "1pmvjrzjjcihwvzhznm5fjp80bayf342xp0r01zfhhq76jsdbdfz";
@@ -27,13 +27,13 @@ let
     sha256 = "sha256-RirynHRM07psha4RqtvZoBasncAW9bt8FRF1H2DdZqk=";
   };
 
-  # Vim-plug
+  ## Vim-plug
   vim-plug = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim";
     sha256 = "sha256-oE29QJTlm2P10iJQU1mPApL1f99IFqVD3b0qP9adOMU=";
   };
 
-  # Cmus
+  ## Cmus
   cmus-rc = pkgs.writeText "rc" ''
     add ~/nfs/music
     set output_plugin=alsa
@@ -165,7 +165,6 @@ in
             always = false;
             notification = false;
           }
-
           {
             command = "systemctl --user restart polybar.service";
             always = false;
@@ -213,7 +212,7 @@ in
   services = {
     polybar = with colors; {
       enable = true;
-      script = ''polybar main & polybar main-eDP1 &'';
+      script = "polybar main & polybar main-eDP1 &";
 
       package = pkgs.polybar.override {
         i3GapsSupport = true;
@@ -541,6 +540,7 @@ in
       enableZshIntegration = false;
       enableBashIntegration = false;
     };
+
     command-not-found.enable = true;
   };
   home = {
