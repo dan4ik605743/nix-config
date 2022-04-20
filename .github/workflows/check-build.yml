@@ -16,7 +16,7 @@ jobs:
         install_url: https://github.com/numtide/nix-unstable-installer/releases/download/nix-2.7.0pre20220303_b09baf6/install
         extra_nix_config: |
           experimental-features = nix-command flakes
-    - name: Check hosts build
+    - name: Check main host build (ggwp)
       run: nix build .#ggwp
     - name: Check iso build
       run: nix build .#iso 
