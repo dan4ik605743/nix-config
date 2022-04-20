@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
-  # Theme
+  ## Theme
   colors = import ../config/colors.nix;
   rofi-theme = import ../users/dan4ik/config/rofi.nix { inherit colors; };
   gtk-theme = pkgs.callPackage ../derivations/gtk-generated/default.nix { inherit colors; };
@@ -11,7 +11,7 @@ let
     sha256 = "sha256-FRWdmxQpCaq5kpsLuO3buQ5JvduynzpSVYDBp6ceTnw=";
   };
 
-  # Rxvt-unicode
+  ## Rxvt-unicode
   url-select = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/muennich/urxvt-perls/master/deprecated/url-select";
     sha256 = "1pmvjrzjjcihwvzhznm5fjp80bayf342xp0r01zfhhq76jsdbdfz";
@@ -27,13 +27,13 @@ let
     sha256 = "sha256-RirynHRM07psha4RqtvZoBasncAW9bt8FRF1H2DdZqk=";
   };
 
-  # Vim-plug
+  ## Vim-plug
   vim-plug = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim";
     sha256 = "sha256-oE29QJTlm2P10iJQU1mPApL1f99IFqVD3b0qP9adOMU=";
   };
 
-  # Cmus
+  ## Cmus
   cmus-rc = pkgs.writeText "rc" ''
     set start_view=1
     colorscheme cmus
@@ -44,7 +44,7 @@ in
     enable = true;
 
     initExtra = ''
-      xinput set-prop 10 "Device Accel Constant Deceleration" 2.6
+      xinput set-prop 17 "Device Accel Constant Deceleration" 2.7
       xset s off && xset dpms 0 0 0
     '';
 
@@ -99,8 +99,8 @@ in
 
         assigns = {
           "1" = [{ class = "^qutebrowser$"; }];
-          "7" = [{ class = "^Wps$"; }];
-          "8" = [{ class = "^Wpp$"; }];
+          "5" = [{ class = "^Wps$"; }];
+          "6" = [{ class = "^Wpp$"; }];
           "9" = [{ class = "^ViberPC$"; }];
         };
 
@@ -148,13 +148,13 @@ in
 
           {
             command = "systemctl --user restart polybar.service";
-            always = true;
+            always = false;
             notification = false;
           }
 
           {
             command = ''setxkbmap -layout "us,ru" -option "grp:alt_shift_toggle"'';
-            always = true;
+            always = false;
             notification = false;
           }
         ];
@@ -181,12 +181,12 @@ in
     };
 
     gtk3.extraConfig = {
-      gtk-cursor-theme-name = "elementary";
+      gtk-cursor-theme-name = "Simp1e-Solarized-Dark";
       gtk-cursor-theme-size = 0;
     };
 
     gtk2.extraConfig = ''
-      gtk-cursor-theme-name="elementary"
+      gtk-cursor-theme-name="Simp1e-Solarized-Dark"
       gtk-cursor-theme-size=0
     '';
   };
@@ -303,8 +303,8 @@ in
           icon-0 = "1;";
           icon-1 = "2;";
           icon-2 = "3;";
-          icon-3 = "7;";
-          icon-4 = "8;";
+          icon-3 = "5;";
+          icon-4 = "6;";
           icon-5 = "9;";
           icon-6 = "10;";
           icon-default = "";
@@ -433,7 +433,6 @@ in
     qutebrowser = {
       enable = true;
       searchEngines = { DEFAULT = "https://google.com/search?q={}"; };
-      settings.url.start_pages = [ "https://dan4ik605743.github.io" ];
 
       extraConfig = ''
         c.auto_save.session = True
@@ -477,6 +476,7 @@ in
         vim_mode = true;
         hide_kernel_threads = true;
         hide_userland_threads = true;
+        show_cpu_temperature = true;
       };
     };
 

@@ -7,11 +7,6 @@
     style = "gtk2";
   };
 
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "us";
-  };
-
   security = {
     sudo.enable = false;
 
@@ -38,6 +33,7 @@
 
   networking = {
     hostName = "ggwp";
+    nameservers = [ "1.1.1.1" ];
     firewall.enable = false;
     wireless.enable = false;
 
@@ -46,13 +42,6 @@
       dns = "none";
       packages = [ pkgs.networkmanagerapplet ];
     };
-
-    nameservers = [
-      "1.1.1.1"
-      "1.0.0.1"
-      "8.8.8.8"
-      "8.8.4.4"
-    ];
   };
 
   hardware = {
@@ -86,15 +75,14 @@
       libva-utils
       mesa-demos
       gparted
-      lm_sensors
       lxappearance
       ncdu
       pfetch
       aircrack-ng
+      wifite2
       tree
       llpp
       libnotify
-      tigervnc
       agenix
       inxi
       xorg.xev
@@ -125,8 +113,8 @@
 
       # c++
       gcc
-      clang
-      ccls
+      gdb
+      clang-tools
 
       # sddm
       libsForQt5.plasma-framework
@@ -136,6 +124,7 @@
       # nur
       nur.repos.dan4ik605743.i3lock-color
       nur.repos.dan4ik605743.sddm-chili
+      nur.repos.dan4ik605743.simp1e-cursors
     ];
   };
 
@@ -144,11 +133,6 @@
     urxvtd.enable = true;
     blueman.enable = true;
     udev.packages = [ pkgs.android-udev-rules ];
-
-    zerotierone = {
-      enable = true;
-      joinNetworks = [ "17d709436cd7dbb5" ];
-    };
 
     pipewire = {
       enable = true;
@@ -201,7 +185,6 @@
 
   fonts = {
     fonts = with pkgs; [
-      noto-fonts-emoji
       jetbrains-mono
       cascadia-code
       font-awesome
@@ -209,10 +192,5 @@
       unifont
       roboto
     ];
-
-    fontconfig = {
-      enable = true;
-      defaultFonts.emoji = [ "Noto Color Emoji" ];
-    };
   };
 }
