@@ -10,11 +10,6 @@ in
     nur.repos.dan4ik605743.modules.minidlna
   ];
 
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "us";
-  };
-
   security = {
     sudo.enable = false;
 
