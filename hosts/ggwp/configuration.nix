@@ -54,30 +54,28 @@
 
   networking = {
     hostName = "ggwp";
+    nameservers = [ "1.1.1.1" ];
+    defaultGateway = "192.168.0.1";
     firewall.enable = false;
-    useDHCP = true;
+    useDHCP = false;
 
-    wireless = {
-      enable = false;
-      interfaces = [ "wlp3s0" ];
+    wg-quick.interfaces.wg0 = {
+      address = [ "10.0.0.2/24" ];
+      dns = [ "10.0.0.1" ];
+      listenPort = 50020;
+      privateKeyFile = "/home/dan4ik/.wireguard-keys/private";
 
-      networks = {
-        TP-Link_D482.psk = "Qq135790-";
-        note4.psk = "zxcursed";
-      };
+      peers = [{
+        publicKey = "Cc44DBfY0VBv1aNxlHk3CYdL6TFbaAnM+BJZurjfey0=";
+        allowedIPs = [ "0.0.0.0/0" ];
+        endpoint = "dan4ikggwp.koise.pw:50020";
+      }];
     };
 
-    nameservers = [
-      "1.1.1.1"
-      "1.0.0.1"
-      "8.8.8.8"
-      "8.8.4.4"
-    ];
-
-    dhcpcd = {
-      enable = true;
-      wait = "background";
-    };
+    interfaces.enp2s0f2.ipv4.addresses = [{
+      address = "192.168.0.110";
+      prefixLength = 24;
+    }];
   };
 
   hardware = {
