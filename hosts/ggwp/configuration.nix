@@ -94,8 +94,9 @@
   };
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod;
+    kernelPackages = pkgs.linuxPackages-libre;
     kernelParams = [ "intel_idle.max_cstate=1" "mitigations=off" ];
+    blacklistedKernelModules = [ "snd_hda_intel" "snd_hda_codec_realtek" ];
     supportedFilesystems = [ "xfs" "ntfs" "nfs" ];
 
     loader = {
@@ -106,10 +107,6 @@
         consoleMode = "max";
       };
     };
-
-    extraModprobeConfig = ''
-      options snd_hda_intel enable=0,1
-    '';
   };
 
   environment = {
