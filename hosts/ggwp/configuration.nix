@@ -129,12 +129,10 @@
       lxappearance
       ncdu
       pfetch
-      aircrack-ng
       tree
       wine
       llpp
       libnotify
-      tigervnc
       agenix
       inxi
       tty-clock
