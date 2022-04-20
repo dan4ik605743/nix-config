@@ -225,7 +225,6 @@
 
   fonts = {
     fonts = with pkgs; [
-      noto-fonts-emoji
       jetbrains-mono
       cascadia-code
       font-awesome
@@ -233,10 +232,5 @@
       unifont
       roboto
     ];
-
-    fontconfig = {
-      enable = true;
-      defaultFonts.emoji = [ "Noto Color Emoji" ];
-    };
   };
 }
